@@ -1,0 +1,51 @@
+{
+  "name": "boosterinio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Boosterinio: gaming marketplace and boosting platform",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "prisma generate",
+    "db:dev": "prisma dev",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "make-admin": "tsx scripts/make-admin.ts",
+    "db:release": "prisma migrate deploy && tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "aws4fetch": "^1.0.20",
+    "better-auth": "1.7.15",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
+    "lucide-react": "^1.66.0",
+    "next": "16.4.4",
+    "pg": "^8.16.3",
+    "prisma": "7.10.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sonner": "^2.0.8",
+    "stripe": "23.1.0",
+    "tailwind-merge": "^3.4.0",
+    "tsx": "^4.20.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.16.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5.9.3"
+  }
+}

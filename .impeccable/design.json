@@ -1,0 +1,647 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T17:06:09.862Z",
+  "title": "Design System: Boosterinio",
+  "extensions": {
+    "colorMeta": {
+      "marquee": {
+        "role": "primary",
+        "displayName": "Coin-Door Yellow",
+        "canonical": "#ffd93b",
+        "tonalRamp": [
+          "oklch(15% 0.04 94)",
+          "oklch(26% 0.07 94)",
+          "oklch(38% 0.09 94)",
+          "oklch(49% 0.11 94)",
+          "oklch(61% 0.13 94)",
+          "oklch(72% 0.15 94)",
+          "oklch(84% 0.17 94)",
+          "oklch(95% 0.09 94)"
+        ]
+      },
+      "p1": {
+        "role": "secondary",
+        "displayName": "Player-One Magenta",
+        "canonical": "#ff2e88",
+        "tonalRamp": [
+          "oklch(15% 0.06 2)",
+          "oklch(26% 0.1 2)",
+          "oklch(38% 0.15 2)",
+          "oklch(49% 0.19 2)",
+          "oklch(61% 0.24 2)",
+          "oklch(72% 0.18 2)",
+          "oklch(84% 0.1 2)",
+          "oklch(95% 0.03 2)"
+        ]
+      },
+      "p2": {
+        "role": "secondary",
+        "displayName": "Player-Two Blue",
+        "canonical": "#2f6bff",
+        "tonalRamp": [
+          "oklch(15% 0.07 264)",
+          "oklch(26% 0.12 264)",
+          "oklch(38% 0.18 264)",
+          "oklch(49% 0.22 264)",
+          "oklch(61% 0.2 264)",
+          "oklch(72% 0.14 264)",
+          "oklch(84% 0.08 264)",
+          "oklch(95% 0.025 264)"
+        ]
+      },
+      "phosphor": {
+        "role": "tertiary",
+        "displayName": "Phosphor Cyan",
+        "canonical": "#5cf2d6",
+        "tonalRamp": [
+          "oklch(15% 0.03 178)",
+          "oklch(26% 0.05 178)",
+          "oklch(38% 0.07 178)",
+          "oklch(49% 0.09 178)",
+          "oklch(61% 0.11 178)",
+          "oklch(72% 0.13 178)",
+          "oklch(84% 0.14 178)",
+          "oklch(95% 0.06 178)"
+        ]
+      },
+      "phosphor-dim": {
+        "role": "tertiary",
+        "displayName": "Dim Phosphor",
+        "canonical": "#3cae9a",
+        "tonalRamp": [
+          "oklch(15% 0.03 178)",
+          "oklch(26% 0.05 178)",
+          "oklch(38% 0.07 178)",
+          "oklch(49% 0.09 178)",
+          "oklch(61% 0.11 178)",
+          "oklch(72% 0.13 178)",
+          "oklch(84% 0.14 178)",
+          "oklch(95% 0.06 178)"
+        ]
+      },
+      "crt": {
+        "role": "tertiary",
+        "displayName": "CRT Glass",
+        "canonical": "#051315",
+        "tonalRamp": [
+          "oklch(15% 0.025 205)",
+          "oklch(26% 0.035 205)",
+          "oklch(38% 0.04 205)",
+          "oklch(49% 0.045 205)",
+          "oklch(61% 0.045 205)",
+          "oklch(72% 0.04 205)",
+          "oklch(84% 0.03 205)",
+          "oklch(95% 0.015 205)"
+        ]
+      },
+      "crt-2": {
+        "role": "tertiary",
+        "displayName": "CRT Glass Centre",
+        "canonical": "#0a2125",
+        "tonalRamp": [
+          "oklch(15% 0.025 205)",
+          "oklch(26% 0.035 205)",
+          "oklch(38% 0.04 205)",
+          "oklch(49% 0.045 205)",
+          "oklch(61% 0.045 205)",
+          "oklch(72% 0.04 205)",
+          "oklch(84% 0.03 205)",
+          "oklch(95% 0.015 205)"
+        ]
+      },
+      "bezel": {
+        "role": "neutral",
+        "displayName": "Bezel Black",
+        "canonical": "#050505",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "cab": {
+        "role": "neutral",
+        "displayName": "Cabinet Black",
+        "canonical": "#100f0e",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "cab-2": {
+        "role": "neutral",
+        "displayName": "Laminate",
+        "canonical": "#181716",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "cab-3": {
+        "role": "neutral",
+        "displayName": "Raised Laminate",
+        "canonical": "#201f1d",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "cab-4": {
+        "role": "neutral",
+        "displayName": "Seam",
+        "canonical": "#2f2d2a",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "cab-5": {
+        "role": "neutral",
+        "displayName": "Lit Seam",
+        "canonical": "#403d39",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#f5f3ef",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#b9b5ae",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ghost Ink",
+        "canonical": "#918c85",
+        "tonalRamp": [
+          "#100f0e",
+          "#181716",
+          "#201f1d",
+          "#2f2d2a",
+          "#403d39",
+          "#918c85",
+          "#b9b5ae",
+          "#f5f3ef"
+        ]
+      },
+      "ok": {
+        "role": "status",
+        "displayName": "Lamp Green",
+        "canonical": "#3be37a",
+        "tonalRamp": [
+          "oklch(15% 0.04 150)",
+          "oklch(26% 0.07 150)",
+          "oklch(38% 0.1 150)",
+          "oklch(49% 0.13 150)",
+          "oklch(61% 0.16 150)",
+          "oklch(72% 0.18 150)",
+          "oklch(84% 0.16 150)",
+          "oklch(95% 0.06 150)"
+        ]
+      },
+      "warn": {
+        "role": "status",
+        "displayName": "Lamp Amber",
+        "canonical": "#ffb547",
+        "tonalRamp": [
+          "oklch(15% 0.03 70)",
+          "oklch(26% 0.05 70)",
+          "oklch(38% 0.08 70)",
+          "oklch(49% 0.1 70)",
+          "oklch(61% 0.12 70)",
+          "oklch(72% 0.14 70)",
+          "oklch(84% 0.14 70)",
+          "oklch(95% 0.05 70)"
+        ]
+      },
+      "bad": {
+        "role": "status",
+        "displayName": "Lamp Red",
+        "canonical": "#ff5a5a",
+        "tonalRamp": [
+          "oklch(15% 0.05 23)",
+          "oklch(26% 0.09 23)",
+          "oklch(38% 0.13 23)",
+          "oklch(49% 0.17 23)",
+          "oklch(61% 0.2 23)",
+          "oklch(72% 0.16 23)",
+          "oklch(84% 0.09 23)",
+          "oklch(95% 0.03 23)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page's h1 in Jersey 10 caps, carrying the P1-then-P2 extrusion; 2.6rem, 3.3rem from 640px, 3.7rem from 1280px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads and dashboard/admin page titles in Jersey 10 caps; 2.4rem rising to 3rem."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Configurator panel titles and empty-state titles in Jersey 10 caps."
+      },
+      "readout": {
+        "displayName": "Readout",
+        "purpose": "Totals and figures as tabular Jersey 10 numerals; phosphor with a halo on CRT glass, warm ink or a lamp color on laminate."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading text in Rubik, faded ink, 62 to 70ch; 500 for links and card titles, 600 for h3."
+      },
+      "body-sm": {
+        "displayName": "Small",
+        "purpose": "Hints, captions, breadcrumbs, meta and score-line labels in Rubik."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Silkscreen caps for chips, readout legends, table heads and group titles; 0.625rem is the floor."
+      },
+      "button": {
+        "displayName": "Plate Legend",
+        "purpose": "Silkscreen caps on every plate; 0.75rem small, 0.9375rem large."
+      }
+    },
+    "shadows": [
+      {
+        "name": "raised-laminate",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 48px -28px rgb(0 0 0 / 0.85)",
+        "purpose": "Panels, menus and forms raised off the laminate ground."
+      },
+      {
+        "name": "recessed-glass",
+        "value": "0 0 0 1px #2f2d2a, inset 0 0 60px rgb(0 0 0 / 0.75), inset 0 0 18px rgb(92 242 214 / 0.06), 0 40px 80px -40px rgb(0 0 0 / 0.9)",
+        "purpose": "CRT screen sunk in its 10px bezel; pairs with scanlines and a 155° glare."
+      },
+      {
+        "name": "lit-plate-coin",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.7), 0 0 22px -2px rgb(255 217 59 / 0.55), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
+        "purpose": "The coin plate at rest: bezel ring, top sheen, yellow glow, soft drop."
+      },
+      {
+        "name": "lit-plate-coin-hover",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.8), 0 0 34px 2px rgb(255 217 59 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
+        "purpose": "The coin plate on hover: the glow widens."
+      },
+      {
+        "name": "lit-plate-p1",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.45), 0 0 20px -4px rgb(255 46 136 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
+        "purpose": "P1 plate at rest; hover widens the glow to 0 0 28px 0 at 70%."
+      },
+      {
+        "name": "lit-plate-p2",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.4), 0 0 20px -4px rgb(47 107 255 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
+        "purpose": "P2 plate at rest; hover widens the glow to 0 0 28px 0 at 70%."
+      },
+      {
+        "name": "unlit-plate",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.06), 0 8px 16px -10px rgb(0 0 0 / 0.8)",
+        "purpose": "Ghost plates."
+      },
+      {
+        "name": "marquee-bloom",
+        "value": "0 0 0 2px #050505, 0 0 0 3px rgb(255 255 255 / 0.08), 0 0 26px 3px rgb(255 46 136 / 0.6), 0 0 70px 16px rgb(255 46 136 / 0.22), inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -6px 14px rgb(40 0 30 / 0.35)",
+        "purpose": "The backlit logo plate in the header only; its magenta light spills 220px down the page."
+      },
+      {
+        "name": "instruction-card-drop",
+        "value": "0 24px 48px -24px rgb(0 0 0 / 0.9)",
+        "purpose": "The house-rules card in its 6px black frame."
+      },
+      {
+        "name": "coin-bar",
+        "value": "0 0 0 1px rgb(92 242 214 / 0.12), 0 14px 30px -10px rgb(0 0 0 / 0.95)",
+        "purpose": "Sticky total and coin bar below 1024px."
+      },
+      {
+        "name": "phosphor-halo",
+        "value": "text-shadow: 0 0 10px rgb(92 242 214 / 0.45), 0 0 1px rgb(92 242 214 / 0.9)",
+        "purpose": "Numerals on CRT glass."
+      },
+      {
+        "name": "title-extrusion",
+        "value": "text-shadow: 1px 1px 0 #ff2e88, 2px 2px 0 #ff2e88, 3px 3px 0 #2f6bff, 4px 4px 0 #2f6bff, 6px 8px 14px rgb(0 0 0 / 0.55)",
+        "purpose": "The page's display h1 and the unlit wordmark only, once per screen."
+      },
+      {
+        "name": "marquee-lit-type",
+        "value": "text-shadow: 2px 2px 0 #5c0a35, 3px 3px 0 #1a0410, 0 0 14px rgb(255 240 248 / 0.75)",
+        "purpose": "The wordmark printed on the lit marquee plate."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #5cf2d6; outline-offset: 2px",
+        "purpose": "Every focusable element."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 3px rgb(92 242 214 / 0.16)",
+        "purpose": "Focused fields, with a dim-phosphor border in place of the outline."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing: plate press and glow, cursor snap, line flash."
+      },
+      {
+        "name": "plate-press",
+        "value": "transform 120ms ease-out-expo; translateY(1px) + brightness(1.12)",
+        "purpose": "Pressing any plate."
+      },
+      {
+        "name": "glow-shift",
+        "value": "160ms (box-shadow ease-out-expo; background, border, color ease)",
+        "purpose": "Plate hover: the glow or seam widens."
+      },
+      {
+        "name": "field-focus",
+        "value": "140ms ease (border-color, box-shadow)",
+        "purpose": "Field hover and focus ring."
+      },
+      {
+        "name": "cursor-snap",
+        "value": "opacity 120ms ease, transform 160ms ease-out-expo (3px slide)",
+        "purpose": "Corner brackets snapping onto the hovered or chosen item."
+      },
+      {
+        "name": "line-flash",
+        "value": "900ms ease-out-expo; background rgb(92 242 214 / 0.2) to transparent",
+        "purpose": "A score line that just changed lights up, then settles."
+      },
+      {
+        "name": "score-roll",
+        "value": "520ms exponential ease-out (1 - 2^(-10t)), requestAnimationFrame",
+        "purpose": "Totals roll to the new price like an arcade score counter."
+      },
+      {
+        "name": "lift",
+        "value": "200ms; -4px cartridges, -2px cards and crests; cover images scale 1.03 to 1.04 over 300ms",
+        "purpose": "Hover on selectable cartridges, cards and tiles."
+      },
+      {
+        "name": "chevron-turn",
+        "value": "200ms rotate(180deg)",
+        "purpose": "Accordion disclosure."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation and transition durations 0.001ms; one iteration; score roll jumps",
+        "purpose": "prefers-reduced-motion: reduce stills everything."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wordmark",
+        "value": "460px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Coin Plate",
+      "kind": "button",
+      "refersTo": "button-coin-lg",
+      "description": "The single live action on a screen (buy, pay, confirm, save). Marquee yellow, one per screen.",
+      "html": "<button class=\"ds-btn-coin\" type=\"button\"><svg class=\"ds-btn-coin-slot\" viewBox=\"0 0 9 9\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"9\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"1\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"1\" width=\"7\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"1\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"2\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"2\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"2\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"2\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"2\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"2\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"3\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"3\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"3\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"3\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"3\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"4\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"4\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"4\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"5\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"5\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"5\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"6\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"6\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"6\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"7\" width=\"7\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"8\" width=\"9\" height=\"1\" fill=\"#1d1600\"/></svg>Insert coin · Buy boost</button>",
+      "css": ".ds-btn-coin { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; height: 3.5rem; padding: 0 1.75rem; border-radius: 13px; font-size: 0.9375rem; color: #1d1600; background: radial-gradient(120% 140% at 50% 0%, #fff1a6 0%, var(--color-marquee, #ffd93b) 48%, #e9b900 100%); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.7), 0 0 22px -2px rgb(255 217 59 / 0.55), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-coin-slot { width: 20px; height: 20px; flex-shrink: 0; } .ds-btn-coin:hover { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.8), 0 0 34px 2px rgb(255 217 59 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-coin:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-coin:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
+    },
+    {
+      "name": "P2 Plate",
+      "kind": "button",
+      "refersTo": "button-p2",
+      "description": "Secondary lit action and the selected state: claims, updates, chosen divisions, pages and segments.",
+      "html": "<button class=\"ds-btn-p2\" type=\"button\">Claim order</button>",
+      "css": ".ds-btn-p2 { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; color: #fff; background: radial-gradient(120% 140% at 50% 0%, #8fb1ff 0%, var(--color-p2, #2f6bff) 50%, #1f55e0 100%); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.4), 0 0 20px -4px rgb(47 107 255 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p2:hover { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.45), 0 0 28px 0 rgb(47 107 255 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p2:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-p2:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
+    },
+    {
+      "name": "P1 Plate",
+      "kind": "button",
+      "refersTo": "button-p1",
+      "description": "Player-one plate, used only as P2's partner in a two-way choice (Apply to sell beside Apply to boost).",
+      "html": "<button class=\"ds-btn-p1\" type=\"button\">Apply to sell</button>",
+      "css": ".ds-btn-p1 { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; color: #fff; background: radial-gradient(120% 140% at 50% 0%, #ff8cc0 0%, var(--color-p1, #ff2e88) 50%, #d81770 100%); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.45), 0 0 20px -4px rgb(255 46 136 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p1:hover { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.5), 0 0 28px 0 rgb(255 46 136 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p1:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-p1:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Plate",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Unlit plate for navigation, filters, steppers and unselected choices.",
+      "html": "<div class=\"ds-stage-ghost\"><button class=\"ds-btn-ghost\" type=\"button\">All 48 games<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button></div>",
+      "css": ".ds-stage-ghost { display: inline-block; padding: 16px; background: var(--color-cab, #100f0e); border-radius: 12px; } .ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; color: var(--color-ink, #f5f3ef); border: 1px solid var(--color-cab-4, #2f2d2a); background: linear-gradient(180deg, #262422 0%, var(--color-cab-3, #201f1d) 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 8px 16px -10px rgb(0 0 0 / 0.8); } .ds-btn-ghost svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-btn-ghost:hover { border-color: var(--color-cab-5, #403d39); background: linear-gradient(180deg, #2c2a27 0%, #23211f 100%); } .ds-btn-ghost:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Text field on laminate: label above in Rubik, phosphor focus ring, hint below.",
+      "html": "<div class=\"ds-stage-field\"><label class=\"ds-label\" for=\"ds-field-discord\">Discord username</label><input class=\"ds-field\" id=\"ds-field-discord\" placeholder=\"e.g. climber#0001\"/><p class=\"ds-hint\">Staff reply here if they need more proof.</p></div>",
+      "css": ".ds-stage-field { width: 320px; padding: 20px; background: var(--color-cab-2, #181716); border: 1px solid var(--color-cab-4, #2f2d2a); border-radius: 14px; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-label { display: block; margin-bottom: 0.375rem; font-size: 0.8125rem; font-weight: 500; color: var(--color-ink-2, #b9b5ae); } .ds-field { box-sizing: border-box; width: 100%; min-height: 2.75rem; padding: 0.625rem 0.875rem; background: var(--color-cab-3, #201f1d); color: var(--color-ink, #f5f3ef); border: 1px solid var(--color-cab-4, #2f2d2a); border-radius: 10px; font-family: inherit; font-size: 0.9375rem; caret-color: var(--color-phosphor, #5cf2d6); transition: border-color 140ms ease, box-shadow 140ms ease; } .ds-field::placeholder { color: var(--color-ink-2, #b9b5ae); opacity: 0.85; } .ds-field:hover { border-color: var(--color-cab-5, #403d39); } .ds-field:focus, .ds-field:focus-visible { outline: none; border-color: var(--color-phosphor-dim, #3cae9a); box-shadow: 0 0 0 3px rgb(92 242 214 / 0.16); } .ds-hint { margin: 0.375rem 0 0; font-size: 0.8125rem; color: var(--color-ink-3, #918c85); }"
+    },
+    {
+      "name": "Status Lamp Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Silkscreen status label led by a 6px glowing lamp in the tone color; the plain variant drops the lamp for tags.",
+      "html": "<div class=\"ds-stage-chips\"><span class=\"ds-chip ds-chip-ok\">Completed</span><span class=\"ds-chip ds-chip-warn\">Delivered</span><span class=\"ds-chip ds-chip-info\">Paid</span><span class=\"ds-chip ds-chip-p2\">In progress</span><span class=\"ds-chip ds-chip-bad\">Disputed</span><span class=\"ds-chip ds-chip-plain\">PayPal</span></div>",
+      "css": ".ds-stage-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; background: var(--color-cab, #100f0e); border-radius: 12px; } .ds-chip { display: inline-flex; align-items: center; gap: 0.375rem; height: 1.5rem; padding: 0 0.5rem; border-radius: 7px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; background: var(--color-cab-3, #201f1d); border: 1px solid var(--color-cab-4, #2f2d2a); color: var(--color-ink-2, #b9b5ae); } .ds-chip::before { content: \"\"; width: 6px; height: 6px; background: currentColor; box-shadow: 0 0 6px currentColor; } .ds-chip-ok { color: var(--color-ok, #3be37a); } .ds-chip-warn { color: var(--color-warn, #ffb547); } .ds-chip-bad { color: var(--color-bad, #ff5a5a); } .ds-chip-info { color: var(--color-phosphor, #5cf2d6); } .ds-chip-p2 { color: #86a8ff; } .ds-chip-plain::before { display: none; }"
+    },
+    {
+      "name": "Laminate Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Raised laminate panel: 16px corners, seam border, top sheen and a long soft drop.",
+      "html": "<section class=\"ds-panel\"><h2 class=\"ds-panel-title\">Server &amp; queue</h2><p class=\"ds-panel-body\">Each option shows what it adds before you pay, and the server recalculates the total so it can't change behind your back.</p></section>",
+      "css": ".ds-panel { position: relative; width: 360px; padding: 1.5rem; color: var(--color-ink, #f5f3ef); background: linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 40%), var(--color-cab-2, #181716); border: 1px solid var(--color-cab-4, #2f2d2a); border-radius: 16px; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 48px -28px rgb(0 0 0 / 0.85); font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-panel-title { margin: 0 0 0.75rem; font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-weight: 400; font-size: 1.75rem; line-height: 0.92; letter-spacing: 0.02em; text-transform: uppercase; } .ds-panel-body { margin: 0; line-height: 1.625; color: var(--color-ink-2, #b9b5ae); }"
+    },
+    {
+      "name": "CRT Score Readout",
+      "kind": "custom",
+      "refersTo": "crt-screen",
+      "description": "CRT glass in its bezel holding itemized score lines and the phosphor total; lines flash when they change.",
+      "html": "<div class=\"ds-crt\"><ul class=\"ds-score\" aria-label=\"Price breakdown\"><li><span>Base climb · 4 divisions</span><b>€28.00</b></li><li><span>Appear offline</span><b class=\"ds-free\">Free</b></li><li><span>Priority queue</span><b>+€5.60</b></li></ul><div class=\"ds-total\"><div><p class=\"ds-legend\">Total</p><p class=\"ds-numeral\">€33.60</p></div><div class=\"ds-eta\"><p class=\"ds-legend\">Stage time</p><p class=\"ds-eta-value\">~2 d</p></div></div></div>",
+      "css": ".ds-crt { position: relative; isolation: isolate; width: 360px; padding: 1.5rem; border: 10px solid var(--color-bezel, #050505); border-radius: 26px; background: radial-gradient(130% 120% at 50% 40%, var(--color-crt-2, #0a2125) 0%, var(--color-crt, #051315) 55%, #020a0b 100%); box-shadow: 0 0 0 1px var(--color-cab-4, #2f2d2a), inset 0 0 60px rgb(0 0 0 / 0.75), inset 0 0 18px rgb(92 242 214 / 0.06), 0 40px 80px -40px rgb(0 0 0 / 0.9); overflow: clip; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-crt::before { content: \"\"; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgb(92 242 214 / 0.035) 0 1px, transparent 1px 3px); } .ds-crt::after { content: \"\"; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(155deg, rgb(255 255 255 / 0.055) 0%, transparent 32%); } .ds-crt > * { position: relative; z-index: 1; } .ds-score { list-style: none; margin: 0; padding: 0.75rem 0; border-top: 1px solid rgb(92 242 214 / 0.1); border-bottom: 1px solid rgb(92 242 214 / 0.1); } .ds-score li { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; margin: 0 -0.5rem; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.8125rem; color: #a9d9d0; animation: ds-flash 900ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-score li:hover { background: rgb(92 242 214 / 0.06); } .ds-score b { font-weight: 400; font-size: 0.875rem; color: #d8fff7; font-variant-numeric: tabular-nums; } .ds-score .ds-free { color: var(--color-ok, #3be37a); } .ds-total { display: flex; align-items: flex-end; justify-content: space-between; gap: 0.75rem; margin-top: 1rem; } .ds-legend { margin: 0; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-phosphor-dim, #3cae9a); } .ds-numeral { margin: 0; font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-size: 3.4rem; line-height: 1; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--color-phosphor, #5cf2d6); text-shadow: 0 0 10px rgb(92 242 214 / 0.45), 0 0 1px rgb(92 242 214 / 0.9); } .ds-eta { text-align: right; } .ds-eta-value { margin: 0; font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-size: 1.5rem; line-height: 1; color: #d8fff7; } @keyframes ds-flash { from { background-color: rgb(92 242 214 / 0.2); } to { background-color: transparent; } } @media (prefers-reduced-motion: reduce) { .ds-score li { animation: none; } }"
+    },
+    {
+      "name": "Rail Navigation",
+      "kind": "nav",
+      "refersTo": "rail-item-active",
+      "description": "Operate side rail: stroke icons, the P1 pixel cursor and a phosphor icon on the active row, P1 queue counts.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Booster\"><p class=\"ds-rail-title\">Demo booster</p><a class=\"ds-rail-item\" href=\"#\"><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"7\" height=\"9\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"9\" x=\"14\" y=\"12\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\"/></svg><span>Overview</span><span class=\"ds-rail-count\">1</span></a><a class=\"ds-rail-item ds-rail-active\" href=\"#\" aria-current=\"page\"><svg class=\"ds-rail-cursor\" viewBox=\"0 0 5 5\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"1\" width=\"3\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"2\" width=\"5\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"3\" width=\"3\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"4\" width=\"1\" height=\"1\" fill=\"currentColor\"/></svg><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><polyline points=\"14.5 17.5 3 6 3 3 6 3 17.5 14.5\"/><line x1=\"13\" x2=\"19\" y1=\"19\" y2=\"13\"/><line x1=\"16\" x2=\"20\" y1=\"16\" y2=\"20\"/><line x1=\"19\" x2=\"21\" y1=\"21\" y2=\"19\"/><polyline points=\"14.5 6.5 18 3 21 3 21 6 17.5 9.5\"/><line x1=\"5\" x2=\"9\" y1=\"14\" y2=\"18\"/><line x1=\"7\" x2=\"4\" y1=\"17\" y2=\"20\"/><line x1=\"3\" x2=\"5\" y1=\"19\" y2=\"21\"/></svg><span>Booster board</span><span class=\"ds-rail-count\">1</span></a><a class=\"ds-rail-item\" href=\"#\"><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/></svg><span>Wallet</span></a></nav>",
+      "css": ".ds-rail { width: 220px; padding: 12px; background: var(--color-cab, #100f0e); border-radius: 12px; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-rail-title { margin: 0 0 0.75rem; padding: 0 0.75rem; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-ink-3, #918c85); } .ds-rail-item { position: relative; display: flex; align-items: center; gap: 0.625rem; height: 2.5rem; padding: 0 0.75rem; border-radius: 10px; font-size: 0.875rem; color: var(--color-ink-2, #b9b5ae); text-decoration: none; transition: background-color 150ms ease, color 150ms ease; } .ds-rail-item + .ds-rail-item { margin-top: 4px; } .ds-rail-icon { width: 16px; height: 16px; margin-left: 6px; flex-shrink: 0; color: var(--color-ink-3, #918c85); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-rail-item:hover { background: var(--color-cab-2, #181716); color: var(--color-ink, #f5f3ef); } .ds-rail-item:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; } .ds-rail-active, .ds-rail-active:hover { background: var(--color-cab-3, #201f1d); color: var(--color-ink, #f5f3ef); } .ds-rail-active .ds-rail-icon { color: var(--color-phosphor, #5cf2d6); } .ds-rail-cursor { position: absolute; left: 4px; width: 8px; height: 8px; color: var(--color-p1, #ff2e88); } .ds-rail-count { margin-left: auto; padding: 0 0.375rem; border-radius: 6px; background: rgb(255 46 136 / 0.15); color: var(--color-p1, #ff2e88); font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-size: 1rem; line-height: 1.25rem; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Select-Screen Cursor Tile",
+      "kind": "custom",
+      "refersTo": "select-tile-active",
+      "description": "Tier picker tile on glass: pixel crest, corner-bracket cursor in the player color, P1 tag on the chosen tile.",
+      "html": "<div class=\"ds-tiles\"><button class=\"ds-tile\" type=\"button\" aria-pressed=\"false\"><svg viewBox=\"0 0 16 15\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"10\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"3\" width=\"3\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"6\" y=\"3\" width=\"7\" height=\"1\" fill=\"#a0663e\"/><rect x=\"13\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"5\" y=\"4\" width=\"7\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"5\" width=\"8\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"6\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"6\" y=\"6\" width=\"4\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"6\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"7\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#a0663e\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"6\" y=\"7\" width=\"3\" height=\"1\" fill=\"#b07a52\"/><rect x=\"9\" y=\"7\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"7\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"7\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"8\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#a0663e\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"6\" y=\"8\" width=\"3\" height=\"1\" fill=\"#b07a52\"/><rect x=\"9\" y=\"8\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"8\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"8\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"9\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"9\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"9\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"5\" y=\"10\" width=\"5\" height=\"1\" fill=\"#a0663e\"/><rect x=\"10\" y=\"10\" width=\"2\" height=\"1\" fill=\"#6f4426\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"11\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"6\" y=\"11\" width=\"4\" height=\"1\" fill=\"#a0663e\"/><rect x=\"10\" y=\"11\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"11\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"12\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"7\" y=\"12\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"9\" y=\"12\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"10\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"13\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"8\" y=\"13\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"9\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"14\" width=\"2\" height=\"1\" fill=\"#0b0a10\"/></svg><span>Bronze</span></button><button class=\"ds-tile ds-tile-active\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-tile-tag\">P1</span><svg viewBox=\"0 0 16 15\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"10\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"3\" width=\"3\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"6\" y=\"3\" width=\"7\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"13\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"5\" y=\"4\" width=\"7\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"5\" width=\"8\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"6\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"6\" y=\"6\" width=\"4\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"6\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"7\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"6\" y=\"7\" width=\"3\" height=\"1\" fill=\"#b0bcc8\"/><rect x=\"9\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"7\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"7\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"8\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"6\" y=\"8\" width=\"3\" height=\"1\" fill=\"#b0bcc8\"/><rect x=\"9\" y=\"8\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"8\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"8\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"9\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"9\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"9\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"5\" y=\"10\" width=\"5\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"10\" y=\"10\" width=\"2\" height=\"1\" fill=\"#6b7785\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"11\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"6\" y=\"11\" width=\"4\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"10\" y=\"11\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"11\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"12\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"7\" y=\"12\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"9\" y=\"12\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"10\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"13\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"8\" y=\"13\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"9\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"14\" width=\"2\" height=\"1\" fill=\"#0b0a10\"/></svg><span>Silver</span></button><button class=\"ds-tile\" type=\"button\" aria-pressed=\"false\"><svg viewBox=\"0 0 16 15\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"10\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"3\" width=\"3\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"6\" y=\"3\" width=\"7\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"13\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"5\" y=\"4\" width=\"7\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"5\" width=\"8\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"6\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"6\" y=\"6\" width=\"4\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"6\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"7\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"6\" y=\"7\" width=\"3\" height=\"1\" fill=\"#e3b84a\"/><rect x=\"9\" y=\"7\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"7\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"7\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"8\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"6\" y=\"8\" width=\"3\" height=\"1\" fill=\"#e3b84a\"/><rect x=\"9\" y=\"8\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"8\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"8\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"9\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"9\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"9\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"9\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"5\" y=\"10\" width=\"5\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"10\" y=\"10\" width=\"2\" height=\"1\" fill=\"#9c7420\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"11\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"6\" y=\"11\" width=\"4\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"10\" y=\"11\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"11\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"12\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"7\" y=\"12\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"9\" y=\"12\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"10\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"13\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"8\" y=\"13\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"9\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"14\" width=\"2\" height=\"1\" fill=\"#0b0a10\"/></svg><span>Gold</span></button></div>",
+      "css": ".ds-tiles { display: flex; gap: 12px; padding: 22px 18px 16px; background: radial-gradient(130% 120% at 50% 40%, var(--color-crt-2, #0a2125) 0%, var(--color-crt, #051315) 70%); border-radius: 16px; } .ds-tile { --cursor: var(--color-p1, #ff2e88); position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px; padding: 8px 2px 6px; border: 1px solid transparent; border-radius: 12px; background: transparent; color: var(--color-ink-3, #918c85); font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); font-size: 0.6875rem; line-height: 1.25; cursor: pointer; transition: background-color 150ms ease, color 150ms ease; } .ds-tile svg { width: 44px; height: 44px; transition: transform 200ms ease; } .ds-tile:hover { background: var(--color-cab-3, #201f1d); } .ds-tile:hover svg { transform: translateY(-2px); } .ds-tile:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; } .ds-tile::before, .ds-tile::after { content: \"\"; position: absolute; box-sizing: border-box; width: 14px; height: 14px; border: 3px solid var(--cursor); opacity: 0; pointer-events: none; transition: opacity 120ms ease, transform 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-tile::before { top: -5px; left: -5px; border-right: 0; border-bottom: 0; transform: translate(3px, 3px); } .ds-tile::after { right: -5px; bottom: -5px; border-left: 0; border-top: 0; transform: translate(-3px, -3px); } .ds-tile:hover::before, .ds-tile:hover::after, .ds-tile:focus-visible::before, .ds-tile:focus-visible::after, .ds-tile-active::before, .ds-tile-active::after { opacity: 1; transform: translate(0, 0); } .ds-tile-active { border-color: var(--color-cab-5, #403d39); background: var(--color-cab-3, #201f1d); color: var(--color-ink, #f5f3ef); } .ds-tile-tag { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); padding: 0 6px; border-radius: 5px; background: var(--cursor); color: #fff; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.625rem; line-height: 1rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Attract Mode",
+    "overview": "Boosterinio is an arcade cabinet running its attract screen. The page is the cabinet's black laminate with a visible fleck grain; the header is the backlit marquee; the price is worked out live on a CRT screen; the purchase is a coin dropped into a lit push-button. Every surface is a part of that one machine, so nothing floats on a generic dark page and nothing is decorated for its own sake.\n\nLight ranks the screen. The cabinet stays dark so its light sources can carry the hierarchy: the yellow coin plate is the brightest object in view and there is only one; the magenta-to-blue marquee plate glows at the top; phosphor readouts glow on the glass; status lamps glow at chip size; everything else is unlit laminate and warm ink. Color is either emitted (plates, phosphor, lamps) or printed (side-art bands, cartridge labels, tier crests), and type follows the same split: pixel faces for what the machine says, Rubik for what a person reads.\n\nThe full cabinet (marquee, side-art, CRT glass, instruction card) belongs to the storefront: home, game hubs, the boosting configurator, the marketplace, checkout and the order receipt. Dashboards, seller tools, the booster board and admin are Operate surfaces. They keep the world's type, palette, density and status lamps; the build also gives them the select-screen cursor on the active rail row and lit plates for their actions, but never glass, side-art or title extrusion.",
+    "keyCharacteristics": [
+      "One hot color: marquee yellow marks the single live action on a screen.",
+      "Neutral cabinet-black ground with a visible laminate grain.",
+      "CRT glass (teal-black, scanlines, glare, phosphor glow) holds totals and live readouts.",
+      "Lit push-button plates with emitted glow and a soft drop; no inset lip.",
+      "Three type voices: Jersey 10 display, Silkscreen labels, Rubik reading text.",
+      "Authored pixel art for world signatures: select cursor, coin slot, mode caps, escrow shield, tier crests, the B mark.",
+      "Diagonal side-art in P1 magenta, P2 blue and phosphor cyan frames the attract screen and caps the footer."
+    ],
+    "rules": [
+      {
+        "name": "The One Coin Rule",
+        "body": "Marquee yellow is the coin door's light, and a screen has one coin: the single live action (Insert coin · Buy boost, Pay, Confirm order, Save). Repeated or per-row actions (Claim order, Post update, Apply) take a P2 plate or a ghost plate. UI chrome never turns yellow: no yellow chip, lamp, border, link, band or highlight. Content keeps its own color (a Gold or Challenger crest, a game's label color) because it is printed content, not chrome.",
+        "section": "colors"
+      },
+      {
+        "name": "The Printed-Not-Lit Rule",
+        "body": "Side-art is printed in P1 magenta, P2 blue and phosphor cyan, in that order, on near-black. It is never yellow and never carries content.",
+        "section": "colors"
+      },
+      {
+        "name": "The Glass Holds The Total Rule",
+        "body": "A total, fee schedule or live figure the visitor has to trust is set on CRT glass as a phosphor display numeral with tabular figures: the configurator readout, the checkout and order receipts, the seller fee table. Catalog prices on cards and dashboard figures stay on laminate as display numerals in warm ink, or in a lamp color when the figure is a status (P1 for work waiting, red for alarms, phosphor for earnings).",
+        "section": "colors"
+      },
+      {
+        "name": "The Machine Speaks In Pixels Rule",
+        "body": "Jersey 10 and Silkscreen are the cabinet talking: titles, numbers, plates, lamps, column heads, readout legends. Anything read as a sentence, any form value and any table body text is Rubik.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Extrusion Rule",
+        "body": "The stepped P1-then-P2 extrusion belongs to the page's display h1 (and the unlit wordmark), once per screen. Section heads, panel titles and numerals stay flat.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "Headings stand alone. No small uppercase label sits above a heading to introduce it; pixel labels name data (TOTAL, YOUR RANK, GOAL, column heads). Ordinals on a real sequence (Stage 1 to 4, approval steps 1 to 3) are content, set as P1 display numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Emitted Light Rule",
+        "body": "Glow means a light source: the coin and the other lit plates, the marquee plate, phosphor on glass, a status lamp, a pressed mode cap. Cards, borders and headings never glow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Soft Drop Rule",
+        "body": "Objects cast long, blurred, negatively spread shadows (0 24px 48px -28px on panels). No panel, card or button takes a hard offset box-shadow; hard offsets live only inside type (the title extrusion, cartridge monograms).",
+        "section": "elevation"
+      },
+      {
+        "name": "The Radius Tracks Size Rule",
+        "body": "The bigger the object, the rounder the corner: 6px badge, 7px chip, 9px small plate, 10px field, 11px plate, 12px tile, 13px large plate, 14px card, 16px panel, 26px screen. Nested parts step down by their inset (an 11px track holds 8px segments).",
+        "section": "shapes"
+      },
+      {
+        "name": "The Lit Plate Rule",
+        "body": "A button is a translucent plate lit from behind: gradient face, a 1px dark bezel ring, a 1px top sheen, glow in its own color, a soft drop. No inset bottom lip and no hard offset shadow, on buttons or on selected segments and pills. Press is a 1px drop with a 12% brightness lift.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do light exactly one coin plate per screen (marquee yellow, #1d1600 legend, the coin-slot sprite on Insert coin) and keep it the brightest object in view.",
+      "Do set totals, fees and live figures on CRT glass as phosphor display numerals with tabular figures, labelled in dim-phosphor Silkscreen.",
+      "Do use the P2 plate for selected states and repeated actions; pair P1 and P2 plates only for a two-way choice (Apply to sell / Apply to boost, Solo / Duo).",
+      "Do mark the hovered or chosen item with the select-screen cursor: corner brackets or the pixel triangle, P1 magenta for the current pick and P2 blue for the goal.",
+      "Do draw world signatures as integer-grid pixel art with crisp edges (cursor, coin slot, mode caps, shield, tier crests, the B mark) and keep 16 to 20px stroke icons for utility controls.",
+      "Do keep reading copy in Rubik at 62 to 70ch in faded ink on laminate.",
+      "Do let a changed number move visibly (score lines flash for 900ms, totals roll for 520ms) and still every animation and transition under reduced motion.",
+      "Do give Operate surfaces (dashboard, seller tools, booster board, admin) the world's type, palette, density, status lamps, rail cursor and plates, with dense tables under Silkscreen column heads."
+    ],
+    "donts": [
+      "Don't put marquee yellow on chrome other than the live action: no yellow chip or lamp, border, link, side-art band, badge or highlight.",
+      "Don't light two coin plates on one screen; the second action is a P2 or ghost plate.",
+      "Don't set a kicker or eyebrow label above a heading.",
+      "Don't give plates, segments or pills an inset bottom lip, and don't give any panel, card or button a hard offset box-shadow.",
+      "Don't bring CRT glass, scanlines, side-art or title extrusion into dashboards, seller tools, the booster board or admin.",
+      "Don't set sentences, form values or table body text in a pixel face, or set any pixel label below 10px (0.625rem).",
+      "Don't use typed glyphs as icons (text arrows, stars, check marks); use a stroke icon or authored pixel art.",
+      "Don't lead with orange or add a second hot accent; warn amber is a status lamp, not a brand color.",
+      "Don't fall back to the category default: champion splash art as atmosphere, a flat untextured dark page, or icon-card feature grids. A game is its cartridge: label color, pixel monogram, or a licensed cover on the label."
+    ]
+  }
+}

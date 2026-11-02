@@ -1,0 +1,33 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# generated
+/src/generated/
+
+# env files (keep .env.example)
+.env
+.env*.local
+.env.production
+
+# uploads written in local-disk storage mode
+/public/uploads/
+
+# logs & os
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# local design tooling state
+.impeccable/review/
+.impeccable/build/
+.impeccable/questions/
+.impeccable/mocks/
+
+# local Claude/preview tooling
+.claude/

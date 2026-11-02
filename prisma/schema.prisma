@@ -1,0 +1,678 @@
+// Boosterinio data model.
+// Money is always stored as integer cents in the store currency.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ───────────────────────────── Auth (Better Auth core tables) ─────────────────────────────
+
+enum Role {
+  USER
+  SUPPORT
+  ADMIN
+}
+
+model User {
+  id            String   @id
+  name          String
+  email         String   @unique
+  emailVerified Boolean  @default(false)
+  image         String?
+  role          Role     @default(USER)
+  banned        Boolean  @default(false)
+  banReason     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  sessions         Session[]
+  accounts         Account[]
+  sellerProfile    SellerProfile?
+  orders           Order[]         @relation("BuyerOrders")
+  orderMessages    OrderMessage[]
+  tickets          Ticket[]        @relation("TicketOwner")
+  assignedTickets  Ticket[]        @relation("TicketAssignee")
+  ticketMessages   TicketMessage[]
+  reviews          Review[]
+  disputesOpened   Dispute[]       @relation("DisputeOpener")
+  disputesResolved Dispute[]       @relation("DisputeResolver")
+  reports          Report[]        @relation("Reporter")
+  notifications    Notification[]
+  auditLogs        AuditLog[]
+
+  @@index([role])
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+}
+
+// ───────────────────────────── Sellers & boosters ─────────────────────────────
+
+enum SellerStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum ApplicationType {
+  SELLER
+  BOOSTER
+  BOTH
+}
+
+model SellerProfile {
+  id              String          @id @default(cuid())
+  userId          String          @unique
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slug            String          @unique
+  displayName     String
+  bio             String?
+  avatarUrl       String?
+  status          SellerStatus    @default(PENDING)
+  applicationType ApplicationType @default(SELLER)
+  canSell         Boolean         @default(false)
+  canBoost        Boolean         @default(false)
+
+  // Application details reviewed by staff
+  country    String?
+  discord    String?
+  experience String?
+  games      String[]
+  peakRank   String?
+  servers    String[]
+  proofUrl   String?
+  reviewNote String?
+  reviewedAt DateTime?
+
+  // Wallet (cents)
+  balance        Int @default(0)
+  pendingBalance Int @default(0)
+  totalEarned    Int @default(0)
+
+  // Reputation
+  ratingSum       Int @default(0)
+  ratingCount     Int @default(0)
+  completedOrders Int @default(0)
+
+  payoutMethod  String?
+  payoutDetails String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  listings     Listing[]
+  sales        Order[]             @relation("SellerOrders")
+  boosts       Order[]             @relation("BoosterOrders")
+  reviews      Review[]
+  payouts      Payout[]
+  transactions WalletTransaction[]
+  reports      Report[]            @relation("ReportedSeller")
+
+  @@index([status])
+}
+
+// ───────────────────────────── Catalog ─────────────────────────────
+
+enum ListingCategory {
+  ACCOUNT
+  CURRENCY
+  ITEM
+  TOPUP
+  GIFT_CARD
+}
+
+model Game {
+  id              String            @id @default(cuid())
+  slug            String            @unique
+  name            String
+  shortName       String?
+  publisher       String?
+  description     String?
+  color           String            @default("#2F6BFF")
+  imageUrl        String?
+  categories      ListingCategory[]
+  currencyName    String?
+  platforms       String[]
+  servers         String[]
+  isActive        Boolean           @default(true)
+  isFeatured      Boolean           @default(false)
+  boostingEnabled Boolean           @default(false)
+  sortOrder       Int               @default(100)
+  seoTitle        String?
+  seoDescription  String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  services BoostService[]
+  listings Listing[]
+
+  @@index([isActive, sortOrder])
+}
+
+enum CalculatorType {
+  RANK
+  WINS
+  LEVEL
+  HOURS
+  FIXED
+}
+
+model BoostService {
+  id             String         @id @default(cuid())
+  gameId         String
+  game           Game           @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  slug           String
+  name           String
+  tagline        String?
+  description    String?
+  calculator     CalculatorType
+  config         Json
+  faq            Json?
+  isActive       Boolean        @default(true)
+  sortOrder      Int            @default(100)
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  orders Order[]
+
+  @@unique([gameId, slug])
+}
+
+enum ListingStatus {
+  DRAFT
+  PENDING
+  ACTIVE
+  PAUSED
+  REJECTED
+  SOLD_OUT
+  REMOVED
+}
+
+enum DeliveryMethod {
+  INSTANT
+  MANUAL
+}
+
+model Listing {
+  id              String          @id @default(cuid())
+  sellerId        String
+  seller          SellerProfile   @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  gameId          String
+  game            Game            @relation(fields: [gameId], references: [id])
+  category        ListingCategory
+  title           String
+  slug            String          @unique
+  description     String
+  price           Int
+  stock           Int             @default(1)
+  minQuantity     Int             @default(1)
+  unitLabel       String?
+  deliveryMethod  DeliveryMethod  @default(MANUAL)
+  deliveryTime    Int             @default(60)
+  server          String?
+  platform        String?
+  attributes      Json?
+  images          String[]
+  status          ListingStatus   @default(PENDING)
+  rejectionReason String?
+  views           Int             @default(0)
+  soldCount       Int             @default(0)
+  featured        Boolean         @default(false)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  stockItems StockItem[]
+  orders     Order[]
+  reports    Report[]
+
+  @@index([gameId, category, status])
+  @@index([sellerId, status])
+  @@index([status, createdAt])
+}
+
+// Pre-loaded instant-delivery goods (account logins, codes). Payload is encrypted at rest.
+model StockItem {
+  id          String    @id @default(cuid())
+  listingId   String
+  listing     Listing   @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  payload     String
+  orderId     String?
+  order       Order?    @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  deliveredAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([listingId, orderId])
+}
+
+// ───────────────────────────── Orders ─────────────────────────────
+
+enum OrderType {
+  BOOST
+  MARKET
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  PAID
+  IN_PROGRESS
+  DELIVERED
+  COMPLETED
+  DISPUTED
+  REFUNDED
+  CANCELLED
+}
+
+enum PaymentProvider {
+  STRIPE
+  PAYPAL
+  NOWPAYMENTS
+  TEST
+}
+
+model Order {
+  id     String      @id @default(cuid())
+  number String      @unique
+  type   OrderType
+  status OrderStatus @default(PENDING_PAYMENT)
+
+  buyerId String
+  buyer   User   @relation("BuyerOrders", fields: [buyerId], references: [id])
+
+  // Marketplace orders
+  listingId String?
+  listing   Listing?       @relation(fields: [listingId], references: [id], onDelete: SetNull)
+  sellerId  String?
+  seller    SellerProfile? @relation("SellerOrders", fields: [sellerId], references: [id])
+  quantity  Int            @default(1)
+
+  // Boosting orders
+  serviceId     String?
+  service       BoostService?  @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  boosterId     String?
+  booster       SellerProfile? @relation("BoosterOrders", fields: [boosterId], references: [id])
+  boostConfig   Json?
+  boostProgress Json?
+  accountLogin  String?
+
+  // Snapshot for display even if the source changes later
+  title    String
+  summary  String?
+  gameName String
+  gameSlug String
+
+  // Money (cents)
+  currency     String  @default("EUR")
+  subtotal     Int
+  discount     Int     @default(0)
+  total        Int
+  platformFee  Int     @default(0)
+  payoutAmount Int     @default(0)
+  couponId     String?
+  coupon       Coupon? @relation(fields: [couponId], references: [id], onDelete: SetNull)
+
+  // Payment
+  paymentProvider PaymentProvider?
+  paymentRef      String?
+  paymentIntent   String?
+  paidAt          DateTime?
+
+  // Life cycle
+  startedAt      DateTime?
+  deliveredAt    DateTime?
+  completedAt    DateTime?
+  cancelledAt    DateTime?
+  refundedAt     DateTime?
+  autoCompleteAt DateTime?
+  deliveryNote   String?
+  staffNote      String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  messages     OrderMessage[]
+  stockItems   StockItem[]
+  review       Review?
+  dispute      Dispute?
+  tickets      Ticket[]
+  transactions WalletTransaction[]
+
+  @@index([buyerId, createdAt])
+  @@index([status, createdAt])
+  @@index([sellerId, status])
+  @@index([boosterId, status])
+  @@index([paymentRef])
+}
+
+enum MessageKind {
+  USER
+  SYSTEM
+  STAFF
+}
+
+model OrderMessage {
+  id        String      @id @default(cuid())
+  orderId   String
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  senderId  String?
+  sender    User?       @relation(fields: [senderId], references: [id], onDelete: SetNull)
+  body      String
+  kind      MessageKind @default(USER)
+  createdAt DateTime    @default(now())
+
+  @@index([orderId, createdAt])
+}
+
+model Review {
+  id        String        @id @default(cuid())
+  orderId   String        @unique
+  order     Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  sellerId  String
+  seller    SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String?
+  isHidden  Boolean       @default(false)
+  createdAt DateTime      @default(now())
+
+  @@index([sellerId, createdAt])
+  @@index([isHidden, createdAt])
+}
+
+enum DisputeStatus {
+  OPEN
+  RESOLVED_REFUND
+  RESOLVED_RELEASE
+  CLOSED
+}
+
+model Dispute {
+  id             String        @id @default(cuid())
+  orderId        String        @unique
+  order          Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  openedById     String
+  openedBy       User          @relation("DisputeOpener", fields: [openedById], references: [id])
+  reason         String
+  details        String
+  status         DisputeStatus @default(OPEN)
+  previousStatus OrderStatus
+  resolution     String?
+  resolvedById   String?
+  resolvedBy     User?         @relation("DisputeResolver", fields: [resolvedById], references: [id])
+  createdAt      DateTime      @default(now())
+  resolvedAt     DateTime?
+
+  @@index([status, createdAt])
+}
+
+// ───────────────────────────── Support ─────────────────────────────
+
+enum TicketStatus {
+  OPEN
+  ANSWERED
+  CLOSED
+}
+
+enum TicketCategory {
+  ORDER
+  PAYMENT
+  ACCOUNT
+  SELLER
+  BOOSTING
+  BUG
+  OTHER
+}
+
+enum TicketPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model Ticket {
+  id           String         @id @default(cuid())
+  number       Int            @unique @default(autoincrement())
+  userId       String
+  user         User           @relation("TicketOwner", fields: [userId], references: [id], onDelete: Cascade)
+  subject      String
+  category     TicketCategory @default(OTHER)
+  priority     TicketPriority @default(NORMAL)
+  status       TicketStatus   @default(OPEN)
+  orderId      String?
+  order        Order?         @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  assignedToId String?
+  assignedTo   User?          @relation("TicketAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
+  lastReplyAt  DateTime       @default(now())
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  messages TicketMessage[]
+
+  @@index([status, lastReplyAt])
+  @@index([userId, createdAt])
+}
+
+model TicketMessage {
+  id        String   @id @default(cuid())
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  authorId  String?
+  author    User?    @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  body      String
+  isStaff   Boolean  @default(false)
+  internal  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([ticketId, createdAt])
+}
+
+enum ReportStatus {
+  OPEN
+  RESOLVED
+  DISMISSED
+}
+
+model Report {
+  id         String         @id @default(cuid())
+  reporterId String
+  reporter   User           @relation("Reporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  listingId  String?
+  listing    Listing?       @relation(fields: [listingId], references: [id], onDelete: SetNull)
+  sellerId   String?
+  seller     SellerProfile? @relation("ReportedSeller", fields: [sellerId], references: [id], onDelete: SetNull)
+  reason     String
+  details    String?
+  status     ReportStatus   @default(OPEN)
+  staffNote  String?
+  createdAt  DateTime       @default(now())
+  resolvedAt DateTime?
+
+  @@index([status, createdAt])
+}
+
+// ───────────────────────────── Money ─────────────────────────────
+
+enum PayoutStatus {
+  REQUESTED
+  PAID
+  REJECTED
+}
+
+model Payout {
+  id          String        @id @default(cuid())
+  sellerId    String
+  seller      SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  amount      Int
+  method      String
+  details     String
+  status      PayoutStatus  @default(REQUESTED)
+  staffNote   String?
+  reference   String?
+  createdAt   DateTime      @default(now())
+  processedAt DateTime?
+
+  transactions WalletTransaction[]
+
+  @@index([status, createdAt])
+}
+
+enum WalletTxType {
+  ESCROW_HOLD
+  ESCROW_RELEASE
+  ESCROW_REVERSAL
+  PAYOUT
+  PAYOUT_REVERSAL
+  ADJUSTMENT
+}
+
+model WalletTransaction {
+  id        String        @id @default(cuid())
+  sellerId  String
+  seller    SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  type      WalletTxType
+  amount    Int
+  orderId   String?
+  order     Order?        @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  payoutId  String?
+  payout    Payout?       @relation(fields: [payoutId], references: [id], onDelete: SetNull)
+  note      String?
+  createdAt DateTime      @default(now())
+
+  @@index([sellerId, createdAt])
+}
+
+enum CouponType {
+  PERCENT
+  FIXED
+}
+
+enum CouponScope {
+  ALL
+  BOOST
+  MARKET
+}
+
+model Coupon {
+  id        String      @id @default(cuid())
+  code      String      @unique
+  type      CouponType  @default(PERCENT)
+  value     Int
+  scope     CouponScope @default(ALL)
+  minOrder  Int         @default(0)
+  maxUses   Int?
+  usedCount Int         @default(0)
+  expiresAt DateTime?
+  isActive  Boolean     @default(true)
+  createdAt DateTime    @default(now())
+
+  orders Order[]
+}
+
+// Webhook idempotency: one row per processed provider event.
+model PaymentEvent {
+  id        String          @id
+  provider  PaymentProvider
+  type      String
+  orderId   String?
+  createdAt DateTime        @default(now())
+}
+
+// ───────────────────────────── Platform ─────────────────────────────
+
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}
+
+model Notification {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  body      String?
+  href      String?
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId, readAt, createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String?
+  meta      Json?
+  createdAt DateTime @default(now())
+
+  @@index([entity, entityId])
+  @@index([createdAt])
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String?
+  content     String
+  coverUrl    String?
+  gameSlug    String?
+  authorName  String?
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([published, publishedAt])
+}
