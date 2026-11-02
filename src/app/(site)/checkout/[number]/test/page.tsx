@@ -22,9 +22,9 @@ export default async function TestPaymentPage({ params }: { params: Promise<{ nu
   return (
     <Container className="py-16">
       <div className="crt mx-auto max-w-lg p-8 text-center">
-        <h1 className="t-display text-5xl text-[#d8fff7] uppercase">Simulated payment</h1>
+        <h1 className="t-display text-5xl text-[#ffffff] uppercase">Simulated payment</h1>
         <span className="chip mt-3 text-warn">Test mode</span>
-        <p className="mt-3 text-[#b9dcd5]">
+        <p className="mt-3 text-[#c8c3d0]">
           No real money moves. This page exists because <code className="text-phosphor">PAYMENTS_TEST_MODE</code> is on. Turn it off before going live.
         </p>
         <p className="t-display t-phosphor mt-6 text-6xl tnum">{formatMoney(order.total)}</p>

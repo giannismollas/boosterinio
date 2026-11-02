@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import { Markdown } from "@/components/markdown";
 import { Container, Crumbs, Faq, HouseRules, SectionHead } from "@/components/storefront";
 import { defaultSelection } from "@/lib/boosting/engine";
+import { gameHeadingName } from "@/lib/catalog";
 import { breadcrumbLd, faqLd, pageMeta } from "@/lib/seo";
 import { absoluteUrl, site } from "@/lib/site";
 import { serviceUrl } from "@/lib/urls";
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) return {};
   const { game, service } = data;
   return pageMeta({
-    title: service.seoTitle ?? `${game.shortName ?? game.name} ${service.name}`,
+    title: service.seoTitle ?? `${gameHeadingName(game)} ${service.name}`,
     description: service.seoDescription ?? `${service.tagline ?? ""} ${game.name} ${service.name.toLowerCase()} from approved boosters with escrow-protected payment.`.trim(),
     path: serviceUrl(game.slug, service.slug),
   });
@@ -61,7 +62,7 @@ export default async function ServicePage({ params, searchParams }: Props) {
   const initial = { ...base, ...parseSelection(str(sp.s)) };
   const path = serviceUrl(game.slug, service.slug);
   const faq = Array.isArray(service.faq) ? (service.faq as { q: string; a: string }[]).filter((f) => f?.q && f?.a) : [];
-  const short = game.shortName ?? game.name;
+  const short = gameHeadingName(game);
 
   return (
     <>

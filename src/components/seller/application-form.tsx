@@ -137,7 +137,7 @@ export function ApplicationForm({
                 name="games"
                 value={g.slug}
                 defaultChecked={defaults.games.includes(g.slug)}
-                className="size-4 shrink-0 accent-[#2f6bff]"
+                className="size-4 shrink-0 accent-[#ff2e88]"
               />
               <span className="truncate">{g.name}</span>
               {g.boosting ? <span className="ml-auto shrink-0 font-pixel text-[0.625rem] text-phosphor uppercase">Boosting</span> : null}
@@ -232,7 +232,7 @@ export function ApplicationForm({
 
       <div>
         <label className="flex cursor-pointer items-start gap-3 text-sm text-ink-2">
-          <input type="checkbox" name="terms" className="mt-0.5 size-4 shrink-0 accent-[#2f6bff]" required />
+          <input type="checkbox" name="terms" className="mt-0.5 size-4 shrink-0 accent-[#ff2e88]" required />
           <span>
             I&apos;ll deliver what I list, keep all communication in the order chat, and follow the{" "}
             <a href="/terms" className="text-phosphor underline" target="_blank">

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { MarketBrowser } from "@/components/market-browser";
 import { Container, Crumbs } from "@/components/storefront";
-import { CATEGORIES, categoryFromSlug, type ListingCategoryKey } from "@/lib/catalog";
+import { CATEGORIES, categoryFromSlug, categoryLabel, type ListingCategoryKey, gameHeadingName } from "@/lib/catalog";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 import { categoryUrl } from "@/lib/urls";
 import { pageParam } from "@/lib/utils";
@@ -17,8 +17,8 @@ type Props = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
-function label(category: ListingCategoryKey, currencyName: string | null) {
-  return category === "CURRENCY" && currencyName ? currencyName : CATEGORIES[category].label;
+function label(category: ListingCategoryKey, game: { currencyName: string | null; topupName: string | null }) {
+  return categoryLabel(category, game);
 }
 
 async function load(params: Props["params"]) {
@@ -35,7 +35,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!data) return {};
   const { game, category } = data;
   const page = pageParam((await searchParams).page);
-  const what = label(category, game.currencyName);
+  const what = label(category, game);
   const meta = pageMeta({
     title: `${game.name} ${what} for Sale${page > 1 ? ` (page ${page})` : ""}`,
     description: `Buy ${game.name} ${what.toLowerCase()} from approved sellers on Boosterinio. ${CATEGORIES[category].blurb} Escrow-protected payment on every order.`,
@@ -49,7 +49,7 @@ export default async function GameCategoryPage({ params, searchParams }: Props) 
   if (!data) notFound();
   const { game, category } = data;
   const sp = await searchParams;
-  const what = label(category, game.currencyName);
+  const what = label(category, game);
   const path = categoryUrl(game.slug, category);
 
   return (
@@ -63,7 +63,7 @@ export default async function GameCategoryPage({ params, searchParams }: Props) 
       />
       <Crumbs items={[{ name: "Home", href: "/" }, { name: game.name, href: `/${game.slug}` }, { name: what }]} />
       <h1 className="t-display text-5xl text-ink uppercase sm:text-6xl">
-        {game.shortName ?? game.name} {what}
+        {gameHeadingName(game)} {what}
       </h1>
       <p className="mt-2 max-w-[62ch] text-ink-2">
         {CATEGORIES[category].blurb} Payment stays in escrow until you confirm delivery.
@@ -85,7 +85,7 @@ export default async function GameCategoryPage({ params, searchParams }: Props) 
                 : "inline-flex h-10 shrink-0 items-center rounded-[10px] bg-cab-2 px-3.5 text-sm text-ink-2 hover:bg-cab-3 hover:text-ink"
             }
           >
-            {label(c, game.currencyName)}
+            {label(c, game)}
           </Link>
         ))}
       </nav>
@@ -96,7 +96,7 @@ export default async function GameCategoryPage({ params, searchParams }: Props) 
         servers={game.servers}
         emptyAction={
           <Link href="/sell" className="btn btn-p2">
-            Sell {game.shortName ?? game.name} {what.toLowerCase()}
+            Sell {gameHeadingName(game)} {what.toLowerCase()}
           </Link>
         }
       />

@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  html, body { margin: 0; background: transparent; }
+  body.preview { background: #0b0b16; }
+  svg { display: block; width: 1100px; height: 1000px; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 100">
+  <defs>
+    <!-- the B, in its own 44x40 box -->
+    <path id="b" d="M0 0H25L31 6V14.5L28 17.5L32 21V33.5L25.5 40H0V23.5H8V32.5H23L24.5 31V22.5L23 21H-7V14H0Z M8 7H22L23.5 8.5V12.5L22 14H8Z" fill-rule="evenodd" />
+
+    <linearGradient id="face" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7348d" />
+      <stop offset="0.3" stop-color="#bd1665" />
+      <stop offset="0.72" stop-color="#5c0a33" />
+      <stop offset="1" stop-color="#2a0416" />
+    </linearGradient>
+    <linearGradient id="rim" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd7ea" stop-opacity="1" />
+      <stop offset="0.4" stop-color="#ff5aa8" stop-opacity="0.8" />
+      <stop offset="1" stop-color="#ff2e88" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="shardA" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff2e88" stop-opacity="0.02" />
+      <stop offset="1" stop-color="#ff2e88" stop-opacity="0.14" />
+    </linearGradient>
+    <linearGradient id="shardB" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#7a0d44" stop-opacity="0.35" />
+      <stop offset="1" stop-color="#ff2e88" stop-opacity="0.1" />
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff2e88" stop-opacity="0" />
+      <stop offset="0.6" stop-color="#ff5aa8" stop-opacity="0.8" />
+      <stop offset="1" stop-color="#ffd1e6" stop-opacity="1" />
+    </linearGradient>
+    <radialGradient id="dotsFade" cx="0.15" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#fff" stop-opacity="1" />
+      <stop offset="1" stop-color="#fff" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dots" width="2.6" height="2.6" patternUnits="userSpaceOnUse">
+      <circle cx="1.3" cy="1.3" r="0.34" fill="#ff5aa8" />
+    </pattern>
+    <radialGradient id="edgeFadeGrad" cx="0.55" cy="0.5" r="0.52">
+      <stop offset="0.5" stop-color="#fff" stop-opacity="1" />
+      <stop offset="1" stop-color="#fff" stop-opacity="0" />
+    </radialGradient>
+    <mask id="edgeFade">
+      <rect width="110" height="100" fill="url(#edgeFadeGrad)" />
+    </mask>
+    <mask id="dotsMask">
+      <rect width="110" height="100" fill="url(#dotsFade)" />
+    </mask>
+
+    <!-- brushed metal: long horizontal noise streaks, laid over the face -->
+    <filter id="brushed" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015 1.6" numOctaves="3" seed="7" result="noise" />
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.3 -0.55" result="streaks" />
+      <feComposite in="streaks" in2="SourceAlpha" operator="in" result="streaksIn" />
+      <feBlend in="streaksIn" in2="SourceGraphic" mode="soft-light" />
+    </filter>
+    <!-- bevel: specular light from the top right on the B's blurred alpha -->
+    <filter id="bevel" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.55" result="blur" />
+      <feSpecularLighting in="blur" surfaceScale="2.6" specularConstant="0.75" specularExponent="26" lighting-color="#ffc2df" result="spec">
+        <feDistantLight azimuth="310" elevation="38" />
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="specIn" />
+      <feComposite in="SourceGraphic" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.6" k4="0" />
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.2" />
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.5" />
+    </filter>
+  </defs>
+
+  <!-- shard planes and dot matrix behind the mark, faded out before the image edge -->
+  <g mask="url(#edgeFade)">
+    <polygon points="2,100 30,100 96,6 68,6" fill="url(#shardA)" />
+    <polygon points="2,100 30,100 96,6 68,6" fill="none" stroke="url(#edge)" stroke-width="0.25" opacity="0.7" />
+    <polygon points="74,100 84,100 106,54 106,38" fill="url(#shardB)" />
+    <polygon points="0,62 16,52 22,100 0,100" fill="url(#shardB)" />
+    <line x1="84" y1="100" x2="104.8" y2="56.8" stroke="url(#edge)" stroke-width="0.35" />
+    <rect x="0" y="4" width="40" height="52" fill="url(#dots)" mask="url(#dotsMask)" opacity="0.45" />
+  </g>
+
+  <g transform="translate(13 10) scale(2) translate(13 0) skewX(-14)">
+    <!-- glow and extruded depth -->
+    <use href="#b" fill="#ff2e88" opacity="0.28" filter="url(#glow)" />
+    <use href="#b" transform="translate(1.1 1.5)" fill="#2c0418" />
+    <use href="#b" transform="translate(0.55 0.75)" fill="#5c0a33" />
+    <!-- the face: gradient, brushed streaks, bevel light -->
+    <g filter="url(#bevel)">
+      <use href="#b" fill="url(#face)" filter="url(#brushed)" />
+    </g>
+    <!-- rim light -->
+    <use href="#b" fill="none" stroke="url(#rim)" stroke-width="0.32" stroke-linejoin="miter" />
+    <use href="#b" fill="none" stroke="#ff7ab8" stroke-width="0.7" stroke-linejoin="miter" opacity="0.25" filter="url(#soft)" />
+  </g>
+</svg>
+</body>
+</html>

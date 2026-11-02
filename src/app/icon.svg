@@ -1,8 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
-  <rect width="16" height="16" rx="3" fill="#100f0e"/>
-  <g transform="translate(2 1)">
-    <path fill="#2f6bff" d="M2 2h6v1H2zM2 3h7v1H2zM2 4h2v2H2zM7 4h2v2H7zM2 6h6v1H2zM2 7h7v1H2zM2 8h2v2H2zM8 8h2v2H8zM2 10h8v1H2zM2 11h7v1H2z"/>
-    <path fill="#ff2e88" d="M1 1h6v1H1zM1 2h7v1H1zM1 3h2v2H1zM6 3h2v2H6zM1 5h6v1H1zM1 6h7v1H1zM1 7h2v2H1zM7 7h2v2H7zM1 9h8v1H1zM1 10h7v1H1z"/>
-    <path fill="#f5f3ef" d="M0 0h6v1H0zM0 1h7v1H0zM0 2h2v2H0zM5 2h2v2H5zM0 4h6v1H0zM0 5h7v1H0zM0 6h2v2H0zM6 6h2v2H6zM0 8h8v1H0zM0 9h7v1H0z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="b" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#ff74b6"/>
+      <stop offset="0.5" stop-color="#ff2e88"/>
+      <stop offset="1" stop-color="#d80d68"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="11" fill="#0b0b16"/>
+  <g transform="translate(4.6 6.6) scale(0.88)">
+    <path d="M0 0H25L31 6V14.5L28 17.5L32 21V33.5L25.5 40H0V23.5H8V32.5H23L24.5 31V22.5L23 21H-7V14H0Z M8 7H22L23.5 8.5V12.5L22 14H8Z" transform="translate(13 0) skewX(-14)" fill="url(#b)" fill-rule="evenodd"/>
   </g>
 </svg>

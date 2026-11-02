@@ -55,7 +55,7 @@ export default async function TicketPage({ params }: { params: Promise<{ number:
 
       <ol className="space-y-3">
         {ticket.messages.map((m) => (
-          <li key={m.id} className={cn("rounded-[14px] border p-4 sm:p-5", m.isStaff ? "border-phosphor/25 bg-[rgb(92_242_214/0.05)]" : "border-cab-4 bg-cab-2")}>
+          <li key={m.id} className={cn("rounded-[14px] border p-4 sm:p-5", m.isStaff ? "border-phosphor/25 bg-[rgb(255_46_136/0.05)]" : "border-cab-4 bg-cab-2")}>
             <p className="mb-2 text-[0.8125rem] text-ink-3">
               <span className={m.isStaff ? "font-medium text-phosphor" : "font-medium text-ink-2"}>{m.isStaff ? `${m.author?.name ?? "Staff"} · Boosterinio staff` : "You"}</span> ·{" "}
               {formatDateTime(m.createdAt)}

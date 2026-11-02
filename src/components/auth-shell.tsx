@@ -10,8 +10,8 @@ export function AuthShell({ title, intro, children, footer }: { title: string; i
       <div className="w-full max-w-[440px]">
         <div className="crt p-6 sm:p-8">
           <LogoMark className="h-9" />
-          <h1 className="t-display mt-5 text-[2.6rem] text-[#e6fffa] uppercase">{title}</h1>
-          {intro ? <p className="mt-2 text-sm leading-relaxed text-[#b9dcd5]">{intro}</p> : null}
+          <h1 className="t-display mt-5 text-[2.6rem] text-[#ffffff] uppercase">{title}</h1>
+          {intro ? <p className="mt-2 text-sm leading-relaxed text-[#c8c3d0]">{intro}</p> : null}
           <div className="mt-6">{children}</div>
         </div>
         {footer ? <div className="mt-5 text-center text-sm text-ink-2">{footer}</div> : null}

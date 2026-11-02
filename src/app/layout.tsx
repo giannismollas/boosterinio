@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Jersey_10, Rubik, Silkscreen } from "next/font/google";
+import { Rubik, Saira } from "next/font/google";
 import { Toaster } from "sonner";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const jersey = Jersey_10({ weight: "400", subsets: ["latin", "latin-ext"], variable: "--font-jersey", display: "swap" });
-const silkscreen = Silkscreen({ weight: ["400", "700"], subsets: ["latin", "latin-ext"], variable: "--font-silkscreen", display: "swap" });
+// Saira is variable in weight and width: display type runs wide (wdth ~118) and heavy italic.
+const saira = Saira({ style: ["normal", "italic"], axes: ["wdth"], subsets: ["latin", "latin-ext"], variable: "--font-saira", display: "swap" });
 const rubik = Rubik({ subsets: ["latin", "latin-ext"], variable: "--font-rubik", display: "swap" });
 
 export const metadata: Metadata = {
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#100f0e",
+  themeColor: "#0b0b16",
   colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jersey.variable} ${silkscreen.variable} ${rubik.variable}`}>
+    <html lang="en" className={`${saira.variable} ${rubik.variable}`}>
       <body>
         {children}
         <Toaster
@@ -37,9 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           position="bottom-right"
           toastOptions={{
             style: {
-              background: "#181716",
-              border: "1px solid #2f2d2a",
-              color: "#f5f3ef",
+              background: "#121222",
+              border: "1px solid #28273f",
+              color: "#ffffff",
               fontFamily: "var(--font-rubik)",
             },
           }}

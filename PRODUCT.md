@@ -46,6 +46,8 @@ A gaming marketplace and boosting platform: buyers purchase boosting services an
 - Name: **Boosterinio** (confirmed by owner).
 - Must look clearly distinct from GameBoost (dark UI with orange accents) — no orange-led identity.
 - Identity requested as "unique and gaming style".
+- 2026-11-02: the owner pinned a visual direction with a reference image (supersedes the earlier "Attract Mode" arcade world): dark near-black ground, hot pink/magenta as the single accent (CTAs, selection, highlights), heavy italic uppercase display type, a pink italic "B" mark with speed cuts beside a white italic wordmark, slanted pink "Insert coin" button, pill badges, pink-outlined selection with P1/GOAL tags, diagonal pink light streaks.
+- Trust labels must stay truthful: support is staffed during set hours (Admin → Settings), so "24/7" is not claimed.
 
 ## Evidence on Hand
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { Container, Crumbs, HouseRules } from "@/components/storefront";
+import { gameHeadingName } from "@/lib/catalog";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 import { serviceUrl } from "@/lib/urls";
 import { formatMoney } from "@/lib/utils";
@@ -17,7 +18,7 @@ type Props = { params: Promise<{ game: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const game = await getGame((await params).game);
   if (!game) return {};
-  const short = game.shortName ?? game.name;
+  const short = gameHeadingName(game);
   return pageMeta({
     title: `${short} Boosting: Rank, Wins, Placements & Coaching`,
     description: `${game.name} boosting from approved high-elo players. Transparent, itemized prices, solo or duo, escrow-protected payment and live order tracking.`,
@@ -29,7 +30,7 @@ export default async function BoostingIndex({ params }: Props) {
   const game = await getGame((await params).game);
   if (!game) notFound();
   const [services, settings] = await Promise.all([getServices(game.id), getSettings()]);
-  const short = game.shortName ?? game.name;
+  const short = gameHeadingName(game);
 
   return (
     <Container className="py-10">
@@ -53,6 +54,10 @@ export default async function BoostingIndex({ params }: Props) {
           {services.map((s) => (
             <li key={s.id}>
               <Link href={serviceUrl(game.slug, s.slug)} className="group flex flex-wrap items-center gap-x-6 gap-y-2 px-5 py-5 transition-colors hover:bg-cab-3 sm:px-7">
+                {s.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={s.imageUrl} alt="" loading="lazy" className="hidden h-16 w-28 shrink-0 rounded-[10px] object-cover sm:block" />
+                ) : null}
                 <span className="min-w-0 flex-1">
                   <span className="t-display block text-3xl text-ink uppercase">{s.name}</span>
                   {s.tagline ? <span className="mt-0.5 block text-ink-2">{s.tagline}</span> : null}

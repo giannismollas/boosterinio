@@ -1,12 +1,11 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, ShieldCheck } from "lucide-react";
 import { useActionState, useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
 import { formatMoney } from "@/lib/utils";
 import { startMarketCheckout } from "@/server/actions/checkout";
-import { PixelShield } from "./pixel";
 
 export function BuyBox({
   listingId,
@@ -40,11 +39,11 @@ export function BuyBox({
       <input type="hidden" name="listingId" value={listingId} />
       <input type="hidden" name="returnTo" value={returnTo} />
       <p className="font-pixel text-[0.6875rem] text-phosphor-dim uppercase">{unitLabel ? `Price per ${unitLabel}` : "Price"}</p>
-      <p className="t-display t-phosphor mt-1 text-[3.2rem] leading-none tnum">{formatMoney(price)}</p>
+      <p className="t-display t-phosphor mt-1 text-[2.9rem] leading-none tnum">{formatMoney(price)}</p>
 
       {multi ? (
         <div className="mt-5">
-          <label htmlFor="qty" className="label text-[#9fcfc6]">
+          <label htmlFor="qty" className="label text-[#b3adbd]">
             Quantity {unitLabel ? `(${unitLabel})` : ""}
           </label>
           <div className="flex items-center gap-2">
@@ -66,7 +65,7 @@ export function BuyBox({
               <Plus className="size-4" />
             </button>
           </div>
-          <p className="mt-2 text-[0.8125rem] text-[#9fcfc6] tnum">
+          <p className="mt-2 text-[0.8125rem] text-[#b3adbd] tnum">
             {stock} in stock{minQuantity > 1 ? ` · minimum ${minQuantity}` : ""}
           </p>
         </div>
@@ -76,7 +75,7 @@ export function BuyBox({
 
       <div className="mt-5 flex items-baseline justify-between border-t border-phosphor/10 pt-4">
         <span className="font-pixel text-[0.6875rem] text-phosphor-dim uppercase">Total</span>
-        <span className="t-display text-3xl text-[#d8fff7] tnum">{formatMoney(price * qty)}</span>
+        <span className="t-display text-3xl text-[#ffffff] tnum">{formatMoney(price * qty)}</span>
       </div>
 
       {disabledReason ? (
@@ -85,8 +84,8 @@ export function BuyBox({
         <Submit />
       )}
 
-      <p className="mt-4 flex items-start gap-2.5 text-[0.8125rem] leading-snug text-[#9fcfc6]">
-        <PixelShield className="mt-0.5 h-4 w-4 shrink-0" />
+      <p className="mt-4 flex items-start gap-2.5 text-[0.8125rem] leading-snug text-[#b3adbd]">
+        <ShieldCheck className="mt-px size-4 shrink-0 text-p1" aria-hidden />
         Paid into escrow. The seller is paid only after you confirm you received it.
       </p>
     </form>

@@ -19,16 +19,18 @@ enum Role {
 }
 
 model User {
-  id            String   @id
+  id            String    @id
   name          String
-  email         String   @unique
-  emailVerified Boolean  @default(false)
+  email         String    @unique
+  emailVerified Boolean   @default(false)
   image         String?
-  role          Role     @default(USER)
-  banned        Boolean  @default(false)
+  role          Role      @default(USER)
+  banned        Boolean   @default(false)
   banReason     String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  // Updated at most every few minutes while signed in; drives "online" and "last seen".
+  lastSeenAt    DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   sessions         Session[]
   accounts         Account[]
@@ -44,6 +46,7 @@ model User {
   reports          Report[]        @relation("Reporter")
   notifications    Notification[]
   auditLogs        AuditLog[]
+  follows          Follow[]
 
   @@index([role])
 }
@@ -115,6 +118,10 @@ model SellerProfile {
   displayName     String
   bio             String?
   avatarUrl       String?
+  bannerUrl       String?
+  // Staff-granted badge: identity and track record checked. Separate from approval.
+  verified        Boolean         @default(false)
+  verifiedAt      DateTime?
   status          SellerStatus    @default(PENDING)
   applicationType ApplicationType @default(SELLER)
   canSell         Boolean         @default(false)
@@ -153,6 +160,7 @@ model SellerProfile {
   payouts      Payout[]
   transactions WalletTransaction[]
   reports      Report[]            @relation("ReportedSeller")
+  followers    Follow[]
 
   @@index([status])
 }
@@ -178,6 +186,7 @@ model Game {
   imageUrl        String?
   categories      ListingCategory[]
   currencyName    String?
+  topupName       String?
   platforms       String[]
   servers         String[]
   isActive        Boolean           @default(true)
@@ -211,6 +220,7 @@ model BoostService {
   name           String
   tagline        String?
   description    String?
+  imageUrl       String?
   calculator     CalculatorType
   config         Json
   faq            Json?
@@ -266,6 +276,7 @@ model Listing {
   views           Int             @default(0)
   soldCount       Int             @default(0)
   featured        Boolean         @default(false)
+  publishedAt     DateTime?
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
 
@@ -631,6 +642,18 @@ model Setting {
   key       String   @id
   value     Json
   updatedAt DateTime @updatedAt
+}
+
+model Follow {
+  id        String        @id @default(cuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sellerId  String
+  seller    SellerProfile @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+
+  @@unique([userId, sellerId])
+  @@index([sellerId])
 }
 
 model Notification {

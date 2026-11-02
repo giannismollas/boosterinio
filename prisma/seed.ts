@@ -12,7 +12,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { hashPassword } from "better-auth/crypto";
 import { randomUUID, createCipheriv, randomBytes } from "node:crypto";
 import { PrismaClient } from "../src/generated/prisma/client";
-import { LOL_SERVICES } from "../src/lib/boosting/presets";
+import { LOL_SERVICES, PRESET_VERSION } from "../src/lib/boosting/presets";
 import { GAMES } from "../src/lib/games-data";
 
 const db = new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL!, max: 1 }) });
@@ -30,17 +30,56 @@ async function seedCatalog() {
         color: g.color,
         categories: g.categories,
         currencyName: g.currencyName,
+        topupName: g.topupName,
+        imageUrl: g.image,
         platforms: g.platforms,
         servers: g.servers,
         isFeatured: !!g.featured,
         boostingEnabled: !!g.boosting,
         sortOrder: (i + 1) * 10,
       },
-      update: {},
+      // Keep admin edits; SEED_SYNC_CATALOG=true re-applies the shipped catalog data.
+      update:
+        process.env.SEED_SYNC_CATALOG === "true"
+          ? {
+              categories: g.categories,
+              currencyName: g.currencyName ?? null,
+              topupName: g.topupName ?? null,
+              platforms: g.platforms,
+              servers: g.servers,
+              description: g.description,
+            }
+          : {},
     });
+    // Fill fields added after launch without touching values staff already set.
+    if (g.image) await db.game.updateMany({ where: { slug: g.slug, imageUrl: null }, data: { imageUrl: g.image } });
+    if (g.topupName) await db.game.updateMany({ where: { slug: g.slug, topupName: null }, data: { topupName: g.topupName } });
   }
   const lol = await db.game.findUniqueOrThrow({ where: { slug: "league-of-legends" } });
+  // "Placement Matches" became "Placements Boost": keep the row (and its orders), move the slug.
+  await db.boostService.updateMany({ where: { gameId: lol.id, slug: "placement-matches" }, data: { slug: "placements-boost" } });
   for (const s of LOL_SERVICES) {
+    const existing = await db.boostService.findUnique({ where: { gameId_slug: { gameId: lol.id, slug: s.slug } } });
+    const storedVersion = Number((existing?.config as { version?: number } | null)?.version ?? 1);
+    if (existing && storedVersion < PRESET_VERSION) {
+      // Shipped preset is newer (new tabs, rules or images): upgrade the stored service.
+      await db.boostService.update({
+        where: { id: existing.id },
+        data: {
+          name: s.name,
+          tagline: s.tagline,
+          description: s.description,
+          calculator: s.calculator,
+          config: s.config as never,
+          faq: s.faq as never,
+          sortOrder: s.sortOrder,
+          seoTitle: s.seoTitle,
+          seoDescription: s.seoDescription,
+        },
+      });
+      console.log(`Upgraded ${s.slug} to preset v${PRESET_VERSION}`);
+      continue;
+    }
     await db.boostService.upsert({
       where: { gameId_slug: { gameId: lol.id, slug: s.slug } },
       create: {
@@ -106,6 +145,9 @@ async function seedDemo() {
       status: "APPROVED",
       applicationType: "SELLER",
       canSell: true,
+      // Demo only: shows the verified badge on the storefront and listing cards.
+      verified: true,
+      verifiedAt: new Date(),
       games: ["league-of-legends", "valorant", "world-of-warcraft", "fortnite", "roblox"],
       reviewedAt: new Date(),
     },

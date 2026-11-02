@@ -175,6 +175,19 @@ export function ListingForm({
         </div>
       </section>
 
+      {/* Photos */}
+      <section className="panel-flat p-5 sm:p-6" aria-labelledby="lf-photos">
+        <h2 id="lf-photos" className="t-display text-2xl text-ink uppercase">
+          Photos
+        </h2>
+        <p className="mt-1.5 mb-4 max-w-[64ch] text-sm text-ink-2">
+          Real screenshots sell: the rank screen, the inventory, the skins, the balance. The first photo is the cover on your listing card; buyers can open
+          every photo on the listing page. Hide emails, usernames you don&apos;t want public and anything that would let someone take the account.
+        </p>
+        <ImageUploader name="images" initial={initial.images ?? []} max={8} folder="listings" />
+        <FieldError state={state} name="images" />
+      </section>
+
       {/* Details */}
       <section className="panel-flat p-5 sm:p-6" aria-labelledby="lf-details">
         <h2 id="lf-details" className="t-display text-2xl text-ink uppercase">
@@ -261,10 +274,6 @@ export function ListingForm({
             <FieldError state={state} name="attributes" />
           </div>
 
-          <div>
-            <span className="label">Images</span>
-            <ImageUploader name="images" initial={initial.images ?? []} max={8} folder="listings" />
-          </div>
         </div>
       </section>
 

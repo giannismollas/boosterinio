@@ -3,6 +3,7 @@
 import {
   Bell,
   Gamepad2,
+  Heart,
   LayoutDashboard,
   ListChecks,
   Package,
@@ -17,7 +18,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { PixelCursor } from "./pixel";
+import { Slash } from "./marks";
 
 const ICONS = {
   dashboard: LayoutDashboard,
@@ -32,11 +33,12 @@ const ICONS = {
   profile: UserRound,
   games: Gamepad2,
   checklist: ListChecks,
+  following: Heart,
 } as const;
 
 export type DashNavItem = { href: string; label: string; icon: keyof typeof ICONS; count?: number; exact?: boolean };
 
-/** Side rail on desktop, scrollable tab strip on mobile. The active item carries the select-screen cursor. */
+/** Side rail on desktop, scrollable tab strip on mobile. The active item carries the pink slash. */
 export function DashNav({ items, title }: { items: DashNavItem[]; title: string }) {
   const pathname = usePathname();
   return (
@@ -56,7 +58,7 @@ export function DashNav({ items, title }: { items: DashNavItem[]; title: string 
                   active ? "bg-cab-3 text-ink" : "text-ink-2 hover:bg-cab-2 hover:text-ink",
                 )}
               >
-                <PixelCursor className={cn("absolute left-1 h-2 w-2 text-p1 transition-opacity", active ? "opacity-100" : "opacity-0")} />
+                <Slash className={cn("absolute left-1 h-3.5 w-1.5 text-p1 transition-opacity", active ? "opacity-100" : "opacity-0")} />
                 <Icon className={cn("ml-1.5 size-4", active ? "text-phosphor" : "text-ink-3")} />
                 <span className="whitespace-nowrap">{item.label}</span>
                 {item.count ? (
@@ -73,7 +75,7 @@ export function DashNav({ items, title }: { items: DashNavItem[]; title: string 
 
 export function DashShell({ nav, title, children }: { nav: DashNavItem[]; title: string; children: React.ReactNode }) {
   return (
-    <div className="mx-auto grid max-w-[1320px] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)]">
+    <div className="mx-auto grid max-w-[1320px] grid-cols-[minmax(0,1fr)] gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[220px_minmax(0,1fr)]">
       <aside>
         <DashNav items={nav} title={title} />
       </aside>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ActionForm, FieldError, SubmitButton } from "@/components/forms";
+import { ImageUploader } from "@/components/image-uploader";
 import type { ActionState } from "@/lib/action";
 
 type Calc = "RANK" | "WINS" | "LEVEL" | "HOURS" | "FIXED";
@@ -12,6 +13,7 @@ export type ServiceFormValue = {
   name: string;
   slug: string;
   tagline: string | null;
+  imageUrl: string | null;
   description: string | null;
   calculator: Calc;
   config: string;
@@ -101,14 +103,28 @@ export function ServiceForm({
               </label>
               <input id="s-tagline" name="tagline" maxLength={140} defaultValue={service?.tagline ?? ""} placeholder="One line shown on service cards" className="field" />
             </div>
+            <div className="md:col-span-2">
+              <span className="label">Card image (optional)</span>
+              <div className="max-w-md">
+                <ImageUploader
+                  name="imageUrl"
+                  initial={service?.imageUrl ? [service.imageUrl] : []}
+                  max={1}
+                  folder="services"
+                  aspect="aspect-[16/7]"
+                  hint="Shown on the service's card on the game page. Wide images work best (1200 × 525). Only upload art you have the rights to use."
+                />
+              </div>
+              <FieldError state={state} name="imageUrl" />
+            </div>
             <div className="flex flex-col gap-3 md:col-span-2">
               <label className="flex items-center gap-3 text-sm text-ink">
-                <input type="checkbox" name="isActive" defaultChecked={service?.isActive ?? true} className="size-4 accent-[#5cf2d6]" />
+                <input type="checkbox" name="isActive" defaultChecked={service?.isActive ?? true} className="size-4 accent-[#ff2e88]" />
                 Active (buyers can order it)
               </label>
               {game && !game.boostingEnabled ? (
                 <label className="flex items-center gap-3 text-sm text-ink">
-                  <input type="checkbox" name="enableBoosting" defaultChecked className="size-4 accent-[#5cf2d6]" />
+                  <input type="checkbox" name="enableBoosting" defaultChecked className="size-4 accent-[#ff2e88]" />
                   Also turn on boosting for {game.name}
                 </label>
               ) : null}

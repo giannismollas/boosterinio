@@ -15,19 +15,19 @@ function escape(s: string) {
 function render({ heading, body, cta }: Mail) {
   const paragraphs = body
     .split(/\n{2,}/)
-    .map((p) => `<p style="margin:0 0 14px;color:#cfcbe0;font-size:15px;line-height:1.6">${escape(p).replace(/\n/g, "<br>")}</p>`)
+    .map((p) => `<p style="margin:0 0 14px;color:#c8c3d0;font-size:15px;line-height:1.6">${escape(p).replace(/\n/g, "<br>")}</p>`)
     .join("");
   const button = cta
-    ? `<p style="margin:22px 0"><a href="${escape(cta.url)}" style="display:inline-block;background:#ffd93b;color:#1d1600;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;font-family:Arial,sans-serif">${escape(cta.label)}</a></p>`
+    ? `<p style="margin:22px 0"><a href="${escape(cta.url)}" style="display:inline-block;background:#ff2e88;color:#ffffff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:10px;font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:0.5px">${escape(cta.label)}</a></p>`
     : "";
-  return `<!doctype html><html><body style="margin:0;background:#0d0c12;padding:32px 16px;font-family:Arial,Helvetica,sans-serif">
-  <div style="max-width:520px;margin:0 auto;background:#15131d;border:1px solid #2b2739;border-radius:16px;overflow:hidden">
-    <div style="height:8px;background:repeating-linear-gradient(-62deg,#ff2e88 0 10px,transparent 10px 16px,#2f6bff 16px 26px,transparent 26px 32px,#5cf2d6 32px 36px,transparent 36px 46px)"></div>
+  return `<!doctype html><html><body style="margin:0;background:#0b0b16;padding:32px 16px;font-family:Arial,Helvetica,sans-serif">
+  <div style="max-width:520px;margin:0 auto;background:#121222;border:1px solid #28273f;border-radius:16px;overflow:hidden">
+    <div style="height:4px;background:linear-gradient(90deg,#ff74b6,#ff2e88 50%,#d80d68)"></div>
     <div style="padding:28px">
-      <div style="font-weight:800;letter-spacing:2px;color:#f3f1fa;font-size:14px;margin-bottom:18px">${escape(site.name.toUpperCase())}</div>
-      <h1 style="margin:0 0 16px;color:#f3f1fa;font-size:22px">${escape(heading)}</h1>
+      <div style="font-weight:800;font-style:italic;letter-spacing:1px;color:#ffffff;font-size:15px;margin-bottom:18px"><span style="color:#ff2e88">/</span> ${escape(site.name.toUpperCase())}</div>
+      <h1 style="margin:0 0 16px;color:#ffffff;font-size:22px">${escape(heading)}</h1>
       ${paragraphs}${button}
-      <p style="margin:24px 0 0;color:#8b86a2;font-size:12px">Questions? Reply to this email or open a ticket at ${escape(site.url)}/support</p>
+      <p style="margin:24px 0 0;color:#8e889a;font-size:12px">Questions? Reply to this email or open a ticket at ${escape(site.url)}/support</p>
     </div>
   </div></body></html>`;
 }

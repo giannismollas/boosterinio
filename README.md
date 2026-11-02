@@ -10,12 +10,13 @@ A gaming marketplace and boosting platform: League of Legends boosting at launch
 
 | Area | Where | What it does |
 |---|---|---|
-| Storefront | `/`, `/games`, `/[game]`, `/accounts`… | Arcade-style home with the live LoL price console, game select screen, category hubs with filters |
+| Storefront | `/`, `/games`, `/[game]`, `/accounts`… | Home with the live LoL rank board and price estimate, game select, category hubs with filters; listing cards with photos, detail chips and seller rating |
 | Boosting | `/[game]/boosting/[service]` | Configurator for 7 LoL services (rank, wins, placements, Arena, normals, mastery, coaching) with itemized prices |
-| Marketplace | `/[game]/[category]/[listing]` | Listing pages with buy box, seller card, reporting |
+| Marketplace | `/[game]/[category]/[listing]` | Listing pages with a photo gallery and full-screen viewer, buy box, seller card (verified badge, online status), reporting |
 | Checkout & orders | `/checkout/[number]`, `/orders/[number]` | Pay with card/PayPal/crypto; order chat, boost progress, encrypted account access, delivery, confirm, dispute, review |
-| Buyer account | `/dashboard` | Orders, support tickets, notifications, settings |
-| Sellers & boosters | `/sell`, `/seller` | Application, listings (manual or instant stock), sales, booster board, wallet and payouts, store profile; public store at `/sellers/[slug]` |
+| Buyer account | `/dashboard` | Orders, support tickets, notifications, followed stores, settings |
+| Sellers & boosters | `/sell`, `/seller` | Application, listings with up to 8 photos (drag and drop, pick the cover), manual or instant stock, sales, booster board, wallet and payouts, store profile with banner and avatar |
+| Seller storefronts | `/sellers/[slug]` | Banner, avatar with online dot, verified badge, sold / rating / reviews / followers, Follow and Share, tabs for Store (a row per category), Reviews (with rating breakdown) and each category |
 | Admin | `/admin` | Queues with live counts: orders, disputes, tickets, applications, listings, reports, payouts; catalog: games, services and pricing, coupons, reviews; users, settings, audit log |
 | SEO | everywhere | Per-page metadata and canonicals, JSON-LD (Organization, WebSite, Product, FAQPage, BreadcrumbList, Article), `sitemap.xml`, `robots.txt`, Open Graph image |
 
@@ -153,11 +154,12 @@ Verify your domain at resend.com, then set `RESEND_API_KEY` and `EMAIL_FROM`. Wi
 ## Running the business
 
 - **Approve sellers and boosters:** Admin → Applications. Approving sets what they can do (sell, boost, or both).
-- **Moderate listings:** Admin → Listings. With "Require listing approval" on (default), new and edited listings wait here.
+- **Moderate listings:** Admin → Listings. With "Require listing approval" on (default), new and edited listings wait here. The first time a listing goes live, everyone following that store gets a notification.
+- **Verified badge:** Admin → Users → open the seller → Verify seller. Grant it after checking identity and sales history; it shows next to the store name on the storefront and every listing, and you can remove it the same way.
 - **Tickets:** Admin → Tickets. Public replies email the user; internal notes stay with staff.
 - **Disputes:** Admin → Disputes → refund the buyer, release to the seller, or resume the order.
 - **Payouts:** Admin → Payouts → send the money by the seller's chosen method, then mark it paid with the reference.
-- **Prices:** Admin → Services. Each service has a JSON price config with a live test quote.
+- **Prices:** Admin → Services. Each service has a JSON price config with a live test quote, and an optional card image shown on the game page.
 - **Add boosting for another game:** Admin → Services → New service → pick the game and a calculator (Rank, Wins, Level, Hours or Fixed packages), start from the template, set tiers/prices, save. Turn on **Boosting** for that game in Admin → Games.
 - **Coupons:** Admin → Coupons (percent or fixed, boost/market/all, limits and expiry).
 - **Site notice:** Admin → Settings → Announcement shows a banner under the header.
@@ -178,10 +180,21 @@ All amounts are integer **cents**. Common keys for every calculator:
 ```
 
 - **RANK:** `tiers` (`id`, `name`, `divisions` 0–4, `stepPrice` per division, `etaHours`), `divisionLabels`, `lpBrackets` (discount on the first step), `lpGain` (multipliers).
-- **WINS:** `tiers` (`unitPrice` per win/game), `min`, `max`, `defaultCount`, `unitLabel`.
-- **LEVEL:** `bands` (`upTo`, `price` per level), `min`, `max`, optional `subjectLabel` (e.g. "Champion").
+- **WINS:** `tiers` (`unitPrice` per win/game, optional `divisions` to pick IV–I), `min`, `max`, `defaultCount`, `unitLabel`, `tierLabel`.
+- **LEVEL:** `bands` (`upTo`, `price` per level), `min`, `max`, optional `subjectLabel` (e.g. "Champion") and `subjectOptions` (the allowed list).
 - **HOURS:** `rates` (`hourly`), `min`, `max`.
 - **FIXED:** `packages` (`price`, `etaHours`).
+
+Extra keys any tier or config can use:
+
+- Tier `image`: emblem shown in the picker (e.g. `/images/ranks/lol/gold.webp`).
+- Tier `disabledModes`: play modes not allowed at that rank. LoL ships with `["duo"]` on Grandmaster and Challenger, because Riot keeps those ranks out of duo queue; a rank boost whose games are played there is solo only.
+- Tier `lpInput: true`: ask for the current LP instead of a division (Master and above).
+- Add-on `included: true`: always on, shown as "Included". Add-on `tierPct`: price per rank, e.g. `{ "master": 10 }` makes Champions & roles +10% from Master up.
+- `optionGroups`: extra choices that scale the price, e.g. Mastery's "Current tokens" (0, 1 or 2).
+- `version`: when the shipped LoL presets change, the seed upgrades services whose stored version is lower. Bump it in your own edits to stop a later upgrade from replacing them.
+
+Game images live in `public/images/games/<slug>.webp` and LoL rank emblems in `public/images/ranks/lol/`. Change a game's image in Admin → Games.
 
 ---
 
@@ -192,7 +205,7 @@ prisma/              schema, migrations, seed (catalog + optional demo data)
 src/app/(site)/      storefront, checkout, orders, dashboards, seller area
 src/app/admin/       admin panel
 src/app/api/         auth, uploads, webhooks (Stripe, PayPal, NOWPayments), cron, health
-src/components/      UI kit (arcade world), configurator, forms
+src/components/      UI kit (pink esports world), configurator, forms
 src/lib/             pricing engine, catalog data, SEO helpers, utils
 src/server/          db, auth, orders/escrow, payments, wallet, storage, email
 src/content/legal.ts terms, privacy and refund policy templates
@@ -202,6 +215,6 @@ Rebrand by editing `src/lib/site.ts` (name, tagline, emails) and the logo in `sr
 
 ### Design system
 
-The look is "Attract Mode": the site is an arcade cabinet. A lit marquee for the header, CRT glass for prices and live readouts, lit push-button plates, magenta/blue/phosphor side-art, and pixel-art crests and icons on a black laminate ground. **Marquee yellow is reserved for the one main action on each screen** (Insert coin / Pay / Save). Tokens live in `src/app/globals.css`; the rules, type ramp and components are written up in [DESIGN.md](DESIGN.md) (machine-readable copy in `.impeccable/design.json`). Read it before adding new pages so they stay in the world.
+The look is hot-pink esports: a near-black ground with diagonal pink light streaks, white heavy italic display type (Saira, set wide), the pink italic "B" mark, dark hairline cards, pink-outlined selection with P1 / GOAL tags, and pink outline icons. **Hot pink is the only accent**, and the slanted pink "Insert coin" plate (`btn-coin`) is reserved for the one main action on each screen (Buy boost / Pay / Save). Tokens live in `src/app/globals.css`; the rules, type ramp and components are written up in [DESIGN.md](DESIGN.md) (machine-readable copy in `.impeccable/design.json`). Read it before adding new pages so they stay in the world. Where every game cover and rank emblem came from is listed in [docs/image-sources.md](docs/image-sources.md).
 
 **Not affiliated with Riot Games or any game publisher.** Rank crests and game tiles are original artwork; add licensed game images per game in Admin → Games (image URL) only if you have the rights.

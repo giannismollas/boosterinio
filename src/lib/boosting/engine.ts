@@ -30,7 +30,28 @@ const addonSchema = z.object({
   defaultOn: z.boolean().default(false),
   /** modes this add-on is available for (empty = all) */
   modes: z.array(z.string()).default([]),
+  /** always on and not removable (shown as "Included") */
+  included: z.boolean().default(false),
+  /** per-tier percentage overrides, e.g. { "master": 10 } */
+  tierPct: z.record(z.string(), z.number().min(0).max(300)).default({}),
 });
+
+/** Extra choice groups that scale the price (game mode, mastery tokens, platform…). */
+const optionGroupSchema = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+  options: z.array(multiplierOption).min(1),
+});
+
+/** Fields every ladder tier can carry. */
+const tierExtras = {
+  /** emblem image URL shown in the picker and readout */
+  image: z.string().optional(),
+  /** play modes not allowed at this tier (e.g. no duo at Grandmaster+) */
+  disabledModes: z.array(z.string()).default([]),
+  /** ask for the current LP instead of a division (apex tiers) */
+  lpInput: z.boolean().default(false),
+};
 
 const commonConfig = {
   servers: z.array(multiplierOption).min(1),
@@ -40,6 +61,9 @@ const commonConfig = {
   minPrice: z.number().int().min(0).default(500),
   /** free-text request field shown in the configurator (champions, roles, notes) */
   notesLabel: z.string().optional(),
+  optionGroups: z.array(optionGroupSchema).default([]),
+  /** bumped when the shipped preset changes, so the seed can upgrade stored configs */
+  version: z.number().int().default(1),
 };
 
 // ───────────────────────── calculator configs ─────────────────────────
@@ -57,6 +81,7 @@ export const rankConfigSchema = z.object({
         stepPrice: z.number().int().min(0),
         /** estimated hours per division step */
         etaHours: z.number().min(0).default(8),
+        ...tierExtras,
       }),
     )
     .min(2),
@@ -73,8 +98,19 @@ export const winsConfigSchema = z.object({
   unitLabel: z.string().default("win"),
   unitLabelPlural: z.string().default("wins"),
   tiers: z
-    .array(z.object({ id: z.string(), name: z.string(), unitPrice: z.number().int().min(0), etaHours: z.number().min(0).default(1) }))
+    .array(
+      z.object({
+        id: z.string(),
+        name: z.string(),
+        unitPrice: z.number().int().min(0),
+        etaHours: z.number().min(0).default(1),
+        /** divisions to pick for this tier (display only; 0 = none) */
+        divisions: z.number().int().min(0).max(5).default(0),
+        ...tierExtras,
+      }),
+    )
     .min(1),
+  divisionLabels: z.array(z.string()).default(["IV", "III", "II", "I"]),
   tierLabel: z.string().default("Current rank"),
   min: z.number().int().min(1).default(1),
   max: z.number().int().min(1).default(20),
@@ -89,6 +125,8 @@ export const levelConfigSchema = z.object({
   /** price bands: each level up to and including `upTo` costs `price` */
   bands: z.array(z.object({ upTo: z.number().int(), price: z.number().int().min(0), etaHours: z.number().min(0).default(3) })).min(1),
   subjectLabel: z.string().optional(),
+  /** allowed subjects (e.g. every champion); empty = free text */
+  subjectOptions: z.array(z.string()).default([]),
 });
 
 export const hoursConfigSchema = z.object({
@@ -134,6 +172,10 @@ const commonSelection = {
   mode: z.string().optional(),
   addons: z.array(z.string()).max(20).default([]),
   notes: z.string().max(400).optional(),
+  /** option group choices: { groupId: optionId } */
+  opts: z.record(z.string(), z.string()).default({}),
+  /** current LP for apex tiers */
+  currentLp: z.number().int().min(0).max(5000).optional(),
 };
 
 export const selectionSchemas = {
@@ -146,7 +188,7 @@ export const selectionSchemas = {
     toTier: z.string(),
     toDivision: z.number().int().min(0).max(4).default(0),
   }),
-  WINS: z.object({ ...commonSelection, tier: z.string(), count: z.number().int().min(1).max(200) }),
+  WINS: z.object({ ...commonSelection, tier: z.string(), division: z.number().int().min(0).max(4).default(0), count: z.number().int().min(1).max(200) }),
   LEVEL: z.object({ ...commonSelection, from: z.number().int().min(0).max(1000), to: z.number().int().min(1).max(1000) }),
   HOURS: z.object({ ...commonSelection, rate: z.string(), hours: z.number().int().min(1).max(100) }),
   FIXED: z.object({ ...commonSelection, package: z.string() }),
@@ -187,13 +229,22 @@ export type QuoteResult = { ok: true; quote: Quote } | { ok: false; error: strin
 const pick = <T extends { id: string }>(list: T[], id: string | undefined): T | undefined =>
   id ? list.find((x) => x.id === id) : undefined;
 
-/** Applies server/queue/mode multipliers and add-ons on top of a base amount. */
+type OptionGroup = z.infer<typeof optionGroupSchema>;
+type ModifierCtx = {
+  /** tier used for per-tier add-on prices */
+  tierId?: string;
+  /** modes not allowed for this selection, with the reason shown to the buyer */
+  blocked?: Map<string, string>;
+};
+
+/** Applies server/queue/mode multipliers, option groups and add-ons on top of a base amount. */
 function applyModifiers(
   base: number,
-  cfg: { servers: MultiplierOption[]; queues: MultiplierOption[]; modes: MultiplierOption[]; addons: Addon[]; minPrice: number },
-  sel: { server: string; queue?: string; mode?: string; addons: string[] },
+  cfg: { servers: MultiplierOption[]; queues: MultiplierOption[]; modes: MultiplierOption[]; addons: Addon[]; minPrice: number; optionGroups: OptionGroup[] },
+  sel: { server: string; queue?: string; mode?: string; addons: string[]; opts: Record<string, string> },
   lines: QuoteLine[],
   facts: { label: string; value: string }[],
+  ctx: ModifierCtx = {},
 ): { ok: true; total: number; addonIds: string[] } | { ok: false; error: string } {
   let running = base;
 
@@ -219,6 +270,8 @@ function applyModifiers(
   let modeId: string | undefined;
   if (cfg.modes.length) {
     const mode = pick(cfg.modes, sel.mode) ?? cfg.modes[0];
+    const blocked = ctx.blocked?.get(mode.id);
+    if (blocked) return { ok: false, error: blocked };
     modeId = mode.id;
     facts.push({ label: "Play mode", value: mode.label });
     if (mode.multiplier !== 1) {
@@ -228,20 +281,31 @@ function applyModifiers(
     }
   }
 
+  for (const group of cfg.optionGroups) {
+    const option = pick(group.options, sel.opts[group.id]) ?? group.options[0];
+    facts.push({ label: group.label, value: option.label });
+    if (option.multiplier !== 1) {
+      const delta = Math.round(running * (option.multiplier - 1));
+      lines.push({ key: `opt-${group.id}`, label: `${group.label} · ${option.label}`, amount: delta });
+      running += delta;
+    }
+  }
+
   // Add-ons are percentages of the price after server/queue/mode, so they stay proportional.
   const chosen = new Set(sel.addons);
   const addonIds: string[] = [];
   const subtotalForAddons = running;
   for (const addon of cfg.addons) {
-    if (!chosen.has(addon.id)) continue;
     if (addon.modes.length && modeId && !addon.modes.includes(modeId)) continue;
+    if (!addon.included && !chosen.has(addon.id)) continue;
     addonIds.push(addon.id);
-    const amount = Math.round((subtotalForAddons * addon.pct) / 100) + addon.flat;
+    const pct = addonPct(addon, ctx.tierId);
+    const amount = addon.included ? 0 : Math.round((subtotalForAddons * pct) / 100) + addon.flat;
     lines.push({
       key: `addon-${addon.id}`,
       label: addon.label,
       amount: amount === 0 ? null : amount,
-      detail: addon.pct ? `+${addon.pct}%` : undefined,
+      detail: addon.included ? "Included" : pct ? `+${pct}%` : undefined,
     });
     running += amount;
   }
@@ -258,6 +322,46 @@ function applyModifiers(
   }
 
   return { ok: true, total: running, addonIds };
+}
+
+/** Percentage an add-on costs at a given tier. */
+export function addonPct(addon: Addon, tierId?: string) {
+  return tierId && addon.tierPct[tierId] !== undefined ? addon.tierPct[tierId] : addon.pct;
+}
+
+function blockedFor(tiers: { id: string; name: string; disabledModes: string[] }[], modes: MultiplierOption[]) {
+  const blocked = new Map<string, string>();
+  for (const t of tiers) {
+    for (const m of t.disabledModes) {
+      if (blocked.has(m)) continue;
+      const label = modes.find((x) => x.id === m)?.label ?? m;
+      blocked.set(m, `${label} isn't available at ${t.name}: Riot doesn't allow duo queue there. Pick Solo instead.`);
+    }
+  }
+  return blocked;
+}
+
+/** Modes the current selection can't use (with the reason), for the configurator UI. */
+export function blockedModes(kind: CalculatorKind, rawConfig: unknown, sel: Record<string, unknown>): Map<string, string> {
+  const parsed = parseConfig(kind, rawConfig);
+  if (!parsed.success) return new Map();
+  if (kind === "RANK") {
+    const cfg = parsed.data as RankConfig;
+    const from = ladderIndex(cfg, String(sel.fromTier), Number(sel.fromDivision ?? 0));
+    const to = ladderIndex(cfg, String(sel.toTier), Number(sel.toDivision ?? 0));
+    const played: RankConfig["tiers"] = [];
+    for (let i = from; i >= 0 && i < to; i++) {
+      const pt = ladderPoint(cfg, i);
+      if (pt && !played.includes(pt.tier)) played.push(pt.tier);
+    }
+    return blockedFor(played, cfg.modes);
+  }
+  if (kind === "WINS") {
+    const cfg = parsed.data as WinsConfig;
+    const tier = cfg.tiers.find((t) => t.id === sel.tier);
+    return tier ? blockedFor([tier], cfg.modes) : new Map();
+  }
+  return new Map();
 }
 
 // ── RANK ──
@@ -332,7 +436,9 @@ function quoteRank(cfg: RankConfig, sel: RankSelection, serviceName: string): Qu
   });
 
   let running = base;
-  const bracket = pick(cfg.lpBrackets, sel.lp);
+  const fromTierCfg = cfg.tiers.find((t) => t.id === sel.fromTier);
+  const bracket = fromTierCfg?.lpInput ? undefined : pick(cfg.lpBrackets, sel.lp);
+  if (fromTierCfg?.lpInput && sel.currentLp !== undefined) facts.push({ label: "Current LP", value: `${sel.currentLp} LP` });
   if (bracket) {
     facts.push({ label: "Current LP", value: bracket.label });
     if (bracket.discountPct > 0) {
@@ -352,7 +458,10 @@ function quoteRank(cfg: RankConfig, sel: RankSelection, serviceName: string): Qu
     }
   }
 
-  const mod = applyModifiers(running, cfg, sel, lines, facts);
+  const mod = applyModifiers(running, cfg, sel, lines, facts, {
+    tierId: sel.toTier,
+    blocked: blockedModes("RANK", cfg, sel as unknown as Record<string, unknown>),
+  });
   if (!mod.ok) return mod;
   if (sel.notes) facts.push({ label: cfg.notesLabel ?? "Notes", value: sel.notes });
 
@@ -373,21 +482,35 @@ function quoteRank(cfg: RankConfig, sel: RankSelection, serviceName: string): Qu
 
 // ── WINS ──
 
+/** "Gold II" for tiers with divisions, the plain name otherwise. */
+export function winsTierLabel(cfg: WinsConfig, tierId: string, division = 0) {
+  const tier = cfg.tiers.find((t) => t.id === tierId);
+  if (!tier) return tierId;
+  if (!tier.divisions) return tier.name;
+  const labels = cfg.divisionLabels.slice(-tier.divisions);
+  return `${tier.name} ${labels[Math.min(division, labels.length - 1)] ?? ""}`.trim();
+}
+
 function quoteWins(cfg: WinsConfig, sel: WinsSelection, serviceName: string): QuoteResult {
   const tier = pick(cfg.tiers, sel.tier);
   if (!tier) return { ok: false, error: `Choose your ${cfg.tierLabel.toLowerCase()}.` };
   if (sel.count < cfg.min || sel.count > cfg.max) return { ok: false, error: `Choose between ${cfg.min} and ${cfg.max} ${cfg.unitLabelPlural}.` };
 
   const lines: QuoteLine[] = [];
+  const tierName = winsTierLabel(cfg, tier.id, sel.division);
   const facts = [
-    { label: cfg.tierLabel, value: tier.name },
+    { label: cfg.tierLabel, value: tierName },
     { label: cfg.unitLabelPlural[0].toUpperCase() + cfg.unitLabelPlural.slice(1), value: String(sel.count) },
   ];
+  if (tier.lpInput && sel.currentLp !== undefined) facts.push({ label: "Current LP", value: `${sel.currentLp} LP` });
   const base = tier.unitPrice * sel.count;
   const unit = sel.count === 1 ? cfg.unitLabel : cfg.unitLabelPlural;
-  lines.push({ key: "base", label: `${sel.count} ${unit} · ${tier.name}`, amount: base });
+  lines.push({ key: "base", label: `${sel.count} ${unit} · ${tierName}`, amount: base });
 
-  const mod = applyModifiers(base, cfg, sel, lines, facts);
+  const mod = applyModifiers(base, cfg, sel, lines, facts, {
+    tierId: tier.id,
+    blocked: blockedModes("WINS", cfg, sel as unknown as Record<string, unknown>),
+  });
   if (!mod.ok) return mod;
   if (sel.notes) facts.push({ label: cfg.notesLabel ?? "Notes", value: sel.notes });
   const priority = mod.addonIds.includes("priority");
@@ -397,8 +520,8 @@ function quoteWins(cfg: WinsConfig, sel: WinsSelection, serviceName: string): Qu
       lines,
       total: mod.total,
       etaHours: Math.max(1, Math.round(tier.etaHours * sel.count * (priority ? 0.7 : 1))),
-      summary: [`${sel.count} ${unit}`, tier.name, pick(cfg.servers, sel.server)?.label].filter(Boolean).join(" · "),
-      title: `${serviceName}: ${sel.count} ${unit} (${tier.name})`,
+      summary: [`${sel.count} ${unit}`, tierName, pick(cfg.servers, sel.server)?.label].filter(Boolean).join(" · "),
+      title: `${serviceName}: ${sel.count} ${unit} (${tierName})`,
       facts,
     },
   };
@@ -411,7 +534,10 @@ function quoteLevel(cfg: LevelConfig, sel: LevelSelection, serviceName: string):
     return { ok: false, error: `Choose a ${cfg.unitLabel} range between ${cfg.min} and ${cfg.max}.` };
   }
   if (cfg.subjectLabel && !sel.notes?.trim()) {
-    return { ok: false, error: `Enter the ${cfg.subjectLabel.toLowerCase()}.` };
+    return { ok: false, error: `Choose the ${cfg.subjectLabel.toLowerCase()}.` };
+  }
+  if (cfg.subjectOptions.length && sel.notes && !cfg.subjectOptions.includes(sel.notes.trim())) {
+    return { ok: false, error: `Choose a ${cfg.subjectLabel?.toLowerCase() ?? "subject"} from the list.` };
   }
   const bands = [...cfg.bands].sort((a, b) => a.upTo - b.upTo);
   let base = 0;
@@ -525,6 +651,7 @@ export function defaultSelection(kind: CalculatorKind, rawConfig: unknown): AnyS
     queue: c.queues[0]?.id,
     mode: c.modes[0]?.id,
     addons: c.addons.filter((a) => a.defaultOn).map((a) => a.id),
+    opts: Object.fromEntries(c.optionGroups.map((g) => [g.id, g.options[0].id])),
   };
   switch (kind) {
     case "RANK": {
@@ -544,11 +671,13 @@ export function defaultSelection(kind: CalculatorKind, rawConfig: unknown): AnyS
     }
     case "WINS": {
       const w = c as WinsConfig;
-      return { ...common, tier: w.tiers[Math.min(2, w.tiers.length - 1)].id, count: w.defaultCount } satisfies WinsSelection;
+      const silver = w.tiers.findIndex((t) => t.id === "silver");
+      const tier = w.tiers[silver >= 0 ? silver : 0];
+      return { ...common, tier: tier.id, division: Math.max(0, tier.divisions - 1), count: w.defaultCount } satisfies WinsSelection;
     }
     case "LEVEL": {
       const l = c as LevelConfig;
-      return { ...common, from: l.min, to: Math.min(l.max, l.min + 4) } satisfies LevelSelection;
+      return { ...common, from: l.min, to: Math.min(l.max, l.min + 4), notes: l.subjectOptions[0] } satisfies LevelSelection;
     }
     case "HOURS": {
       const h = c as HoursConfig;
@@ -587,3 +716,11 @@ export function formatEta(hours: number): string {
   const days = Math.round(hours / 24);
   return `~${days} ${days === 1 ? "day" : "days"}`;
 }
+
+/** Authoring types: config objects as written in presets/admin JSON (defaults optional). */
+export type RankConfigInput = z.input<typeof rankConfigSchema>;
+export type WinsConfigInput = z.input<typeof winsConfigSchema>;
+export type LevelConfigInput = z.input<typeof levelConfigSchema>;
+export type HoursConfigInput = z.input<typeof hoursConfigSchema>;
+export type FixedConfigInput = z.input<typeof fixedConfigSchema>;
+export type AddonInput = z.input<typeof addonSchema>;

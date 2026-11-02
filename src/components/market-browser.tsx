@@ -139,7 +139,7 @@ export async function MarketBrowser({
           </select>
         </div>
         <label className="flex h-11 items-center gap-2.5 text-sm text-ink-2">
-          <input type="checkbox" name="instant" value="1" defaultChecked={instant} className="size-4 accent-[#5cf2d6]" />
+          <input type="checkbox" name="instant" value="1" defaultChecked={instant} className="size-4 accent-[#ff2e88]" />
           Instant delivery
         </label>
         <button type="submit" className="btn btn-p2">

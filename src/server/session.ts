@@ -12,6 +12,8 @@ export const getSession = cache(async () => {
   }
 });
 
+const SEEN_EVERY_MS = 5 * 60_000;
+
 /** The signed-in user with their seller profile, or null. Banned users count as signed out. */
 export const getCurrentUser = cache(async () => {
   const session = await getSession();
@@ -21,6 +23,12 @@ export const getCurrentUser = cache(async () => {
     include: { sellerProfile: true },
   });
   if (!user || user.banned) return null;
+  // Drives the "online" dot and "last seen" on storefronts; written at most every few minutes.
+  if (!user.lastSeenAt || Date.now() - user.lastSeenAt.getTime() > SEEN_EVERY_MS) {
+    const now = new Date();
+    await db.user.update({ where: { id: user.id }, data: { lastSeenAt: now } }).catch(() => undefined);
+    user.lastSeenAt = now;
+  }
   return user;
 });
 

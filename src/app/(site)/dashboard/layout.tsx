@@ -15,6 +15,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     { href: "/dashboard", label: "My orders", icon: "orders", exact: true },
     { href: "/dashboard/tickets", label: "Support tickets", icon: "tickets", count: answered },
     { href: "/dashboard/notifications", label: "Notifications", icon: "bell", count: unread },
+    { href: "/dashboard/following", label: "Following", icon: "following" },
     { href: "/dashboard/settings", label: "Settings", icon: "settings" },
   ];
   if (user.sellerProfile?.status === "APPROVED") nav.push({ href: "/seller", label: "Seller dashboard", icon: "store" });

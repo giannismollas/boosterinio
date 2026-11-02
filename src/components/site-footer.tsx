@@ -8,7 +8,7 @@ const COLUMNS = [
     links: [
       { href: "/league-of-legends/boosting/rank-boost", label: "Rank Boost" },
       { href: "/league-of-legends/boosting/win-boost", label: "Win Boost" },
-      { href: "/league-of-legends/boosting/placement-matches", label: "Placement Matches" },
+      { href: "/league-of-legends/boosting/placements-boost", label: "Placements Boost" },
       { href: "/league-of-legends/boosting/arena-boost", label: "Arena Boost" },
       { href: "/league-of-legends/boosting/champion-mastery", label: "Champion Mastery" },
       { href: "/league-of-legends/boosting/coaching", label: "Coaching" },
@@ -48,14 +48,15 @@ const COLUMNS = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 bg-[#0b0a09]">
-      <div className="side-art h-7" aria-hidden />
-      <div className="mx-auto max-w-[1320px] px-4 pt-14 pb-10 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_repeat(4,1fr)]">
-          <div className="max-w-xs">
+    <footer className="relative mt-24 overflow-hidden border-t border-cab-4 bg-[#08080f]">
+      <div className="side-art absolute inset-x-0 top-0 h-px" aria-hidden />
+      <LogoMark flat className="pointer-events-none absolute -right-10 -bottom-16 h-80 text-p1 opacity-[0.045]" />
+      <div className="relative mx-auto max-w-[1320px] px-4 pt-14 pb-10 sm:px-6">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-[1.3fr_repeat(4,1fr)]">
+          <div className="col-span-2 max-w-xs md:col-span-1">
             <div className="flex items-center gap-2.5">
-              <LogoMark className="h-7" />
-              <span className="t-display text-2xl tracking-[0.04em] text-ink uppercase">{site.name}</span>
+              <LogoMark className="h-8" />
+              <span className="wordmark text-[1.6rem]">{site.name}</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-ink-3">
               Boosting and game goods from approved sellers and boosters. Every payment is held in escrow until your order is done.

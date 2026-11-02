@@ -30,7 +30,7 @@ export function ChatScroller({ children, count }: { children: React.ReactNode; c
   );
 }
 
-/** 1–5 rating picker drawn as pixel stars (radio inputs underneath). */
+/** 1–5 rating picker (radio inputs underneath). */
 export function RatingInput({ name = "rating" }: { name?: string }) {
   const [value, setValue] = useState(0);
   const [hover, setHover] = useState(0);
@@ -42,8 +42,12 @@ export function RatingInput({ name = "rating" }: { name?: string }) {
         {[1, 2, 3, 4, 5].map((n) => (
           <label key={n} className="cursor-pointer" onMouseEnter={() => setHover(n)}>
             <input type="radio" name={name} value={n} className="sr-only" checked={value === n} onChange={() => setValue(n)} />
-            <svg viewBox="0 0 7 7" shapeRendering="crispEdges" className={cn("h-8 w-8 transition-transform", shown >= n && "scale-110")} aria-hidden>
-              <path d="M3 0h1v2h3v1H6v1H5v1h1v2H5V6H2v1H1V5h1V4H1V3H0V2h3z" fill={shown >= n ? "#5cf2d6" : "#403d39"} />
+            <svg viewBox="0 0 24 24" className={cn("size-8 transition-transform", shown >= n && "scale-110")} aria-hidden>
+              <path
+                d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z"
+                fill={shown >= n ? "#ff2e88" : "#393753"}
+                className={shown >= n ? "drop-shadow-[0_0_8px_rgb(255_46_136/0.6)]" : undefined}
+              />
             </svg>
             <span className="sr-only">
               {n} star{n > 1 ? "s" : ""}
@@ -60,7 +64,7 @@ export function Secret({ value }: { value: string }) {
   const [shown, setShown] = useState(false);
   return (
     <div className="relative">
-      <pre className={cn("rounded-[10px] border border-cab-4 bg-black/40 p-3.5 font-mono text-[0.8125rem] leading-relaxed whitespace-pre-wrap text-[#d8fff7]", !shown && "select-none blur-[5px]")}>
+      <pre className={cn("rounded-[10px] border border-cab-4 bg-black/40 p-3.5 font-mono text-[0.8125rem] leading-relaxed whitespace-pre-wrap text-[#ffffff]", !shown && "select-none blur-[5px]")}>
         {value}
       </pre>
       <div className="mt-2 flex gap-2">

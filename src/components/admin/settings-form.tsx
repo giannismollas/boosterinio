@@ -59,7 +59,7 @@ export function SettingsForm({ action, values, currency }: { action: (s: ActionS
           <section className="panel-flat space-y-5 p-5">
             <h2 className="text-[0.9375rem] font-semibold text-ink">Marketplace</h2>
             <label className="flex items-start gap-3 text-sm text-ink">
-              <input type="checkbox" name="requireListingApproval" defaultChecked={values.requireListingApproval} className="mt-0.5 size-4 accent-[#5cf2d6]" />
+              <input type="checkbox" name="requireListingApproval" defaultChecked={values.requireListingApproval} className="mt-0.5 size-4 accent-[#ff2e88]" />
               <span>
                 Review new and edited listings before they go live
                 <span className="block text-[0.8125rem] text-ink-3">Recommended while the marketplace is young. Turn off to let approved sellers publish instantly.</span>

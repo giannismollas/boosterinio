@@ -6,6 +6,7 @@ import { fail, guard, ok, type ActionState } from "@/lib/action";
 import { CATEGORIES, type ListingCategoryKey } from "@/lib/catalog";
 import { listingUrl } from "@/lib/urls";
 import { db } from "@/server/db";
+import { announceListing } from "@/server/follow";
 import { invalidate } from "@/server/memo";
 import { audit, notify } from "@/server/notify";
 import { requireStaff } from "@/server/session";
@@ -32,6 +33,7 @@ export async function moderateListingAction(_: ActionState, fd: FormData): Promi
         if (listing.seller.status !== "APPROVED" || !listing.seller.canSell) return fail("The seller isn't approved to sell. Approve the seller first.");
         await db.listing.update({ where: { id }, data: { status: "ACTIVE", rejectionReason: null } });
         await notify(listing.seller.userId, { title: "Your listing is live", body: listing.title, href: listingUrl(listing) });
+        await announceListing(id);
         message = "Listing approved and live.";
         break;
       }

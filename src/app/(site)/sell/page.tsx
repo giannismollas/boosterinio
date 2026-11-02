@@ -45,7 +45,7 @@ export default async function SellPage({ searchParams }: { searchParams: Promise
       {/* Offer */}
       <section className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
         <div>
-          <h1 className="t-display t-extrude text-[3.4rem] leading-[0.9] text-ink uppercase sm:text-7xl">
+          <h1 className="t-display t-extrude text-[clamp(2.1rem,9.5vw,3.4rem)] leading-[0.9] text-ink uppercase sm:text-7xl">
             {preferBooster ? "Boost with" : "Sell & boost on"}
             <br />
             {site.name}
@@ -75,7 +75,7 @@ export default async function SellPage({ searchParams }: { searchParams: Promise
             </div>
           </div>
 
-          <a href="#apply" className="btn btn-ghost mt-8">
+          <a href="#apply" className="btn btn-p1 mt-8">
             {profile ? "See your application" : "Start your application"} <ArrowRight className="size-4" />
           </a>
         </div>
@@ -249,9 +249,9 @@ export default async function SellPage({ searchParams }: { searchParams: Promise
 function Readout({ label, value, note }: { label: string; value: string; note: string }) {
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-6 py-4 first:pt-0 last:pb-0">
-      <dt className="col-start-1 row-start-1 font-pixel text-[0.6875rem] text-[#9fcfc6] uppercase">{label}</dt>
+      <dt className="col-start-1 row-start-1 font-pixel text-[0.6875rem] text-[#b3adbd] uppercase">{label}</dt>
       <dd className="t-display t-phosphor col-start-2 row-span-2 row-start-1 text-5xl leading-none tnum">{value}</dd>
-      <dd className="col-start-1 row-start-2 mt-1 text-sm leading-snug text-[#b9dcd5]">{note}</dd>
+      <dd className="col-start-1 row-start-2 mt-1 text-sm leading-snug text-[#c8c3d0]">{note}</dd>
     </div>
   );
 }

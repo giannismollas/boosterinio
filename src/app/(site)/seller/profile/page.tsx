@@ -32,9 +32,27 @@ export default async function StoreProfilePage() {
               Public profile
             </h2>
             <div>
+              <span className="label">Banner</span>
+              <ImageUploader
+                name="banner"
+                initial={profile.bannerUrl ? [profile.bannerUrl] : []}
+                max={1}
+                folder="banners"
+                aspect="aspect-[4/1]"
+                hint="Shown across the top of your storefront. Wide images work best (1600 × 400). PNG, JPG or WebP, up to 5 MB."
+              />
+            </div>
+            <div>
               <span className="label">Avatar</span>
-              <div className="max-w-[16rem]">
-                <ImageUploader name="avatar" initial={profile.avatarUrl ? [profile.avatarUrl] : []} max={1} folder="avatars" />
+              <div className="max-w-[12rem]">
+                <ImageUploader
+                  name="avatar"
+                  initial={profile.avatarUrl ? [profile.avatarUrl] : []}
+                  max={1}
+                  folder="avatars"
+                  aspect="aspect-square"
+                  hint="Square, at least 256 × 256."
+                />
               </div>
             </div>
             <div>

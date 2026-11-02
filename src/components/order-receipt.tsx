@@ -23,13 +23,13 @@ export function OrderReceipt({
 }) {
   return (
     <div className="crt p-5 sm:p-6">
-      <p className="text-[0.9375rem] leading-snug font-medium text-[#d8fff7]">{title}</p>
+      <p className="text-[0.9375rem] leading-snug font-medium text-[#ffffff]">{title}</p>
       {facts?.length ? (
         <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5">
           {facts.map((f) => (
             <div key={f.label} className="min-w-0">
               <dt className="text-[0.6875rem] text-phosphor-dim">{f.label}</dt>
-              <dd className="truncate text-sm text-[#d8fff7]" title={f.value}>
+              <dd className="truncate text-sm text-[#ffffff]" title={f.value}>
                 {f.value}
               </dd>
             </div>
@@ -40,16 +40,16 @@ export function OrderReceipt({
         {lines?.length ? (
           lines.map((l) => (
             <li key={l.key} className="flex justify-between gap-3">
-              <span className="text-[#a9d9d0]">{l.label}</span>
-              <span className="tnum text-[#d8fff7]">{l.amount === null ? "Free" : `${l.amount < 0 ? "−" : ""}${formatMoney(Math.abs(l.amount))}`}</span>
+              <span className="text-[#c8c3d0]">{l.label}</span>
+              <span className="tnum text-[#ffffff]">{l.amount === null ? "Free" : `${l.amount < 0 ? "−" : ""}${formatMoney(Math.abs(l.amount))}`}</span>
             </li>
           ))
         ) : quantity && unitPrice ? (
           <li className="flex justify-between gap-3">
-            <span className="text-[#a9d9d0]">
+            <span className="text-[#c8c3d0]">
               {quantity} × {formatMoney(unitPrice)}
             </span>
-            <span className="tnum text-[#d8fff7]">{formatMoney(subtotal)}</span>
+            <span className="tnum text-[#ffffff]">{formatMoney(subtotal)}</span>
           </li>
         ) : null}
         {discount > 0 ? (
@@ -61,7 +61,7 @@ export function OrderReceipt({
       </ul>
       <div className="mt-4 flex items-end justify-between border-t border-phosphor/10 pt-4">
         <span className="font-pixel text-[0.6875rem] text-phosphor-dim uppercase">Total</span>
-        <span className="t-display t-phosphor text-[2.8rem] leading-none tnum">{formatMoney(total)}</span>
+        <span className="t-display t-phosphor text-[2.9rem] leading-none tnum">{formatMoney(total)}</span>
       </div>
     </div>
   );

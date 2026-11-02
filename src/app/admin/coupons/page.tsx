@@ -76,7 +76,7 @@ export default async function AdminCouponsPage() {
           </div>
           <div className="flex flex-col justify-end gap-3">
             <label className="flex items-center gap-2.5 text-sm text-ink">
-              <input type="checkbox" name="isActive" defaultChecked className="size-4 accent-[#5cf2d6]" />
+              <input type="checkbox" name="isActive" defaultChecked className="size-4 accent-[#ff2e88]" />
               Active right away
             </label>
             <SubmitButton className="btn-coin w-full" pendingText="Creating…">

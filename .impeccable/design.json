@@ -1,252 +1,297 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T17:06:09.862Z",
+  "generatedAt": "2026-11-02T18:50:17.865Z",
   "title": "Design System: Boosterinio",
   "extensions": {
     "colorMeta": {
-      "marquee": {
-        "role": "primary",
-        "displayName": "Coin-Door Yellow",
-        "canonical": "#ffd93b",
-        "tonalRamp": [
-          "oklch(15% 0.04 94)",
-          "oklch(26% 0.07 94)",
-          "oklch(38% 0.09 94)",
-          "oklch(49% 0.11 94)",
-          "oklch(61% 0.13 94)",
-          "oklch(72% 0.15 94)",
-          "oklch(84% 0.17 94)",
-          "oklch(95% 0.09 94)"
-        ]
-      },
       "p1": {
-        "role": "secondary",
-        "displayName": "Player-One Magenta",
+        "role": "primary",
+        "displayName": "Hot Pink",
         "canonical": "#ff2e88",
         "tonalRamp": [
-          "oklch(15% 0.06 2)",
-          "oklch(26% 0.1 2)",
-          "oklch(38% 0.15 2)",
-          "oklch(49% 0.19 2)",
-          "oklch(61% 0.24 2)",
-          "oklch(72% 0.18 2)",
-          "oklch(84% 0.1 2)",
-          "oklch(95% 0.03 2)"
+          "#5a0830",
+          "#c00b5e",
+          "#d40e69",
+          "#e3126f",
+          "#ff2e88",
+          "#ff4fa0",
+          "#ff74b6",
+          "#ffc6e0"
         ]
       },
       "p2": {
-        "role": "secondary",
-        "displayName": "Player-Two Blue",
-        "canonical": "#2f6bff",
+        "role": "primary",
+        "displayName": "Deep Pink",
+        "canonical": "#e3126f",
         "tonalRamp": [
-          "oklch(15% 0.07 264)",
-          "oklch(26% 0.12 264)",
-          "oklch(38% 0.18 264)",
-          "oklch(49% 0.22 264)",
-          "oklch(61% 0.2 264)",
-          "oklch(72% 0.14 264)",
-          "oklch(84% 0.08 264)",
-          "oklch(95% 0.025 264)"
+          "#5a0830",
+          "#c00b5e",
+          "#d40e69",
+          "#e3126f",
+          "#ff2e88",
+          "#ff4fa0",
+          "#ff74b6",
+          "#ffc6e0"
+        ]
+      },
+      "p1-light": {
+        "role": "primary",
+        "displayName": "Highlight Pink",
+        "canonical": "#ff74b6",
+        "tonalRamp": [
+          "#5a0830",
+          "#c00b5e",
+          "#d40e69",
+          "#e3126f",
+          "#ff2e88",
+          "#ff4fa0",
+          "#ff74b6",
+          "#ffc6e0"
+        ]
+      },
+      "p2-deep": {
+        "role": "primary",
+        "displayName": "Plate Shadow Pink",
+        "canonical": "#c00b5e",
+        "tonalRamp": [
+          "#5a0830",
+          "#c00b5e",
+          "#d40e69",
+          "#e3126f",
+          "#ff2e88",
+          "#ff4fa0",
+          "#ff74b6",
+          "#ffc6e0"
+        ]
+      },
+      "streak-core": {
+        "role": "primary",
+        "displayName": "Streak Core",
+        "canonical": "#ffc6e0",
+        "tonalRamp": [
+          "#5a0830",
+          "#c00b5e",
+          "#d40e69",
+          "#e3126f",
+          "#ff2e88",
+          "#ff4fa0",
+          "#ff74b6",
+          "#ffc6e0"
         ]
       },
       "phosphor": {
-        "role": "tertiary",
-        "displayName": "Phosphor Cyan",
-        "canonical": "#5cf2d6",
+        "role": "primary",
+        "displayName": "Soft Pink",
+        "canonical": "#ff7ab8",
         "tonalRamp": [
-          "oklch(15% 0.03 178)",
-          "oklch(26% 0.05 178)",
-          "oklch(38% 0.07 178)",
-          "oklch(49% 0.09 178)",
-          "oklch(61% 0.11 178)",
-          "oklch(72% 0.13 178)",
-          "oklch(84% 0.14 178)",
-          "oklch(95% 0.06 178)"
+          "#5a0830",
+          "#c00b5e",
+          "#e3126f",
+          "#ff2e88",
+          "#d46a9e",
+          "#ff7ab8",
+          "#ffb3d6",
+          "#ffc6e0"
         ]
       },
       "phosphor-dim": {
-        "role": "tertiary",
-        "displayName": "Dim Phosphor",
-        "canonical": "#3cae9a",
+        "role": "primary",
+        "displayName": "Dim Pink",
+        "canonical": "#d46a9e",
         "tonalRamp": [
-          "oklch(15% 0.03 178)",
-          "oklch(26% 0.05 178)",
-          "oklch(38% 0.07 178)",
-          "oklch(49% 0.09 178)",
-          "oklch(61% 0.11 178)",
-          "oklch(72% 0.13 178)",
-          "oklch(84% 0.14 178)",
-          "oklch(95% 0.06 178)"
-        ]
-      },
-      "crt": {
-        "role": "tertiary",
-        "displayName": "CRT Glass",
-        "canonical": "#051315",
-        "tonalRamp": [
-          "oklch(15% 0.025 205)",
-          "oklch(26% 0.035 205)",
-          "oklch(38% 0.04 205)",
-          "oklch(49% 0.045 205)",
-          "oklch(61% 0.045 205)",
-          "oklch(72% 0.04 205)",
-          "oklch(84% 0.03 205)",
-          "oklch(95% 0.015 205)"
-        ]
-      },
-      "crt-2": {
-        "role": "tertiary",
-        "displayName": "CRT Glass Centre",
-        "canonical": "#0a2125",
-        "tonalRamp": [
-          "oklch(15% 0.025 205)",
-          "oklch(26% 0.035 205)",
-          "oklch(38% 0.04 205)",
-          "oklch(49% 0.045 205)",
-          "oklch(61% 0.045 205)",
-          "oklch(72% 0.04 205)",
-          "oklch(84% 0.03 205)",
-          "oklch(95% 0.015 205)"
-        ]
-      },
-      "bezel": {
-        "role": "neutral",
-        "displayName": "Bezel Black",
-        "canonical": "#050505",
-        "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#5a0830",
+          "#c00b5e",
+          "#e3126f",
+          "#ff2e88",
+          "#d46a9e",
+          "#ff7ab8",
+          "#ffb3d6",
+          "#ffc6e0"
         ]
       },
       "cab": {
         "role": "neutral",
-        "displayName": "Cabinet Black",
-        "canonical": "#100f0e",
+        "displayName": "Night",
+        "canonical": "#0b0b16",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
+        ]
+      },
+      "crt": {
+        "role": "neutral",
+        "displayName": "Feature Card",
+        "canonical": "#10101e",
+        "tonalRamp": [
+          "oklch(15% 0.025 285)",
+          "oklch(26% 0.035 285)",
+          "oklch(38% 0.04 285)",
+          "oklch(49% 0.042 285)",
+          "oklch(61% 0.04 285)",
+          "oklch(72% 0.032 285)",
+          "oklch(84% 0.02 285)",
+          "oklch(95% 0.008 285)"
         ]
       },
       "cab-2": {
         "role": "neutral",
-        "displayName": "Laminate",
-        "canonical": "#181716",
+        "displayName": "Card",
+        "canonical": "#121222",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
+        ]
+      },
+      "crt-2": {
+        "role": "neutral",
+        "displayName": "Feature Card Top",
+        "canonical": "#17162a",
+        "tonalRamp": [
+          "oklch(15% 0.025 285)",
+          "oklch(26% 0.035 285)",
+          "oklch(38% 0.04 285)",
+          "oklch(49% 0.042 285)",
+          "oklch(61% 0.04 285)",
+          "oklch(72% 0.032 285)",
+          "oklch(84% 0.02 285)",
+          "oklch(95% 0.008 285)"
         ]
       },
       "cab-3": {
         "role": "neutral",
-        "displayName": "Raised Laminate",
-        "canonical": "#201f1d",
+        "displayName": "Raised",
+        "canonical": "#19192c",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
+        ]
+      },
+      "cab-hover": {
+        "role": "neutral",
+        "displayName": "Lifted",
+        "canonical": "#1f1e33",
+        "tonalRamp": [
+          "#0b0b16",
+          "#121222",
+          "#1f1e33",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
         ]
       },
       "cab-4": {
         "role": "neutral",
-        "displayName": "Seam",
-        "canonical": "#2f2d2a",
+        "displayName": "Hairline",
+        "canonical": "#28273f",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
         ]
       },
       "cab-5": {
         "role": "neutral",
-        "displayName": "Lit Seam",
-        "canonical": "#403d39",
+        "displayName": "Lit Hairline",
+        "canonical": "#393753",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
         ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Warm Ink",
-        "canonical": "#f5f3ef",
+        "displayName": "White",
+        "canonical": "#ffffff",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
         ]
       },
       "ink-2": {
         "role": "neutral",
-        "displayName": "Faded Ink",
-        "canonical": "#b9b5ae",
+        "displayName": "Mist",
+        "canonical": "#c8c3d0",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
+        ]
+      },
+      "ink-note": {
+        "role": "neutral",
+        "displayName": "Note Ink",
+        "canonical": "#b3adbd",
+        "tonalRamp": [
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#b3adbd",
+          "#ffffff"
         ]
       },
       "ink-3": {
         "role": "neutral",
-        "displayName": "Ghost Ink",
-        "canonical": "#918c85",
+        "displayName": "Dusk",
+        "canonical": "#8e889a",
         "tonalRamp": [
-          "#100f0e",
-          "#181716",
-          "#201f1d",
-          "#2f2d2a",
-          "#403d39",
-          "#918c85",
-          "#b9b5ae",
-          "#f5f3ef"
+          "#0b0b16",
+          "#121222",
+          "#19192c",
+          "#28273f",
+          "#393753",
+          "#8e889a",
+          "#c8c3d0",
+          "#ffffff"
         ]
       },
       "ok": {
         "role": "status",
-        "displayName": "Lamp Green",
+        "displayName": "Green",
         "canonical": "#3be37a",
         "tonalRamp": [
           "oklch(15% 0.04 150)",
@@ -261,7 +306,7 @@
       },
       "warn": {
         "role": "status",
-        "displayName": "Lamp Amber",
+        "displayName": "Amber",
         "canonical": "#ffb547",
         "tonalRamp": [
           "oklch(15% 0.03 70)",
@@ -276,7 +321,7 @@
       },
       "bad": {
         "role": "status",
-        "displayName": "Lamp Red",
+        "displayName": "Red",
         "canonical": "#ff5a5a",
         "tonalRamp": [
           "oklch(15% 0.05 23)",
@@ -293,129 +338,234 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The page's h1 in Jersey 10 caps, carrying the P1-then-P2 extrusion; 2.6rem, 3.3rem from 640px, 3.7rem from 1280px."
+        "purpose": "The home h1: Saira 800 italic uppercase at width 118, two lines, key words in Hot Pink with a glow."
+      },
+      "headline-lg": {
+        "displayName": "Headline Large",
+        "purpose": "Storefront page titles from 640px."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section heads and dashboard/admin page titles in Jersey 10 caps; 2.4rem rising to 3rem."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Configurator panel titles and empty-state titles in Jersey 10 caps."
+        "purpose": "Section heads and Operate page titles from 640px; storefront page titles below 640px."
       },
       "readout": {
         "displayName": "Readout",
-        "purpose": "Totals and figures as tabular Jersey 10 numerals; phosphor with a halo on CRT glass, warm ink or a lamp color on laminate."
+        "purpose": "The configurator total: white tabular numerals with a pink halo, rolling to each new price."
       },
-      "body": {
-        "displayName": "Body",
-        "purpose": "All reading text in Rubik, faded ink, 62 to 70ch; 500 for links and card titles, 600 for h3."
+      "headline-sm": {
+        "displayName": "Headline Small",
+        "purpose": "Operate page titles below 640px, sign-in card titles, stage numerals."
       },
-      "body-sm": {
-        "displayName": "Small",
-        "purpose": "Hints, captions, breadcrumbs, meta and score-line labels in Rubik."
+      "section-sm": {
+        "displayName": "Section Small",
+        "purpose": "Section heads below 640px, admin detail titles, the house-rules title from 640px, the rank-board total."
+      },
+      "stat": {
+        "displayName": "Stat",
+        "purpose": "Stat tile values, stepper values and admin counts, tabular."
+      },
+      "headline-xs": {
+        "displayName": "Headline Extra Small",
+        "purpose": "A seller's storefront name below 640px (2.6rem above)."
+      },
+      "title-xl": {
+        "displayName": "Title Extra Large",
+        "purpose": "The house-rules card title below 640px."
+      },
+      "title-lg": {
+        "displayName": "Title Large",
+        "purpose": "Empty-state titles, readout headings, counter headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles on order, checkout and settings pages; the admin bar title; the coin-bar total."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Long-form h2s and score-table values (width 112)."
+      },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "Small display headings and counts."
+      },
+      "card-label-lg": {
+        "displayName": "Card Label Large",
+        "purpose": "Slash labels on seller storefront sections."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "The solid white wordmark from 640px and in the footer; 1.75rem from 1024px (width 114)."
+      },
+      "wordmark-sm": {
+        "displayName": "Wordmark Small",
+        "purpose": "The header wordmark below 640px; hidden below 350px."
+      },
+      "card-label": {
+        "displayName": "Card Label",
+        "purpose": "The slash label that names a card: / YOUR RANK, / GOAL, / EXTRAS."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Saira 700 upright caps on every button (0.8125rem small, 1rem large); the coin plate goes 800 italic."
+      },
+      "legend": {
+        "displayName": "Legend",
+        "purpose": "Saira caps for total legends and score-table keys."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Silkscreen caps for chips, readout legends, table heads and group titles; 0.625rem is the floor."
+        "purpose": "Saira caps for chips, table heads, rail and footer group titles, readout legends."
       },
-      "button": {
-        "displayName": "Plate Legend",
-        "purpose": "Silkscreen caps on every plate; 0.75rem small, 0.9375rem large."
+      "label-sm": {
+        "displayName": "Label Small",
+        "purpose": "The floor: P1 / GOAL tags, badge counts, the coin-bar legend, admin group titles."
+      },
+      "title-sans": {
+        "displayName": "Title Sans",
+        "purpose": "Rubik 600 h3s in stage cards and long-form copy."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Hero subcopy and FAQ questions (500)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading text in Mist, 56 to 78ch, line-height 1.625 (1.7 in long-form)."
+      },
+      "body-ui": {
+        "displayName": "UI Text",
+        "purpose": "Nav links, the trust row, field values and listing titles."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Menus, rail rows, table cells, secondary copy."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Hints, captions, breadcrumbs, meta, score lines."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Notes, mode descriptions, the legal line."
       }
     },
     "shadows": [
       {
-        "name": "raised-laminate",
-        "value": "inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 48px -28px rgb(0 0 0 / 0.85)",
-        "purpose": "Panels, menus and forms raised off the laminate ground."
+        "name": "card-drop",
+        "value": "0 24px 48px -30px rgb(0 0 0 / 0.9)",
+        "purpose": "Panels and menus, over a 2.5% white top sheen. Flat cards take none."
       },
       {
-        "name": "recessed-glass",
-        "value": "0 0 0 1px #2f2d2a, inset 0 0 60px rgb(0 0 0 / 0.75), inset 0 0 18px rgb(92 242 214 / 0.06), 0 40px 80px -40px rgb(0 0 0 / 0.9)",
-        "purpose": "CRT screen sunk in its 10px bezel; pairs with scanlines and a 155° glare."
+        "name": "feature-card",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.04), 0 30px 60px -30px rgb(0 0 0 / 0.9)",
+        "purpose": "Feature cards (.crt), with a pink hairline at 22% and a 10% pink corner wash."
       },
       {
-        "name": "lit-plate-coin",
-        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.7), 0 0 22px -2px rgb(255 217 59 / 0.55), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
-        "purpose": "The coin plate at rest: bezel ring, top sheen, yellow glow, soft drop."
+        "name": "total-bar",
+        "value": "inset 0 -1px 0 rgb(255 46 136 / 0.55), -10px 10px 30px -18px rgb(255 46 136 / 0.65), 0 24px 40px -24px rgb(0 0 0 / 0.9)",
+        "purpose": "The total bar and the coin bar: a lit pink lower edge."
       },
       {
-        "name": "lit-plate-coin-hover",
-        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.8), 0 0 34px 2px rgb(255 217 59 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
-        "purpose": "The coin plate on hover: the glow widens."
+        "name": "coin-plate",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.22), 0 0 0 1px rgb(255 46 136 / 0.55), 0 0 28px -4px rgb(255 46 136 / 0.7), 0 12px 24px -12px rgb(0 0 0 / 0.9)",
+        "purpose": "The Insert coin plate at rest."
       },
       {
-        "name": "lit-plate-p1",
-        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.45), 0 0 20px -4px rgb(255 46 136 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
-        "purpose": "P1 plate at rest; hover widens the glow to 0 0 28px 0 at 70%."
+        "name": "coin-plate-hover",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.28), 0 0 0 1px rgb(255 46 136 / 0.8), 0 0 40px 0 rgb(255 46 136 / 0.75), 0 12px 24px -12px rgb(0 0 0 / 0.9)",
+        "purpose": "The Insert coin plate on hover."
       },
       {
-        "name": "lit-plate-p2",
-        "value": "0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.4), 0 0 20px -4px rgb(47 107 255 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8)",
-        "purpose": "P2 plate at rest; hover widens the glow to 0 0 28px 0 at 70%."
+        "name": "filled-button",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.2), 0 0 0 1px rgb(255 46 136 / 0.5), 0 0 20px -6px rgb(255 46 136 / 0.7)",
+        "purpose": "Filled pink buttons; hover goes to 0 0 28px -4px at 80% with the ring at 80%."
       },
       {
-        "name": "unlit-plate",
-        "value": "inset 0 1px 0 rgb(255 255 255 / 0.06), 0 8px 16px -10px rgb(0 0 0 / 0.8)",
-        "purpose": "Ghost plates."
+        "name": "selected-button",
+        "value": "0 0 18px -6px rgb(255 46 136 / 0.6)",
+        "purpose": "The selected outline button, over a 16% pink wash and a pink border at 75%."
       },
       {
-        "name": "marquee-bloom",
-        "value": "0 0 0 2px #050505, 0 0 0 3px rgb(255 255 255 / 0.08), 0 0 26px 3px rgb(255 46 136 / 0.6), 0 0 70px 16px rgb(255 46 136 / 0.22), inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -6px 14px rgb(40 0 30 / 0.35)",
-        "purpose": "The backlit logo plate in the header only; its magenta light spills 220px down the page."
+        "name": "cursor-frame-active",
+        "value": "0 0 0 1.5px #ff2e88, 0 0 22px -4px rgb(255 46 136 / 0.7)",
+        "purpose": "A chosen tile, mode, package or thumbnail, over a 7% pink wash."
       },
       {
-        "name": "instruction-card-drop",
-        "value": "0 24px 48px -24px rgb(0 0 0 / 0.9)",
-        "purpose": "The house-rules card in its 6px black frame."
+        "name": "cursor-frame-hover",
+        "value": "0 0 0 1px rgb(255 46 136 / 0.45)",
+        "purpose": "Hover and focus on a selectable tile."
       },
       {
-        "name": "coin-bar",
-        "value": "0 0 0 1px rgb(92 242 214 / 0.12), 0 14px 30px -10px rgb(0 0 0 / 0.95)",
-        "purpose": "Sticky total and coin bar below 1024px."
+        "name": "tag-glow",
+        "value": "0 0 12px rgb(255 46 136 / 0.7)",
+        "purpose": "The P1 / GOAL tag."
       },
       {
-        "name": "phosphor-halo",
-        "value": "text-shadow: 0 0 10px rgb(92 242 214 / 0.45), 0 0 1px rgb(92 242 214 / 0.9)",
-        "purpose": "Numerals on CRT glass."
+        "name": "segment-active",
+        "value": "0 0 0 1px rgb(255 46 136 / 0.5), 0 0 16px -4px rgb(255 46 136 / 0.8)",
+        "purpose": "The chosen segment."
       },
       {
-        "name": "title-extrusion",
-        "value": "text-shadow: 1px 1px 0 #ff2e88, 2px 2px 0 #ff2e88, 3px 3px 0 #2f6bff, 4px 4px 0 #2f6bff, 6px 8px 14px rgb(0 0 0 / 0.55)",
-        "purpose": "The page's display h1 and the unlit wordmark only, once per screen."
+        "name": "icon-tile",
+        "value": "0 0 18px -6px rgb(255 46 136 / 0.8)",
+        "purpose": "House-rule icon tiles."
       },
       {
-        "name": "marquee-lit-type",
-        "value": "text-shadow: 2px 2px 0 #5c0a35, 3px 3px 0 #1a0410, 0 0 14px rgb(255 240 248 / 0.75)",
-        "purpose": "The wordmark printed on the lit marquee plate."
+        "name": "slash-bar",
+        "value": "0 0 10px rgb(255 46 136 / 0.55)",
+        "purpose": "The slanted bar of a slash label."
+      },
+      {
+        "name": "streak",
+        "value": "0 0 16px 1px rgb(255 46 136 / 0.45)",
+        "purpose": "Light streaks on the home hero and the default storefront banner."
+      },
+      {
+        "name": "icon-glow",
+        "value": "filter: drop-shadow(0 0 8px rgb(255 46 136 / 0.6))",
+        "purpose": "Trust-row icons; the B mark uses 14px at 35%, the coin stack 10px at 55%."
+      },
+      {
+        "name": "headline-glow",
+        "value": "text-shadow: 0 0 32px rgb(255 46 136 / 0.18)",
+        "purpose": "The home h1; its Hot Pink words take 0 0 28px at 45%."
+      },
+      {
+        "name": "total-glow",
+        "value": "text-shadow: 0 0 22px rgb(255 46 136 / 0.35)",
+        "purpose": "White total and readout numerals."
+      },
+      {
+        "name": "header-plate-edge",
+        "value": "0 0 22px 2px rgb(255 46 136 / 0.65)",
+        "purpose": "The 2px lit edge (Streak Core into Hot Pink) of the slanted -28° plate behind the header logo."
       },
       {
         "name": "focus-ring",
-        "value": "outline: 2px solid #5cf2d6; outline-offset: 2px",
+        "value": "outline: 2px solid #ff2e88; outline-offset: 2px; border-radius: 8px",
         "purpose": "Every focusable element."
       },
       {
         "name": "field-focus",
-        "value": "0 0 0 3px rgb(92 242 214 / 0.16)",
-        "purpose": "Focused fields, with a dim-phosphor border in place of the outline."
+        "value": "0 0 0 3px rgb(255 46 136 / 0.16)",
+        "purpose": "Focused fields, with the border at Hot Pink 70% instead of the outline."
       }
     ],
     "motion": [
       {
         "name": "ease-out-expo",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Default easing: plate press and glow, cursor snap, line flash."
+        "purpose": "Default easing: button press and glow, the price flash."
       },
       {
-        "name": "plate-press",
-        "value": "transform 120ms ease-out-expo; translateY(1px) + brightness(1.12)",
-        "purpose": "Pressing any plate."
+        "name": "button-press",
+        "value": "transform 120ms ease-out-expo; translateY(1px) (the coin plate keeps its -10deg skew)",
+        "purpose": "Pressing any button."
       },
       {
-        "name": "glow-shift",
-        "value": "160ms (box-shadow ease-out-expo; background, border, color ease)",
-        "purpose": "Plate hover: the glow or seam widens."
+        "name": "button-glow",
+        "value": "box-shadow 180ms ease-out-expo; background, border, color 160ms ease",
+        "purpose": "Button hover."
       },
       {
         "name": "field-focus",
@@ -423,24 +573,29 @@
         "purpose": "Field hover and focus ring."
       },
       {
-        "name": "cursor-snap",
-        "value": "opacity 120ms ease, transform 160ms ease-out-expo (3px slide)",
-        "purpose": "Corner brackets snapping onto the hovered or chosen item."
+        "name": "cursor-frame",
+        "value": "160ms ease (box-shadow, background-color)",
+        "purpose": "Selection frame on hover and choice."
+      },
+      {
+        "name": "nav-slash",
+        "value": "150ms; slide 4px in from the left and fade in",
+        "purpose": "Header nav hover."
       },
       {
         "name": "line-flash",
-        "value": "900ms ease-out-expo; background rgb(92 242 214 / 0.2) to transparent",
-        "purpose": "A score line that just changed lights up, then settles."
+        "value": "900ms ease-out-expo; background rgb(255 46 136 / 0.2) to transparent",
+        "purpose": "A price line that just changed lights up, then settles."
       },
       {
-        "name": "score-roll",
-        "value": "520ms exponential ease-out (1 - 2^(-10t)), requestAnimationFrame",
-        "purpose": "Totals roll to the new price like an arcade score counter."
+        "name": "total-roll",
+        "value": "520ms, 1 - 2^(-10t), requestAnimationFrame",
+        "purpose": "Totals roll to the new price."
       },
       {
         "name": "lift",
-        "value": "200ms; -4px cartridges, -2px cards and crests; cover images scale 1.03 to 1.04 over 300ms",
-        "purpose": "Hover on selectable cartridges, cards and tiles."
+        "value": "200ms; game tiles -4px, emblems and the B mark -2px; covers scale 1.03 to 1.04 over 300ms",
+        "purpose": "Hover on tiles, cards and the logo."
       },
       {
         "name": "chevron-turn",
@@ -449,14 +604,14 @@
       },
       {
         "name": "reduced-motion",
-        "value": "animation and transition durations 0.001ms; one iteration; score roll jumps",
+        "value": "animation and transition durations 0.001ms; one iteration; totals jump",
         "purpose": "prefers-reduced-motion: reduce stills everything."
       }
     ],
     "breakpoints": [
       {
         "name": "wordmark",
-        "value": "460px"
+        "value": "350px"
       },
       {
         "name": "sm",
@@ -473,175 +628,194 @@
       {
         "name": "xl",
         "value": "1280px"
+      },
+      {
+        "name": "container-xl",
+        "value": "36rem (house rules: two columns)"
+      },
+      {
+        "name": "container-4xl",
+        "value": "56rem (house rules: four columns)"
       }
     ]
   },
   "components": [
     {
-      "name": "Coin Plate",
+      "name": "Insert Coin Plate",
       "kind": "button",
       "refersTo": "button-coin-lg",
-      "description": "The single live action on a screen (buy, pay, confirm, save). Marquee yellow, one per screen.",
-      "html": "<button class=\"ds-btn-coin\" type=\"button\"><svg class=\"ds-btn-coin-slot\" viewBox=\"0 0 9 9\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"9\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"1\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"1\" width=\"7\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"1\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"2\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"2\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"2\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"2\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"2\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"2\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"3\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"3\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"3\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"3\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"3\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"4\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"4\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"4\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"4\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"5\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"5\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"5\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"5\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"6\" width=\"3\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"4\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0800\"/><rect x=\"5\" y=\"6\" width=\"1\" height=\"1\" fill=\"#fff3b0\"/><rect x=\"6\" y=\"6\" width=\"2\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"6\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"1\" y=\"7\" width=\"7\" height=\"1\" fill=\"#5c4a00\"/><rect x=\"8\" y=\"7\" width=\"1\" height=\"1\" fill=\"#1d1600\"/><rect x=\"0\" y=\"8\" width=\"9\" height=\"1\" fill=\"#1d1600\"/></svg>Insert coin · Buy boost</button>",
-      "css": ".ds-btn-coin { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; height: 3.5rem; padding: 0 1.75rem; border-radius: 13px; font-size: 0.9375rem; color: #1d1600; background: radial-gradient(120% 140% at 50% 0%, #fff1a6 0%, var(--color-marquee, #ffd93b) 48%, #e9b900 100%); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.7), 0 0 22px -2px rgb(255 217 59 / 0.55), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-coin-slot { width: 20px; height: 20px; flex-shrink: 0; } .ds-btn-coin:hover { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.8), 0 0 34px 2px rgb(255 217 59 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-coin:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-coin:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
+      "description": "The one main action of a screen: a slanted deep-pink plate with the coin-slot icon and a chevron.",
+      "html": "<div class=\"ds-coin-stage\"><button class=\"ds-coin\" type=\"button\"><svg class=\"ds-coin-ico\" viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><rect x=\"1.5\" y=\"1.5\" width=\"17\" height=\"17\" rx=\"3\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M6 6h8M10 6v8.5\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><span>Insert coin</span><svg class=\"ds-coin-ico ds-coin-chev\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></button></div>",
+      "css": ".ds-coin-stage { display: inline-block; padding: 24px 32px; background: var(--color-cab, #0b0b16); border-radius: 14px; } .ds-coin { display: inline-flex; align-items: center; gap: 12px; min-width: 250px; height: 3.5rem; padding: 0 1.5rem; border: 0; border-radius: 12px; position: relative; isolation: isolate; background: transparent; color: #fff; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 800; font-style: italic; font-stretch: 105%; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-coin::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; transform: skewX(-10deg); background: linear-gradient(90deg, var(--color-p2, #e3126f) 0%, #d40e69 55%, #c00b5e 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 0 0 1px rgb(255 46 136 / 0.55), 0 0 28px -4px rgb(255 46 136 / 0.7), 0 12px 24px -12px rgb(0 0 0 / 0.9); transition: box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-coin-ico { width: 20px; height: 20px; flex-shrink: 0; } .ds-coin-chev { margin-left: auto; } .ds-coin:hover::before { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.28), 0 0 0 1px rgb(255 46 136 / 0.8), 0 0 40px 0 rgb(255 46 136 / 0.75), 0 12px 24px -12px rgb(0 0 0 / 0.9); } .ds-coin:active { transform: translateY(1px); } .ds-coin:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; }"
     },
     {
-      "name": "P2 Plate",
+      "name": "Filled Button",
       "kind": "button",
-      "refersTo": "button-p2",
-      "description": "Secondary lit action and the selected state: claims, updates, chosen divisions, pages and segments.",
-      "html": "<button class=\"ds-btn-p2\" type=\"button\">Claim order</button>",
-      "css": ".ds-btn-p2 { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; color: #fff; background: radial-gradient(120% 140% at 50% 0%, #8fb1ff 0%, var(--color-p2, #2f6bff) 50%, #1f55e0 100%); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.4), 0 0 20px -4px rgb(47 107 255 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p2:hover { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.45), 0 0 28px 0 rgb(47 107 255 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p2:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-p2:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
+      "refersTo": "button-fill",
+      "description": "Secondary and repeated pink actions (Create account, Buy now, Follow): a deep-pink face under white caps.",
+      "html": "<div class=\"ds-fill-stage\"><button class=\"ds-fill\" type=\"button\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"5\"/><path d=\"M20 21a8 8 0 0 0-16 0\"/></svg>Create account</button><button class=\"ds-fill ds-fill-sm\" type=\"button\">Buy now</button></div>",
+      "css": ".ds-fill-stage { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 24px; background: var(--color-cab, #0b0b16); border-radius: 14px; } .ds-fill { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 10px; background: linear-gradient(180deg, var(--color-p2, #e3126f) 0%, #cf0d65 100%); color: #fff; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-stretch: 105%; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; cursor: pointer; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 0 0 1px rgb(255 46 136 / 0.5), 0 0 20px -6px rgb(255 46 136 / 0.7); transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-fill svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-fill-sm { height: 2.25rem; padding: 0 0.875rem; border-radius: 9px; font-size: 0.8125rem; } .ds-fill:hover { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.26), 0 0 0 1px rgb(255 46 136 / 0.8), 0 0 28px -4px rgb(255 46 136 / 0.8); } .ds-fill:active { transform: translateY(1px); } .ds-fill:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; }"
     },
     {
-      "name": "P1 Plate",
-      "kind": "button",
-      "refersTo": "button-p1",
-      "description": "Player-one plate, used only as P2's partner in a two-way choice (Apply to sell beside Apply to boost).",
-      "html": "<button class=\"ds-btn-p1\" type=\"button\">Apply to sell</button>",
-      "css": ".ds-btn-p1 { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; color: #fff; background: radial-gradient(120% 140% at 50% 0%, #ff8cc0 0%, var(--color-p1, #ff2e88) 50%, #d81770 100%); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.45), 0 0 20px -4px rgb(255 46 136 / 0.6), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p1:hover { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.5), 0 0 28px 0 rgb(255 46 136 / 0.7), 0 10px 22px -10px rgb(0 0 0 / 0.8); } .ds-btn-p1:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-p1:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
-    },
-    {
-      "name": "Ghost Plate",
+      "name": "Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "Unlit plate for navigation, filters, steppers and unselected choices.",
-      "html": "<div class=\"ds-stage-ghost\"><button class=\"ds-btn-ghost\" type=\"button\">All 48 games<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button></div>",
-      "css": ".ds-stage-ghost { display: inline-block; padding: 16px; background: var(--color-cab, #100f0e); border-radius: 12px; } .ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 11px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease, color 160ms ease; color: var(--color-ink, #f5f3ef); border: 1px solid var(--color-cab-4, #2f2d2a); background: linear-gradient(180deg, #262422 0%, var(--color-cab-3, #201f1d) 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 8px 16px -10px rgb(0 0 0 / 0.8); } .ds-btn-ghost svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-btn-ghost:hover { border-color: var(--color-cab-5, #403d39); background: linear-gradient(180deg, #2c2a27 0%, #23211f 100%); } .ds-btn-ghost:active { transform: translateY(1px); filter: brightness(1.12); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; }"
+      "description": "Navigation, steppers, unchosen pills, Share and Following: a raised dark face that picks up a pink border on hover.",
+      "html": "<div class=\"ds-ghost-stage\"><button class=\"ds-ghost\" type=\"button\">All 48 games<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button></div>",
+      "css": ".ds-ghost-stage { display: inline-block; padding: 24px; background: var(--color-cab, #0b0b16); border-radius: 14px; } .ds-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 2.75rem; padding: 0 1.25rem; border: 1px solid var(--color-cab-4, #28273f); border-radius: 10px; background: var(--color-cab-3, #19192c); color: var(--color-ink, #ffffff); font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-stretch: 105%; font-size: 0.875rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-color 160ms ease; } .ds-ghost svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-ghost:hover { border-color: rgb(255 46 136 / 0.45); background: #1f1e33; } .ds-ghost:active { transform: translateY(1px); } .ds-ghost:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; }"
+    },
+    {
+      "name": "Selected Button",
+      "kind": "button",
+      "refersTo": "button-selected",
+      "description": "The current page, tab or filter: a pink wash and pink border beside ghost siblings.",
+      "html": "<nav class=\"ds-sel-stage\" aria-label=\"Pagination\"><a class=\"ds-sel-btn\" href=\"#\">Prev</a><a class=\"ds-sel-btn\" href=\"#\">1</a><a class=\"ds-sel-btn ds-sel-on\" href=\"#\" aria-current=\"page\">2</a><a class=\"ds-sel-btn\" href=\"#\">3</a><a class=\"ds-sel-btn\" href=\"#\">Next</a></nav>",
+      "css": ".ds-sel-stage { display: flex; gap: 6px; padding: 24px; background: var(--color-cab, #0b0b16); border-radius: 14px; } .ds-sel-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 2.25rem; height: 2.25rem; padding: 0 0.875rem; border: 1px solid var(--color-cab-4, #28273f); border-radius: 9px; background: var(--color-cab-3, #19192c); color: var(--color-ink, #ffffff); font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-stretch: 105%; font-size: 0.8125rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease; } .ds-sel-btn:hover { border-color: rgb(255 46 136 / 0.45); background: #1f1e33; } .ds-sel-on, .ds-sel-on:hover { background: rgb(255 46 136 / 0.16); border-color: rgb(255 46 136 / 0.75); color: #fff; box-shadow: 0 0 18px -6px rgb(255 46 136 / 0.6); } .ds-sel-btn:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; }"
     },
     {
       "name": "Field",
       "kind": "input",
       "refersTo": "field",
-      "description": "Text field on laminate: label above in Rubik, phosphor focus ring, hint below.",
-      "html": "<div class=\"ds-stage-field\"><label class=\"ds-label\" for=\"ds-field-discord\">Discord username</label><input class=\"ds-field\" id=\"ds-field-discord\" placeholder=\"e.g. climber#0001\"/><p class=\"ds-hint\">Staff reply here if they need more proof.</p></div>",
-      "css": ".ds-stage-field { width: 320px; padding: 20px; background: var(--color-cab-2, #181716); border: 1px solid var(--color-cab-4, #2f2d2a); border-radius: 14px; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-label { display: block; margin-bottom: 0.375rem; font-size: 0.8125rem; font-weight: 500; color: var(--color-ink-2, #b9b5ae); } .ds-field { box-sizing: border-box; width: 100%; min-height: 2.75rem; padding: 0.625rem 0.875rem; background: var(--color-cab-3, #201f1d); color: var(--color-ink, #f5f3ef); border: 1px solid var(--color-cab-4, #2f2d2a); border-radius: 10px; font-family: inherit; font-size: 0.9375rem; caret-color: var(--color-phosphor, #5cf2d6); transition: border-color 140ms ease, box-shadow 140ms ease; } .ds-field::placeholder { color: var(--color-ink-2, #b9b5ae); opacity: 0.85; } .ds-field:hover { border-color: var(--color-cab-5, #403d39); } .ds-field:focus, .ds-field:focus-visible { outline: none; border-color: var(--color-phosphor-dim, #3cae9a); box-shadow: 0 0 0 3px rgb(92 242 214 / 0.16); } .ds-hint { margin: 0.375rem 0 0; font-size: 0.8125rem; color: var(--color-ink-3, #918c85); }"
+      "description": "Text field on a card: Rubik label above, pink caret and pink focus ring, hint below.",
+      "html": "<div class=\"ds-field-stage\"><label class=\"ds-field-label\" for=\"ds-field-discord\">Discord username</label><input class=\"ds-field\" id=\"ds-field-discord\" placeholder=\"e.g. climber#0001\"/><p class=\"ds-field-hint\">Staff reply here if they need more proof.</p></div>",
+      "css": ".ds-field-stage { width: 320px; padding: 20px; background: var(--color-cab-2, #121222); border: 1px solid var(--color-cab-4, #28273f); border-radius: 14px; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-field-label { display: block; margin-bottom: 0.375rem; font-size: 0.8125rem; font-weight: 500; color: var(--color-ink-2, #c8c3d0); } .ds-field { box-sizing: border-box; width: 100%; min-height: 2.75rem; padding: 0.625rem 0.875rem; background: #131324; color: var(--color-ink, #ffffff); border: 1px solid var(--color-cab-4, #28273f); border-radius: 10px; font-family: inherit; font-size: 0.9375rem; caret-color: var(--color-p1, #ff2e88); transition: border-color 140ms ease, box-shadow 140ms ease; } .ds-field::placeholder { color: var(--color-ink-3, #8e889a); } .ds-field:hover { border-color: var(--color-cab-5, #393753); } .ds-field:focus, .ds-field:focus-visible { outline: none; border-color: rgb(255 46 136 / 0.7); box-shadow: 0 0 0 3px rgb(255 46 136 / 0.16); } .ds-field-hint { margin: 0.375rem 0 0; font-size: 0.8125rem; color: var(--color-ink-3, #8e889a); }"
     },
     {
-      "name": "Status Lamp Chip",
+      "name": "Status Chip",
       "kind": "chip",
       "refersTo": "chip",
-      "description": "Silkscreen status label led by a 6px glowing lamp in the tone color; the plain variant drops the lamp for tags.",
-      "html": "<div class=\"ds-stage-chips\"><span class=\"ds-chip ds-chip-ok\">Completed</span><span class=\"ds-chip ds-chip-warn\">Delivered</span><span class=\"ds-chip ds-chip-info\">Paid</span><span class=\"ds-chip ds-chip-p2\">In progress</span><span class=\"ds-chip ds-chip-bad\">Disputed</span><span class=\"ds-chip ds-chip-plain\">PayPal</span></div>",
-      "css": ".ds-stage-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; background: var(--color-cab, #100f0e); border-radius: 12px; } .ds-chip { display: inline-flex; align-items: center; gap: 0.375rem; height: 1.5rem; padding: 0 0.5rem; border-radius: 7px; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; background: var(--color-cab-3, #201f1d); border: 1px solid var(--color-cab-4, #2f2d2a); color: var(--color-ink-2, #b9b5ae); } .ds-chip::before { content: \"\"; width: 6px; height: 6px; background: currentColor; box-shadow: 0 0 6px currentColor; } .ds-chip-ok { color: var(--color-ok, #3be37a); } .ds-chip-warn { color: var(--color-warn, #ffb547); } .ds-chip-bad { color: var(--color-bad, #ff5a5a); } .ds-chip-info { color: var(--color-phosphor, #5cf2d6); } .ds-chip-p2 { color: #86a8ff; } .ds-chip-plain::before { display: none; }"
+      "description": "Saira caps pill led by a glowing dot in the tone color; the plain variant drops the dot for tags and payment methods.",
+      "html": "<div class=\"ds-chip-stage\"><span class=\"ds-chip ds-chip-ok\">Completed</span><span class=\"ds-chip ds-chip-warn\">Waiting for staff</span><span class=\"ds-chip ds-chip-info\">In progress</span><span class=\"ds-chip ds-chip-bad\">Disputed</span><span class=\"ds-chip ds-chip-muted\">Refunded</span><span class=\"ds-chip ds-chip-plain\">PayPal</span></div>",
+      "css": ".ds-chip-stage { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; background: var(--color-cab, #0b0b16); border-radius: 14px; } .ds-chip { display: inline-flex; align-items: center; gap: 0.375rem; height: 1.5rem; padding: 0 0.625rem; border-radius: 999px; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 0.6875rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; background: var(--color-cab-3, #19192c); border: 1px solid var(--color-cab-4, #28273f); color: var(--color-ink-2, #c8c3d0); } .ds-chip::before { content: ''; width: 6px; height: 6px; border-radius: 999px; background: currentColor; box-shadow: 0 0 6px currentColor; } .ds-chip-ok { color: var(--color-ok, #3be37a); } .ds-chip-warn { color: var(--color-warn, #ffb547); } .ds-chip-bad { color: var(--color-bad, #ff5a5a); } .ds-chip-info { color: var(--color-phosphor, #ff7ab8); } .ds-chip-muted { color: var(--color-ink-3, #8e889a); } .ds-chip-plain::before { display: none; }"
     },
     {
-      "name": "Laminate Panel",
+      "name": "Rank Picker",
+      "kind": "custom",
+      "refersTo": "tier-tile-active",
+      "description": "Half of the rank board: slash label, emblem tiles with the cursor frame and a P1 tag on the chosen tile, division pills. Real tiles show publisher emblems; the shapes here stand in for them.",
+      "html": "<section class=\"ds-rank\"><h2 class=\"ds-rank-label\">Your rank</h2><div class=\"ds-rank-tiles\"><button class=\"ds-rank-tile\" type=\"button\" aria-pressed=\"false\"><svg viewBox=\"0 0 48 40\" aria-hidden=\"true\"><path d=\"M24 4 34 14 24 36 14 14Z\" fill=\"#a0663e\"/><path d=\"M14 14 2 8l8 16 8 4ZM34 14l12-6-8 16-8 4Z\" fill=\"#6f4426\"/></svg><span>Bronze</span></button><button class=\"ds-rank-tile ds-rank-on\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-rank-tag\">P1</span><svg viewBox=\"0 0 48 40\" aria-hidden=\"true\"><path d=\"M24 4 34 14 24 36 14 14Z\" fill=\"#c9d3dc\"/><path d=\"M14 14 2 8l8 16 8 4ZM34 14l12-6-8 16-8 4Z\" fill=\"#6b7785\"/></svg><span>Silver</span></button><button class=\"ds-rank-tile\" type=\"button\" aria-pressed=\"false\"><svg viewBox=\"0 0 48 40\" aria-hidden=\"true\"><path d=\"M24 4 34 14 24 36 14 14Z\" fill=\"#e3b84a\"/><path d=\"M14 14 2 8l8 16 8 4ZM34 14l12-6-8 16-8 4Z\" fill=\"#9c7420\"/></svg><span>Gold</span></button></div><div class=\"ds-rank-divs\" role=\"group\" aria-label=\"Division\"><button class=\"ds-rank-div\" type=\"button\">IV</button><button class=\"ds-rank-div\" type=\"button\">III</button><button class=\"ds-rank-div\" type=\"button\">II</button><button class=\"ds-rank-div ds-rank-div-on\" type=\"button\" aria-pressed=\"true\">I</button></div></section>",
+      "css": ".ds-rank { width: 380px; padding: 20px; background: radial-gradient(90% 60% at 100% 0%, rgb(255 46 136 / 0.1), transparent 60%), linear-gradient(160deg, var(--color-crt-2, #17162a) 0%, var(--color-crt, #10101e) 100%); border: 1px solid rgb(255 46 136 / 0.22); border-radius: 18px; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.04), 0 30px 60px -30px rgb(0 0 0 / 0.9); font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-rank-label { display: flex; align-items: center; gap: 0.6em; margin: 0 0 12px; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 800; font-style: italic; font-stretch: 112%; font-size: 1.0625rem; letter-spacing: 0.01em; line-height: 1; text-transform: uppercase; color: #fff; } .ds-rank-label::before { content: ''; flex: none; width: 0.24em; height: 0.95em; border-radius: 2px; background: linear-gradient(180deg, #ff74b6, var(--color-p1, #ff2e88)); transform: skewX(-18deg); box-shadow: 0 0 10px rgb(255 46 136 / 0.55); } .ds-rank-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding-top: 8px; } .ds-rank-tile { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 2px 8px; border: 0; border-radius: 12px; background: transparent; color: var(--color-ink-2, #c8c3d0); font-family: inherit; font-size: 0.8125rem; cursor: pointer; transition: box-shadow 160ms ease, background-color 160ms ease; } .ds-rank-tile svg { width: 48px; height: 40px; transition: transform 200ms ease; } .ds-rank-tile:hover { background: rgb(255 255 255 / 0.03); box-shadow: 0 0 0 1px rgb(255 46 136 / 0.45); } .ds-rank-tile:hover svg { transform: translateY(-2px); } .ds-rank-tile:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; } .ds-rank-on, .ds-rank-on:hover { color: #fff; background: rgb(255 46 136 / 0.07); box-shadow: 0 0 0 1.5px var(--color-p1, #ff2e88), 0 0 22px -4px rgb(255 46 136 / 0.7); } .ds-rank-tag { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); padding: 0 8px; border-radius: 999px; background: var(--color-p2, #e3126f); color: #fff; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 0.625rem; letter-spacing: 0.07em; line-height: 18px; text-transform: uppercase; box-shadow: 0 0 12px rgb(255 46 136 / 0.7); } .ds-rank-divs { display: flex; gap: 8px; margin-top: 14px; } .ds-rank-div { display: inline-flex; align-items: center; justify-content: center; min-width: 3.25rem; height: 2rem; padding: 0 12px; border: 1px solid var(--color-cab-4, #28273f); border-radius: 8px; background: var(--color-cab-3, #19192c); color: #fff; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-stretch: 105%; font-size: 0.8125rem; letter-spacing: 0.05em; cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-rank-div:hover { border-color: rgb(255 46 136 / 0.45); background: #1f1e33; } .ds-rank-div-on, .ds-rank-div-on:hover { border-color: transparent; background: linear-gradient(180deg, var(--color-p2, #e3126f) 0%, #cf0d65 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 0 0 1px rgb(255 46 136 / 0.5), 0 0 20px -6px rgb(255 46 136 / 0.7); } .ds-rank-div:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; }"
+    },
+    {
+      "name": "Total Bar",
+      "kind": "custom",
+      "refersTo": "total-bar",
+      "description": "Under the rank board: coin stack, TOTAL (EST.) legend, the rolling price and the Insert coin plate, on a dark plate with a lit pink lower edge.",
+      "html": "<div class=\"ds-total\"><div class=\"ds-total-left\"><svg class=\"ds-total-coins\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><ellipse cx=\"12\" cy=\"5.5\" rx=\"8\" ry=\"3\" fill=\"currentColor\"/><path d=\"M4 5.5v4c0 1.66 3.58 3 8 3s8-1.34 8-3v-4c0 1.66-3.58 3-8 3s-8-1.34-8-3Z\" fill=\"currentColor\" opacity=\"0.85\"/><path d=\"M4 11v4c0 1.66 3.58 3 8 3s8-1.34 8-3v-4c0 1.66-3.58 3-8 3s-8-1.34-8-3Z\" fill=\"currentColor\" opacity=\"0.7\"/><path d=\"M4 16.5v2c0 1.66 3.58 3 8 3s8-1.34 8-3v-2c0 1.66-3.58 3-8 3s-8-1.34-8-3Z\" fill=\"currentColor\" opacity=\"0.55\"/></svg><div><p class=\"ds-total-legend\">Total (est.)</p><p class=\"ds-total-price\">€7.00</p></div></div><button class=\"ds-total-coin\" type=\"button\"><span>Insert coin</span></button></div>",
+      "css": ".ds-total { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 560px; padding: 16px 24px; border: 1px solid rgb(255 46 136 / 0.24); border-radius: 18px; background: linear-gradient(118deg, transparent 0 47%, rgb(255 46 136 / 0.07) 47% 47.4%, transparent 47.4% 61%, rgb(255 46 136 / 0.05) 61% 61.3%, transparent 61.3%), linear-gradient(180deg, #17162a 0%, var(--color-crt, #10101e) 100%); box-shadow: inset 0 -1px 0 rgb(255 46 136 / 0.55), -10px 10px 30px -18px rgb(255 46 136 / 0.65), 0 24px 40px -24px rgb(0 0 0 / 0.9); } .ds-total-left { display: flex; align-items: center; gap: 16px; } .ds-total-coins { width: 36px; height: 36px; color: var(--color-p1, #ff2e88); filter: drop-shadow(0 0 10px rgb(255 46 136 / 0.55)); } .ds-total-legend { margin: 0; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-phosphor, #ff7ab8); } .ds-total-price { margin: 4px 0 0; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 800; font-style: italic; font-stretch: 118%; font-size: 2.4rem; line-height: 1; font-variant-numeric: tabular-nums; color: #fff; text-shadow: 0 0 22px rgb(255 46 136 / 0.35); } .ds-total-coin { display: inline-flex; align-items: center; justify-content: center; height: 3.5rem; padding: 0 1.75rem; border: 0; border-radius: 12px; position: relative; isolation: isolate; background: transparent; color: #fff; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 800; font-style: italic; font-stretch: 105%; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-total-coin::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; transform: skewX(-10deg); background: linear-gradient(90deg, var(--color-p2, #e3126f) 0%, #d40e69 55%, #c00b5e 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 0 0 1px rgb(255 46 136 / 0.55), 0 0 28px -4px rgb(255 46 136 / 0.7), 0 12px 24px -12px rgb(0 0 0 / 0.9); transition: box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-total-coin:hover::before { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.28), 0 0 0 1px rgb(255 46 136 / 0.8), 0 0 40px 0 rgb(255 46 136 / 0.75), 0 12px 24px -12px rgb(0 0 0 / 0.9); } .ds-total-coin:active { transform: translateY(1px); } .ds-total-coin:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; }"
+    },
+    {
+      "name": "Panel",
       "kind": "card",
       "refersTo": "panel",
-      "description": "Raised laminate panel: 16px corners, seam border, top sheen and a long soft drop.",
-      "html": "<section class=\"ds-panel\"><h2 class=\"ds-panel-title\">Server &amp; queue</h2><p class=\"ds-panel-body\">Each option shows what it adds before you pay, and the server recalculates the total so it can't change behind your back.</p></section>",
-      "css": ".ds-panel { position: relative; width: 360px; padding: 1.5rem; color: var(--color-ink, #f5f3ef); background: linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 40%), var(--color-cab-2, #181716); border: 1px solid var(--color-cab-4, #2f2d2a); border-radius: 16px; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 48px -28px rgb(0 0 0 / 0.85); font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-panel-title { margin: 0 0 0.75rem; font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-weight: 400; font-size: 1.75rem; line-height: 0.92; letter-spacing: 0.02em; text-transform: uppercase; } .ds-panel-body { margin: 0; line-height: 1.625; color: var(--color-ink-2, #b9b5ae); }"
-    },
-    {
-      "name": "CRT Score Readout",
-      "kind": "custom",
-      "refersTo": "crt-screen",
-      "description": "CRT glass in its bezel holding itemized score lines and the phosphor total; lines flash when they change.",
-      "html": "<div class=\"ds-crt\"><ul class=\"ds-score\" aria-label=\"Price breakdown\"><li><span>Base climb · 4 divisions</span><b>€28.00</b></li><li><span>Appear offline</span><b class=\"ds-free\">Free</b></li><li><span>Priority queue</span><b>+€5.60</b></li></ul><div class=\"ds-total\"><div><p class=\"ds-legend\">Total</p><p class=\"ds-numeral\">€33.60</p></div><div class=\"ds-eta\"><p class=\"ds-legend\">Stage time</p><p class=\"ds-eta-value\">~2 d</p></div></div></div>",
-      "css": ".ds-crt { position: relative; isolation: isolate; width: 360px; padding: 1.5rem; border: 10px solid var(--color-bezel, #050505); border-radius: 26px; background: radial-gradient(130% 120% at 50% 40%, var(--color-crt-2, #0a2125) 0%, var(--color-crt, #051315) 55%, #020a0b 100%); box-shadow: 0 0 0 1px var(--color-cab-4, #2f2d2a), inset 0 0 60px rgb(0 0 0 / 0.75), inset 0 0 18px rgb(92 242 214 / 0.06), 0 40px 80px -40px rgb(0 0 0 / 0.9); overflow: clip; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-crt::before { content: \"\"; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgb(92 242 214 / 0.035) 0 1px, transparent 1px 3px); } .ds-crt::after { content: \"\"; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(155deg, rgb(255 255 255 / 0.055) 0%, transparent 32%); } .ds-crt > * { position: relative; z-index: 1; } .ds-score { list-style: none; margin: 0; padding: 0.75rem 0; border-top: 1px solid rgb(92 242 214 / 0.1); border-bottom: 1px solid rgb(92 242 214 / 0.1); } .ds-score li { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; margin: 0 -0.5rem; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.8125rem; color: #a9d9d0; animation: ds-flash 900ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-score li:hover { background: rgb(92 242 214 / 0.06); } .ds-score b { font-weight: 400; font-size: 0.875rem; color: #d8fff7; font-variant-numeric: tabular-nums; } .ds-score .ds-free { color: var(--color-ok, #3be37a); } .ds-total { display: flex; align-items: flex-end; justify-content: space-between; gap: 0.75rem; margin-top: 1rem; } .ds-legend { margin: 0; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-phosphor-dim, #3cae9a); } .ds-numeral { margin: 0; font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-size: 3.4rem; line-height: 1; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--color-phosphor, #5cf2d6); text-shadow: 0 0 10px rgb(92 242 214 / 0.45), 0 0 1px rgb(92 242 214 / 0.9); } .ds-eta { text-align: right; } .ds-eta-value { margin: 0; font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-size: 1.5rem; line-height: 1; color: #d8fff7; } @keyframes ds-flash { from { background-color: rgb(92 242 214 / 0.2); } to { background-color: transparent; } } @media (prefers-reduced-motion: reduce) { .ds-score li { animation: none; } }"
+      "description": "A configurator section: card face with a top sheen, hairline, soft drop, named by its slash label.",
+      "html": "<section class=\"ds-panel\"><h2 class=\"ds-panel-label\">Server &amp; queue</h2><p class=\"ds-panel-body\">Each option shows what it adds before you pay, and our server recalculates the total so it can't change behind your back.</p></section>",
+      "css": ".ds-panel { width: 380px; padding: 1.5rem; background: linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 45%), var(--color-cab-2, #121222); border: 1px solid var(--color-cab-4, #28273f); border-radius: 16px; box-shadow: 0 24px 48px -30px rgb(0 0 0 / 0.9); font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-panel-label { display: flex; align-items: center; gap: 0.6em; margin: 0 0 1rem; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 800; font-style: italic; font-stretch: 112%; font-size: 1.0625rem; letter-spacing: 0.01em; line-height: 1; text-transform: uppercase; color: var(--color-ink, #ffffff); } .ds-panel-label::before { content: ''; flex: none; width: 0.24em; height: 0.95em; border-radius: 2px; background: linear-gradient(180deg, #ff74b6, var(--color-p1, #ff2e88)); transform: skewX(-18deg); box-shadow: 0 0 10px rgb(255 46 136 / 0.55); } .ds-panel-body { margin: 0; line-height: 1.625; color: var(--color-ink-2, #c8c3d0); }"
     },
     {
       "name": "Rail Navigation",
       "kind": "nav",
       "refersTo": "rail-item-active",
-      "description": "Operate side rail: stroke icons, the P1 pixel cursor and a phosphor icon on the active row, P1 queue counts.",
-      "html": "<nav class=\"ds-rail\" aria-label=\"Booster\"><p class=\"ds-rail-title\">Demo booster</p><a class=\"ds-rail-item\" href=\"#\"><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"7\" height=\"9\" x=\"3\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"14\" y=\"3\" rx=\"1\"/><rect width=\"7\" height=\"9\" x=\"14\" y=\"12\" rx=\"1\"/><rect width=\"7\" height=\"5\" x=\"3\" y=\"16\" rx=\"1\"/></svg><span>Overview</span><span class=\"ds-rail-count\">1</span></a><a class=\"ds-rail-item ds-rail-active\" href=\"#\" aria-current=\"page\"><svg class=\"ds-rail-cursor\" viewBox=\"0 0 5 5\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"1\" width=\"3\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"2\" width=\"5\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"3\" width=\"3\" height=\"1\" fill=\"currentColor\"/><rect x=\"0\" y=\"4\" width=\"1\" height=\"1\" fill=\"currentColor\"/></svg><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><polyline points=\"14.5 17.5 3 6 3 3 6 3 17.5 14.5\"/><line x1=\"13\" x2=\"19\" y1=\"19\" y2=\"13\"/><line x1=\"16\" x2=\"20\" y1=\"16\" y2=\"20\"/><line x1=\"19\" x2=\"21\" y1=\"21\" y2=\"19\"/><polyline points=\"14.5 6.5 18 3 21 3 21 6 17.5 9.5\"/><line x1=\"5\" x2=\"9\" y1=\"14\" y2=\"18\"/><line x1=\"7\" x2=\"4\" y1=\"17\" y2=\"20\"/><line x1=\"3\" x2=\"5\" y1=\"19\" y2=\"21\"/></svg><span>Booster board</span><span class=\"ds-rail-count\">1</span></a><a class=\"ds-rail-item\" href=\"#\"><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/></svg><span>Wallet</span></a></nav>",
-      "css": ".ds-rail { width: 220px; padding: 12px; background: var(--color-cab, #100f0e); border-radius: 12px; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-rail-title { margin: 0 0 0.75rem; padding: 0 0.75rem; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-ink-3, #918c85); } .ds-rail-item { position: relative; display: flex; align-items: center; gap: 0.625rem; height: 2.5rem; padding: 0 0.75rem; border-radius: 10px; font-size: 0.875rem; color: var(--color-ink-2, #b9b5ae); text-decoration: none; transition: background-color 150ms ease, color 150ms ease; } .ds-rail-item + .ds-rail-item { margin-top: 4px; } .ds-rail-icon { width: 16px; height: 16px; margin-left: 6px; flex-shrink: 0; color: var(--color-ink-3, #918c85); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-rail-item:hover { background: var(--color-cab-2, #181716); color: var(--color-ink, #f5f3ef); } .ds-rail-item:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; } .ds-rail-active, .ds-rail-active:hover { background: var(--color-cab-3, #201f1d); color: var(--color-ink, #f5f3ef); } .ds-rail-active .ds-rail-icon { color: var(--color-phosphor, #5cf2d6); } .ds-rail-cursor { position: absolute; left: 4px; width: 8px; height: 8px; color: var(--color-p1, #ff2e88); } .ds-rail-count { margin-left: auto; padding: 0 0.375rem; border-radius: 6px; background: rgb(255 46 136 / 0.15); color: var(--color-p1, #ff2e88); font-family: var(--font-display, 'Jersey 10', ui-monospace, monospace); font-size: 1rem; line-height: 1.25rem; font-variant-numeric: tabular-nums; }"
-    },
-    {
-      "name": "Select-Screen Cursor Tile",
-      "kind": "custom",
-      "refersTo": "select-tile-active",
-      "description": "Tier picker tile on glass: pixel crest, corner-bracket cursor in the player color, P1 tag on the chosen tile.",
-      "html": "<div class=\"ds-tiles\"><button class=\"ds-tile\" type=\"button\" aria-pressed=\"false\"><svg viewBox=\"0 0 16 15\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"10\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"3\" width=\"3\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"6\" y=\"3\" width=\"7\" height=\"1\" fill=\"#a0663e\"/><rect x=\"13\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"5\" y=\"4\" width=\"7\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"5\" width=\"8\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"6\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"6\" y=\"6\" width=\"4\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"6\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"7\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#a0663e\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"6\" y=\"7\" width=\"3\" height=\"1\" fill=\"#b07a52\"/><rect x=\"9\" y=\"7\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"7\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"7\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"8\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#a0663e\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"6\" y=\"8\" width=\"3\" height=\"1\" fill=\"#b07a52\"/><rect x=\"9\" y=\"8\" width=\"1\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"8\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"8\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"9\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"4\" y=\"9\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#f0c49b\"/><rect x=\"10\" y=\"9\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"12\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"5\" y=\"10\" width=\"5\" height=\"1\" fill=\"#a0663e\"/><rect x=\"10\" y=\"10\" width=\"2\" height=\"1\" fill=\"#6f4426\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"11\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"6\" y=\"11\" width=\"4\" height=\"1\" fill=\"#a0663e\"/><rect x=\"10\" y=\"11\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"11\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"12\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"7\" y=\"12\" width=\"2\" height=\"1\" fill=\"#a0663e\"/><rect x=\"9\" y=\"12\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"10\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"13\" width=\"1\" height=\"1\" fill=\"#c58a5c\"/><rect x=\"8\" y=\"13\" width=\"1\" height=\"1\" fill=\"#6f4426\"/><rect x=\"9\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"14\" width=\"2\" height=\"1\" fill=\"#0b0a10\"/></svg><span>Bronze</span></button><button class=\"ds-tile ds-tile-active\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-tile-tag\">P1</span><svg viewBox=\"0 0 16 15\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"10\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"3\" width=\"3\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"6\" y=\"3\" width=\"7\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"13\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"5\" y=\"4\" width=\"7\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"5\" width=\"8\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"6\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"6\" y=\"6\" width=\"4\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"6\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"7\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"6\" y=\"7\" width=\"3\" height=\"1\" fill=\"#b0bcc8\"/><rect x=\"9\" y=\"7\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"7\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"7\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"8\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"6\" y=\"8\" width=\"3\" height=\"1\" fill=\"#b0bcc8\"/><rect x=\"9\" y=\"8\" width=\"1\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"8\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"8\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"9\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"4\" y=\"9\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#ffffff\"/><rect x=\"10\" y=\"9\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"12\" y=\"9\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"5\" y=\"10\" width=\"5\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"10\" y=\"10\" width=\"2\" height=\"1\" fill=\"#6b7785\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"11\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"6\" y=\"11\" width=\"4\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"10\" y=\"11\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"11\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"12\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"7\" y=\"12\" width=\"2\" height=\"1\" fill=\"#9aa7b4\"/><rect x=\"9\" y=\"12\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"10\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"13\" width=\"1\" height=\"1\" fill=\"#c9d3dc\"/><rect x=\"8\" y=\"13\" width=\"1\" height=\"1\" fill=\"#6b7785\"/><rect x=\"9\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"14\" width=\"2\" height=\"1\" fill=\"#0b0a10\"/></svg><span>Silver</span></button><button class=\"ds-tile\" type=\"button\" aria-pressed=\"false\"><svg viewBox=\"0 0 16 15\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"2\" width=\"10\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"3\" width=\"3\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"6\" y=\"3\" width=\"7\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"13\" y=\"3\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"4\" width=\"2\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"5\" y=\"4\" width=\"7\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"4\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"4\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"5\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"5\" width=\"8\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"5\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"5\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"6\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"6\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"6\" y=\"6\" width=\"4\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"6\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"6\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"6\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"7\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"7\" width=\"1\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"5\" y=\"7\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"6\" y=\"7\" width=\"3\" height=\"1\" fill=\"#e3b84a\"/><rect x=\"9\" y=\"7\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"7\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"7\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"7\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"8\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"8\" width=\"1\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"5\" y=\"8\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"6\" y=\"8\" width=\"3\" height=\"1\" fill=\"#e3b84a\"/><rect x=\"9\" y=\"8\" width=\"1\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"8\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"8\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"8\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"2\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"9\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"4\" y=\"9\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"6\" y=\"9\" width=\"4\" height=\"1\" fill=\"#fff1b0\"/><rect x=\"10\" y=\"9\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"12\" y=\"9\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"13\" y=\"9\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"3\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"10\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"5\" y=\"10\" width=\"5\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"10\" y=\"10\" width=\"2\" height=\"1\" fill=\"#9c7420\"/><rect x=\"12\" y=\"10\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"4\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"11\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"6\" y=\"11\" width=\"4\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"10\" y=\"11\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"11\" y=\"11\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"5\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"12\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"7\" y=\"12\" width=\"2\" height=\"1\" fill=\"#d9a93a\"/><rect x=\"9\" y=\"12\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"10\" y=\"12\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"6\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"13\" width=\"1\" height=\"1\" fill=\"#f5d46e\"/><rect x=\"8\" y=\"13\" width=\"1\" height=\"1\" fill=\"#9c7420\"/><rect x=\"9\" y=\"13\" width=\"1\" height=\"1\" fill=\"#0b0a10\"/><rect x=\"7\" y=\"14\" width=\"2\" height=\"1\" fill=\"#0b0a10\"/></svg><span>Gold</span></button></div>",
-      "css": ".ds-tiles { display: flex; gap: 12px; padding: 22px 18px 16px; background: radial-gradient(130% 120% at 50% 40%, var(--color-crt-2, #0a2125) 0%, var(--color-crt, #051315) 70%); border-radius: 16px; } .ds-tile { --cursor: var(--color-p1, #ff2e88); position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px; padding: 8px 2px 6px; border: 1px solid transparent; border-radius: 12px; background: transparent; color: var(--color-ink-3, #918c85); font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); font-size: 0.6875rem; line-height: 1.25; cursor: pointer; transition: background-color 150ms ease, color 150ms ease; } .ds-tile svg { width: 44px; height: 44px; transition: transform 200ms ease; } .ds-tile:hover { background: var(--color-cab-3, #201f1d); } .ds-tile:hover svg { transform: translateY(-2px); } .ds-tile:focus-visible { outline: 2px solid var(--color-phosphor, #5cf2d6); outline-offset: 2px; } .ds-tile::before, .ds-tile::after { content: \"\"; position: absolute; box-sizing: border-box; width: 14px; height: 14px; border: 3px solid var(--cursor); opacity: 0; pointer-events: none; transition: opacity 120ms ease, transform 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-tile::before { top: -5px; left: -5px; border-right: 0; border-bottom: 0; transform: translate(3px, 3px); } .ds-tile::after { right: -5px; bottom: -5px; border-left: 0; border-top: 0; transform: translate(-3px, -3px); } .ds-tile:hover::before, .ds-tile:hover::after, .ds-tile:focus-visible::before, .ds-tile:focus-visible::after, .ds-tile-active::before, .ds-tile-active::after { opacity: 1; transform: translate(0, 0); } .ds-tile-active { border-color: var(--color-cab-5, #403d39); background: var(--color-cab-3, #201f1d); color: var(--color-ink, #f5f3ef); } .ds-tile-tag { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); padding: 0 6px; border-radius: 5px; background: var(--cursor); color: #fff; font-family: var(--font-pixel, Silkscreen, ui-monospace, monospace); font-size: 0.625rem; line-height: 1rem; }"
+      "description": "Operate side rail: stroke icons, a pink slash and a Soft Pink icon on the active row, pink counts on a 15% badge.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"My account\"><p class=\"ds-rail-title\">My account</p><a class=\"ds-rail-item\" href=\"#\"><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg><span>My orders</span></a><a class=\"ds-rail-item ds-rail-on\" href=\"#\" aria-current=\"page\"><svg class=\"ds-rail-slash\" viewBox=\"0 0 6 14\" aria-hidden=\"true\"><path d=\"M3 0h3L3 14H0z\" fill=\"currentColor\"/></svg><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z\"/><path d=\"M13 5v2\"/><path d=\"M13 17v2\"/><path d=\"M13 11v2\"/></svg><span>Support tickets</span></a><a class=\"ds-rail-item\" href=\"#\"><svg class=\"ds-rail-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9\"/><path d=\"M10.3 21a1.94 1.94 0 0 0 3.4 0\"/></svg><span>Notifications</span><span class=\"ds-rail-count\">4</span></a></nav>",
+      "css": ".ds-rail { width: 220px; padding: 16px 12px; background: var(--color-cab, #0b0b16); border-radius: 14px; font-family: var(--font-sans, Rubik, ui-sans-serif, system-ui, sans-serif); } .ds-rail-title { margin: 0 0 0.75rem; padding: 0 0.75rem; font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 0.6875rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-ink-3, #8e889a); } .ds-rail-item { position: relative; display: flex; align-items: center; gap: 0.625rem; height: 2.5rem; padding: 0 0.75rem; border-radius: 10px; font-size: 0.875rem; color: var(--color-ink-2, #c8c3d0); text-decoration: none; overflow: hidden; transition: background-color 150ms ease, color 150ms ease; } .ds-rail-item + .ds-rail-item { margin-top: 4px; } .ds-rail-icon { width: 16px; height: 16px; margin-left: 6px; flex-shrink: 0; color: var(--color-ink-3, #8e889a); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; } .ds-rail-item:hover { background: var(--color-cab-2, #121222); color: var(--color-ink, #ffffff); } .ds-rail-item:focus-visible { outline: 2px solid var(--color-p1, #ff2e88); outline-offset: 2px; } .ds-rail-on, .ds-rail-on:hover { background: var(--color-cab-3, #19192c); color: var(--color-ink, #ffffff); } .ds-rail-on .ds-rail-icon { color: var(--color-phosphor, #ff7ab8); } .ds-rail-slash { position: absolute; left: 4px; width: 6px; height: 14px; color: var(--color-p1, #ff2e88); } .ds-rail-count { margin-left: auto; padding: 0 0.375rem; border-radius: 6px; background: rgb(255 46 136 / 0.15); color: var(--color-p1, #ff2e88); font-family: var(--font-display, Saira, ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-stretch: 108%; font-size: 1rem; line-height: 1.25rem; font-variant-numeric: tabular-nums; }"
     }
   ],
   "narrative": {
-    "northStar": "Attract Mode",
-    "overview": "Boosterinio is an arcade cabinet running its attract screen. The page is the cabinet's black laminate with a visible fleck grain; the header is the backlit marquee; the price is worked out live on a CRT screen; the purchase is a coin dropped into a lit push-button. Every surface is a part of that one machine, so nothing floats on a generic dark page and nothing is decorated for its own sake.\n\nLight ranks the screen. The cabinet stays dark so its light sources can carry the hierarchy: the yellow coin plate is the brightest object in view and there is only one; the magenta-to-blue marquee plate glows at the top; phosphor readouts glow on the glass; status lamps glow at chip size; everything else is unlit laminate and warm ink. Color is either emitted (plates, phosphor, lamps) or printed (side-art bands, cartridge labels, tier crests), and type follows the same split: pixel faces for what the machine says, Rubik for what a person reads.\n\nThe full cabinet (marquee, side-art, CRT glass, instruction card) belongs to the storefront: home, game hubs, the boosting configurator, the marketplace, checkout and the order receipt. Dashboards, seller tools, the booster board and admin are Operate surfaces. They keep the world's type, palette, density and status lamps; the build also gives them the select-screen cursor on the active rail row and lit plates for their actions, but never glass, side-art or title extrusion.",
+    "northStar": "The Pink Ladder",
+    "overview": "Boosterinio is a ranked ladder lit in hot pink at night. The page is near-black with an indigo cast, diagonal pink light streaks and a large brushed-metal B plate behind the hero; type is white, heavy, italic, uppercase and wide; one accent, hot pink, marks everything you can act on or have chosen. The climb is picked on a dark rank board (your rank and your goal, as the publisher's own emblems) and paid with one slanted pink plate. The world was pinned by the owner's reference image on 2 Nov 2026 and replaces the arcade \"Attract Mode\" world. Class names from that world survive for stability and now describe new things: `crt` is the dark feature card, `phosphor` is soft pink text, `marquee` is the header, `coin` is the main action, `font-pixel` is the small Saira label.\n\nPink ranks the screen. The ground stays dark and the cards stay quiet (cool grey ink, hairline borders, long soft black drops), so pink light carries the hierarchy: the Insert coin plate is the brightest object in view, then the chosen tile with its tag, then pink icons, highlighted words and the streaks. Type has two voices: Saira, at width 118 and 800 italic, says what the storefront shouts (titles, numbers, buttons, labels); Rubik carries every sentence a person has to read, including all trust copy.\n\nThe full world (streaks, the metal B plate, feature cards, the total bar) belongs to the storefront: home, game hubs, the boosting configurator, the marketplace and seller storefronts, checkout, order pages and the sign-in cards. Dashboards, seller tools, the booster board and admin are Operate surfaces: they keep the type, palette, cards, chips, the rail slash and the coin plate for their one main action, but never the streaks or the metal B plate.",
     "keyCharacteristics": [
-      "One hot color: marquee yellow marks the single live action on a screen.",
-      "Neutral cabinet-black ground with a visible laminate grain.",
-      "CRT glass (teal-black, scanlines, glare, phosphor glow) holds totals and live readouts.",
-      "Lit push-button plates with emitted glow and a soft drop; no inset lip.",
-      "Three type voices: Jersey 10 display, Silkscreen labels, Rubik reading text.",
-      "Authored pixel art for world signatures: select cursor, coin slot, mode caps, escrow shield, tier crests, the B mark.",
-      "Diagonal side-art in P1 magenta, P2 blue and phosphor cyan frames the attract screen and caps the footer."
+      "One accent: hot pink. #ff2e88 glows, outlines and colors pink text; #e3126f fills anything that carries white text.",
+      "Near-black indigo ground (#0b0b16) with a pink radial glow at the top of the page and diagonal light streaks on the home hero.",
+      "White heavy italic uppercase display type in Saira at width 118; Rubik for reading.",
+      "Dark hairline cards with long soft drops; pink-edged feature cards for the rank board, readouts and totals.",
+      "One slanted pink Insert coin plate per screen.",
+      "Selection as a pink frame with a glow and, on rank tiles, a P1 or GOAL tag.",
+      "The pink italic B (speed flag, cut, chamfers) beside a solid white wordmark; the B returns as the brushed-metal plate behind the hero and as faint flat plates."
     ],
     "rules": [
       {
-        "name": "The One Coin Rule",
-        "body": "Marquee yellow is the coin door's light, and a screen has one coin: the single live action (Insert coin · Buy boost, Pay, Confirm order, Save). Repeated or per-row actions (Claim order, Post update, Apply) take a P2 plate or a ghost plate. UI chrome never turns yellow: no yellow chip, lamp, border, link, band or highlight. Content keeps its own color (a Gold or Challenger crest, a game's label color) because it is printed content, not chrome.",
+        "name": "The One Pink Rule",
+        "body": "Hot pink is the only accent. Actions, selection, tags, icons, highlighted words and light are pink; green, amber and red appear only when they report a state. No second hue for chrome and nothing orange near the brand. Publisher art (game covers, rank emblems) keeps its own colors because it is content.",
         "section": "colors"
       },
       {
-        "name": "The Printed-Not-Lit Rule",
-        "body": "Side-art is printed in P1 magenta, P2 blue and phosphor cyan, in that order, on near-black. It is never yellow and never carries content.",
+        "name": "The White-On-Deep Rule",
+        "body": "p1 (#ff2e88) is for glows, outlines, icons and pink text on dark. Any filled surface that carries white text uses p2 (#e3126f) or a deeper stop, because white on p1 is only 3.5:1 and white on p2 is 4.6:1. The class `.btn-p1` is filled with p2, and the P1 tag is a p2 pill.",
         "section": "colors"
       },
       {
-        "name": "The Glass Holds The Total Rule",
-        "body": "A total, fee schedule or live figure the visitor has to trust is set on CRT glass as a phosphor display numeral with tabular figures: the configurator readout, the checkout and order receipts, the seller fee table. Catalog prices on cards and dashboard figures stay on laminate as display numerals in warm ink, or in a lamp color when the figure is a status (P1 for work waiting, red for alarms, phosphor for earnings).",
-        "section": "colors"
-      },
-      {
-        "name": "The Machine Speaks In Pixels Rule",
-        "body": "Jersey 10 and Silkscreen are the cabinet talking: titles, numbers, plates, lamps, column heads, readout legends. Anything read as a sentence, any form value and any table body text is Rubik.",
+        "name": "The Wide Italic Rule",
+        "body": "Saira is the storefront's voice: titles, numbers, buttons and labels. Anything read as a sentence, any form value and any table cell is Rubik. No label goes below 0.625rem.",
         "section": "typography"
       },
       {
-        "name": "The One Extrusion Rule",
-        "body": "The stepped P1-then-P2 extrusion belongs to the page's display h1 (and the unlit wordmark), once per screen. Section heads, panel titles and numerals stay flat.",
+        "name": "The Slash Label Rule",
+        "body": "A card names itself with a slash label: Saira 800 italic, 1.0625rem, with a slanted pink bar in front (0.24em by 0.95em, skewed -18°, Highlight Pink into Hot Pink, glowing 10px at 55%). It reads \"/ YOUR RANK\", \"/ GOAL\", \"/ SERVER & QUEUE\". The slash label is the card's heading; it never sits above another heading.",
         "section": "typography"
       },
       {
-        "name": "The No Kicker Rule",
-        "body": "Headings stand alone. No small uppercase label sits above a heading to introduce it; pixel labels name data (TOTAL, YOUR RANK, GOAL, column heads). Ordinals on a real sequence (Stage 1 to 4, approval steps 1 to 3) are content, set as P1 display numerals.",
-        "section": "typography"
-      },
-      {
-        "name": "The Emitted Light Rule",
-        "body": "Glow means a light source: the coin and the other lit plates, the marquee plate, phosphor on glass, a status lamp, a pressed mode cap. Cards, borders and headings never glow.",
+        "name": "The Pink Light Rule",
+        "body": "Glow is pink, and it comes from what you can act on or have chosen: the coin plate, filled buttons, the chosen tile and its tag, icons, streaks and highlighted words. Plain cards, headings and borders do not glow.",
         "section": "elevation"
       },
       {
         "name": "The Soft Drop Rule",
-        "body": "Objects cast long, blurred, negatively spread shadows (0 24px 48px -28px on panels). No panel, card or button takes a hard offset box-shadow; hard offsets live only inside type (the title extrusion, cartridge monograms).",
+        "body": "Every drop is blurred and negatively spread. No card, button or tile takes a hard offset shadow.",
         "section": "elevation"
       },
       {
         "name": "The Radius Tracks Size Rule",
-        "body": "The bigger the object, the rounder the corner: 6px badge, 7px chip, 9px small plate, 10px field, 11px plate, 12px tile, 13px large plate, 14px card, 16px panel, 26px screen. Nested parts step down by their inset (an 11px track holds 8px segments).",
+        "body": "2px for the slash bar and streak ends, 6px badges and score lines, 7px count chips and photo badges, 8px segments and division pills, 9px small controls and menu rows, 10px buttons, fields, rail rows and avatars, 11px the segmented track, 12px tiles and large buttons, 14px cards and game tiles, 16px panels and galleries, 18px feature cards and the total bar, 24px the storefront avatar, 999px chips and tags.",
         "section": "shapes"
       },
       {
-        "name": "The Lit Plate Rule",
-        "body": "A button is a translucent plate lit from behind: gradient face, a 1px dark bezel ring, a 1px top sheen, glow in its own color, a soft drop. No inset bottom lip and no hard offset shadow, on buttons or on selected segments and pills. Press is a 1px drop with a 12% brightness lift.",
+        "name": "The Upright Grid Rule",
+        "body": "Cards, fields, pills, tiles and tags stay square to the grid; the coin plate is the only control that leans.",
+        "section": "shapes"
+      },
+      {
+        "name": "The One Coin Rule",
+        "body": "The slanted `.btn-coin` plate is reserved for the one main action of a screen: Insert coin, Pay, Confirm and release payment, Mark boost finished, Save on a settings or admin form, Create account on the register card. Repeated and secondary actions take the filled, selected or ghost button. Below 1024px the configurator's coin bar scrolls away with the controls before the readout's plate arrives, so one coin is in view.",
+        "section": "components"
+      },
+      {
+        "name": "The Cursor Frame Rule",
+        "body": "Selection is the cursor frame: a 1.5px Hot Pink ring, a soft pink glow and a 7% pink wash, with a 1px ring at 45% on hover. A chosen rank tile also carries its tag: P1 for your rank, GOAL for the target. Play modes, packages, gallery thumbnails and game tiles use the same frame without a tag.",
+        "section": "components"
+      },
+      {
+        "name": "The Truthful Label Rule",
+        "body": "Trust labels, counts and reviews say only what is true today: Secure Escrow, Verified Boosters, Transparent Pricing, Human Support. Support is staffed during set hours, so never \"24/7\". No invented stats, ratings, review counts or testimonials: review sections render real reviews or nothing, and counters show real counts, including zero.",
+        "section": "components"
+      },
+      {
+        "name": "The Publisher Art Rule",
+        "body": "Game covers and rank emblems are the publishers' own artwork, used only to identify the game or rank, and every shipped raster is listed with its source in `docs/image-sources.md`. A new raster ships with its line there. Brand assets (the B, the wordmark, the favicon, the social image) are drawn in code.",
         "section": "components"
       }
     ],
     "dos": [
-      "Do light exactly one coin plate per screen (marquee yellow, #1d1600 legend, the coin-slot sprite on Insert coin) and keep it the brightest object in view.",
-      "Do set totals, fees and live figures on CRT glass as phosphor display numerals with tabular figures, labelled in dim-phosphor Silkscreen.",
-      "Do use the P2 plate for selected states and repeated actions; pair P1 and P2 plates only for a two-way choice (Apply to sell / Apply to boost, Solo / Duo).",
-      "Do mark the hovered or chosen item with the select-screen cursor: corner brackets or the pixel triangle, P1 magenta for the current pick and P2 blue for the goal.",
-      "Do draw world signatures as integer-grid pixel art with crisp edges (cursor, coin slot, mode caps, shield, tier crests, the B mark) and keep 16 to 20px stroke icons for utility controls.",
-      "Do keep reading copy in Rubik at 62 to 70ch in faded ink on laminate.",
-      "Do let a changed number move visibly (score lines flash for 900ms, totals roll for 520ms) and still every animation and transition under reduced motion.",
-      "Do give Operate surfaces (dashboard, seller tools, booster board, admin) the world's type, palette, density, status lamps, rail cursor and plates, with dense tables under Silkscreen column heads."
+      "Do keep hot pink the only accent: #ff2e88 for glows, outlines, icons and pink text on dark; #e3126f under any white text.",
+      "Do give each screen one slanted Insert coin plate (#e3126f to #c00b5e at -10°, white 800 italic caps) and keep it the brightest object in view.",
+      "Do name cards with a slash label (Saira 800 italic, 1.0625rem, slanted pink bar).",
+      "Do mark a choice with the cursor frame, and put a P1 or GOAL tag (#e3126f pill, white 0.625rem caps) on a chosen rank tile.",
+      "Do set prices and totals as Saira display numerals with tabular figures, in white with a faint pink halo, under a Soft Pink caps legend.",
+      "Do use feature cards (#17162a to #10101e, pink hairline at 22%, 18px) for the rank board, readouts, receipts and score tables, and plain cards (#121222, #28273f hairline) for everything else.",
+      "Do use 16 to 20px stroke icons, Hot Pink when they carry meaning and Dusk when inactive.",
+      "Do keep reading copy in Rubik, in Mist, at 56 to 78ch.",
+      "Do list every shipped game cover and rank emblem with its publisher source in `docs/image-sources.md`.",
+      "Do still every animation and transition under reduced motion; totals jump instead of rolling."
     ],
     "donts": [
-      "Don't put marquee yellow on chrome other than the live action: no yellow chip or lamp, border, link, side-art band, badge or highlight.",
-      "Don't light two coin plates on one screen; the second action is a P2 or ghost plate.",
-      "Don't set a kicker or eyebrow label above a heading.",
-      "Don't give plates, segments or pills an inset bottom lip, and don't give any panel, card or button a hard offset box-shadow.",
-      "Don't bring CRT glass, scanlines, side-art or title extrusion into dashboards, seller tools, the booster board or admin.",
-      "Don't set sentences, form values or table body text in a pixel face, or set any pixel label below 10px (0.625rem).",
-      "Don't use typed glyphs as icons (text arrows, stars, check marks); use a stroke icon or authored pixel art.",
-      "Don't lead with orange or add a second hot accent; warn amber is a status lamp, not a brand color.",
-      "Don't fall back to the category default: champion splash art as atmosphere, a flat untextured dark page, or icon-card feature grids. A game is its cartridge: label color, pixel monogram, or a licensed cover on the label."
+      "Don't put white text on a #ff2e88 fill; it is 3.5:1. Fill with #e3126f or deeper.",
+      "Don't light two coin plates in one view, and don't slant any other control.",
+      "Don't add a second accent hue or lead with orange; amber only reports a state.",
+      "Don't claim \"24/7\", invent stats, ratings or testimonials, or show a review section without real reviews.",
+      "Don't stack a small label or pill above a heading to introduce it; pills name a state, a tag or a choice. The one exception is the \"LoL Boosting\" pill above the home headline, which the owner's reference image pins.",
+      "Don't give a card, button or tile a hard offset shadow.",
+      "Don't set sentences, form values or table cells in Saira, or any label below 0.625rem.",
+      "Don't bring the streaks or the metal B plate into dashboards, seller tools, the booster board or admin."
     ]
   }
 }

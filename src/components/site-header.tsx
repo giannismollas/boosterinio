@@ -1,11 +1,11 @@
-import { Bell, ChevronDown, LayoutDashboard, LogOut, Menu, Settings, Shield, Store, Ticket } from "lucide-react";
+import { Bell, ChevronDown, Heart, LayoutDashboard, LogOut, Menu, Settings, Shield, Store, Ticket, UserRound } from "lucide-react";
 import Link from "next/link";
 import { signOutAction } from "@/server/actions/auth";
 import { db } from "@/server/db";
 import { getCurrentUser, isStaff } from "@/server/session";
 import { getSettings } from "@/server/settings";
 import { Logo } from "./brand";
-import { PixelCursor } from "./pixel";
+import { Slash } from "./marks";
 import { Avatar } from "./ui";
 
 const NAV = [
@@ -25,9 +25,15 @@ export async function SiteHeader() {
   return (
     <>
       <header className="marquee sticky top-0 z-40">
-        <div className="mx-auto flex h-[70px] max-w-[1320px] items-center gap-4 px-4 sm:px-6">
+        <div
+          className="pointer-events-none absolute inset-0 overflow-hidden max-sm:hidden [--plate-w:405px] xl:[--plate-w:calc(max(1.5rem,(100vw-1320px)/2+1.5rem)+305px)]"
+          aria-hidden
+        >
+          <div className="marquee-plate" />
+        </div>
+        <div className="relative mx-auto flex h-[70px] max-w-[1320px] items-center gap-3 px-4 sm:gap-4 sm:px-6">
           <details className="group relative xl:hidden">
-            <summary className="btn btn-ghost btn-sm list-none px-2.5 [&::-webkit-details-marker]:hidden" aria-label="Open menu">
+            <summary className="btn btn-ghost size-10 list-none px-0 [&::-webkit-details-marker]:hidden" aria-label="Open menu">
               <Menu className="size-5" />
             </summary>
             <nav className="panel absolute left-0 top-12 z-50 w-64 p-2" aria-label="Main">
@@ -51,37 +57,37 @@ export async function SiteHeader() {
             </nav>
           </details>
 
-          <Logo className="shrink-0" lit />
+          <Logo className="shrink-0" />
 
-          <nav className="ml-3 hidden items-center gap-0.5 xl:flex" aria-label="Main">
+          <nav className="ml-10 hidden items-center gap-0.5 xl:flex" aria-label="Main">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="group/nav relative inline-flex h-9 items-center gap-1.5 rounded-[8px] px-2.5 text-[0.9375rem] font-medium whitespace-nowrap text-ink-2 transition-colors hover:text-ink"
+                className="group/nav relative inline-flex h-9 items-center rounded-[8px] px-2.5 text-[0.9375rem] font-medium whitespace-nowrap text-ink-2 transition-colors hover:text-ink"
               >
-                <PixelCursor className="h-2.5 w-2.5 -translate-x-1 text-p1 opacity-0 transition-all duration-150 group-hover/nav:translate-x-0 group-hover/nav:opacity-100" />
+                <Slash className="absolute top-1/2 left-0 h-3 w-1.5 -translate-x-1 -translate-y-1/2 text-p1 opacity-0 transition-all duration-150 group-hover/nav:translate-x-0 group-hover/nav:opacity-100" />
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
             {user ? (
               <>
                 <Link href="/dashboard/notifications" className="btn btn-ghost btn-sm relative px-2.5" aria-label={`Notifications${unread ? ` (${unread} unread)` : ""}`}>
                   <Bell className="size-[18px]" />
                   {unread > 0 ? (
-                    <span className="absolute -top-1 -right-1 grid h-5 min-w-5 place-items-center rounded-[6px] bg-p1 px-1 font-pixel text-[0.625rem] text-white tnum">
+                    <span className="absolute -top-1 -right-1 grid h-5 min-w-5 place-items-center rounded-[6px] bg-p2 px-1 font-pixel text-[0.625rem] text-white tnum">
                       {unread > 99 ? "99+" : unread}
                     </span>
                   ) : null}
                 </Link>
                 <details className="relative">
-                  <summary className="flex h-10 cursor-pointer list-none items-center gap-2 rounded-[10px] px-1.5 hover:bg-cab-3 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex h-10 cursor-pointer list-none items-center gap-2 rounded-[10px] px-1 hover:bg-cab-3 sm:px-1.5 [&::-webkit-details-marker]:hidden" aria-label="Account menu">
                     <Avatar name={user.name} src={user.image} size={30} />
                     <span className="hidden max-w-32 truncate text-sm font-medium sm:block">{user.name}</span>
-                    <ChevronDown className="size-4 text-ink-3" />
+                    <ChevronDown className="hidden size-4 text-ink-3 sm:block" />
                   </summary>
                   <div className="panel absolute right-0 top-12 z-50 w-60 p-2">
                     <p className="truncate px-3 pt-1 pb-2 text-xs text-ink-3">{user.email}</p>
@@ -90,6 +96,9 @@ export async function SiteHeader() {
                     </MenuLink>
                     <MenuLink href="/dashboard/tickets" icon={<Ticket className="size-4" />}>
                       Support tickets
+                    </MenuLink>
+                    <MenuLink href="/dashboard/following" icon={<Heart className="size-4" />}>
+                      Following
                     </MenuLink>
                     <MenuLink href={user.sellerProfile?.status === "APPROVED" ? "/seller" : "/sell"} icon={<Store className="size-4" />}>
                       {user.sellerProfile?.status === "APPROVED" ? "Seller dashboard" : "Sell or boost"}
@@ -117,8 +126,9 @@ export async function SiteHeader() {
                 <Link href="/login" className="hidden h-10 items-center px-3 text-sm font-medium whitespace-nowrap text-ink-2 hover:text-ink sm:inline-flex">
                   Sign in
                 </Link>
-                <Link href="/register" className="btn btn-ghost btn-sm">
-                  Create account
+                <Link href="/register" className="btn btn-p1 btn-sm max-sm:size-10 max-sm:px-0" aria-label="Create account">
+                  <UserRound className="size-4" aria-hidden />
+                  <span className="max-sm:hidden">Create account</span>
                 </Link>
               </>
             )}

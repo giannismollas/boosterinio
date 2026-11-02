@@ -5,8 +5,8 @@ import { KV, Numeral, Section, TableWrap } from "@/components/admin/shared";
 import { ActionForm, ConfirmButton, SubmitButton } from "@/components/forms";
 import { Avatar, PageHeader, StatusChip } from "@/components/ui";
 import { ORDER_STATUS, SELLER_STATUS, TICKET_STATUS } from "@/lib/catalog";
-import { formatDateTime, formatMoney, timeAgo } from "@/lib/utils";
-import { adjustWalletAction, banUserAction, setRoleAction } from "@/server/actions/admin/users";
+import { formatDate, formatDateTime, formatMoney, timeAgo } from "@/lib/utils";
+import { adjustWalletAction, banUserAction, setRoleAction, setSellerVerifiedAction } from "@/server/actions/admin/users";
 import { db } from "@/server/db";
 import { requireStaff } from "@/server/session";
 
@@ -171,6 +171,31 @@ export default async function AdminUserPage({ params }: { params: Promise<{ id: 
                   </ConfirmButton>
                 </ActionForm>
               ) : null}
+            </Section>
+          ) : null}
+
+          {isAdmin && user.sellerProfile?.status === "APPROVED" ? (
+            <Section
+              title={user.sellerProfile.verified ? "Verified seller" : "Verify seller"}
+              description={
+                user.sellerProfile.verified
+                  ? `Verified ${formatDate(user.sellerProfile.verifiedAt)}. Buyers see the badge on the storefront and every listing.`
+                  : "Grant the verified badge after you've checked their identity and sales history. It shows on the storefront and every listing."
+              }
+            >
+              <ActionForm action={setSellerVerifiedAction}>
+                <input type="hidden" name="id" value={user.id} />
+                <input type="hidden" name="op" value={user.sellerProfile.verified ? "unverify" : "verify"} />
+                {user.sellerProfile.verified ? (
+                  <ConfirmButton className="btn-ghost w-full" message={`Remove the verified badge from ${user.sellerProfile.displayName}?`}>
+                    Remove badge
+                  </ConfirmButton>
+                ) : (
+                  <SubmitButton className="btn-p1 w-full" pendingText="Verifying…">
+                    Verify {user.sellerProfile.displayName}
+                  </SubmitButton>
+                )}
+              </ActionForm>
             </Section>
           ) : null}
 

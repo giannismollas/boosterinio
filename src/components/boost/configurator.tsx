@@ -1,10 +1,12 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
-import { useActionState, useEffect, useMemo, useState, type ReactNode } from "react";
+import { ChevronRight, Minus, Plus, ShieldCheck, UserRound, UsersRound } from "lucide-react";
+import { useActionState, useEffect, useId, useMemo, useState, type ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
 import {
+  addonPct,
+  blockedModes,
   formatEta,
   ladderIndex,
   ladderLength,
@@ -21,11 +23,12 @@ import {
   type QuoteLine,
   type RankConfig,
   type WinsConfig,
+  winsTierLabel,
 } from "@/lib/boosting/engine";
 import { cn, formatMoney } from "@/lib/utils";
 import { startBoostCheckout } from "@/server/actions/checkout";
 import { RankCrest, tierTint } from "../rank-crest";
-import { PixelCap, PixelCoinSlot, PixelShield } from "../pixel";
+import { CoinSlotIcon, CoinStack } from "../marks";
 import { useAnimatedNumber } from "./use-animated-number";
 
 export type ConfiguratorService = {
@@ -72,6 +75,7 @@ export function Configurator({ service, initial }: { service: ConfiguratorServic
 
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_400px]">
+      <ModeGuard calculator={service.calculator} config={service.config} modes={cfg.modes} sel={sel} set={set} />
       <div className="min-w-0 space-y-5">
         {service.calculator === "RANK" && <RankControls cfg={cfg as RankConfig} sel={sel} set={set} />}
         {service.calculator === "WINS" && <WinsControls cfg={cfg as WinsConfig} sel={sel} set={set} />}
@@ -90,11 +94,62 @@ export function Configurator({ service, initial }: { service: ConfiguratorServic
 
 // ───────────────────────── shared pieces ─────────────────────────
 
-function Panel({ title, children, aside }: { title: string; children: ReactNode; aside?: ReactNode }) {
+/** Switches to an allowed play mode when the chosen rank rules the current one out (no duo at GM+). */
+export function ModeGuard({
+  calculator,
+  config,
+  modes,
+  sel,
+  set,
+}: {
+  calculator: CalculatorKind;
+  config: unknown;
+  modes: MultiplierOption[];
+  sel: Sel;
+  set: (p: Sel) => void;
+}) {
+  const blocked = blockedModes(calculator, config, sel);
+  const mode = String(sel.mode ?? modes[0]?.id ?? "");
+  const next = blocked.has(mode) ? modes.find((m) => !blocked.has(m.id)) : undefined;
+  useEffect(() => {
+    if (next) set({ mode: next.id });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [next?.id]);
+  return null;
+}
+
+/** Number field for the current LP of apex tiers (Master and above). */
+function LpInput({ value, onChange }: { value: unknown; onChange: (n: number | undefined) => void }) {
+  return (
+    <div className="mt-4 max-w-56">
+      <label htmlFor="cfg-lp" className="label">
+        Current LP
+      </label>
+      <input
+        id="cfg-lp"
+        type="number"
+        inputMode="numeric"
+        min={0}
+        max={5000}
+        className="field tnum"
+        placeholder="0"
+        value={value === undefined || value === null ? "" : String(value)}
+        onChange={(e) => {
+          const n = e.target.value === "" ? undefined : Math.max(0, Math.min(5000, Math.floor(Number(e.target.value))));
+          onChange(Number.isFinite(n) ? n : undefined);
+        }}
+      />
+    </div>
+  );
+}
+
+function Panel({ title, titleId, children, aside }: { title: string; titleId?: string; children: ReactNode; aside?: ReactNode }) {
   return (
     <section className="panel p-5 sm:p-6">
       <div className="mb-4 flex items-baseline justify-between gap-3">
-        <h2 className="t-display text-[1.75rem] text-ink uppercase">{title}</h2>
+        <h2 id={titleId} className="slash-label text-[1.0625rem]">
+          {title}
+        </h2>
         {aside}
       </div>
       {children}
@@ -133,7 +188,7 @@ export function Segmented({ label, value, options, onChange }: { label: string; 
             onClick={() => onChange(o.id)}
             className={cn(
               "h-9 rounded-[8px] px-2 text-sm transition-colors",
-              value === o.id ? "bg-p2 text-white shadow-[0_0_0_1px_rgb(0_0_0/0.6),0_0_16px_-4px_rgb(47_107_255/0.7)]" : "text-ink-2 hover:text-ink",
+              value === o.id ? "bg-p2 font-medium text-white shadow-[0_0_0_1px_rgb(255_46_136/0.5),0_0_16px_-4px_rgb(255_46_136/0.8)]" : "text-ink-2 hover:text-ink",
             )}
           >
             {o.label}
@@ -168,7 +223,7 @@ function Stepper({ label, value, min, max, onChange, suffix }: { label: string; 
           max={max}
           value={value}
           onChange={(e) => onChange(clampN(Number(e.target.value)))}
-          className="mt-4 w-full accent-[#2f6bff]"
+          className="mt-4 w-full accent-[#ff2e88]"
           aria-label={label}
         />
       ) : null}
@@ -176,33 +231,34 @@ function Stepper({ label, value, min, max, onChange, suffix }: { label: string; 
   );
 }
 
-/** Select-screen tier picker: crests in a grid, cursor frame on the chosen tile. */
+/** Tier picker: emblems in rows of five (six for eleven tiers); the chosen tile gets a pink frame and a tag. */
 export function TierPicker({
   tiers,
   value,
   onChange,
   tag,
-  cursor,
   isDisabled,
+  labelledBy,
 }: {
-  tiers: { id: string; name: string }[];
+  tiers: { id: string; name: string; image?: string }[];
   value: string | undefined;
   onChange: (id: string) => void;
   tag: string;
-  cursor: string;
   isDisabled?: (id: string) => boolean;
+  /** id of the heading that names this picker ("Your rank", "Goal") */
+  labelledBy?: string;
 }) {
-  const crests = tiers.every((t) => KNOWN_TIERS.has(t.id));
-  if (!crests) {
+  const visual = tiers.every((t) => t.image || KNOWN_TIERS.has(t.id));
+  if (!visual) {
     return (
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2" role="group" aria-labelledby={labelledBy}>
         {tiers.map((t) => (
           <button
             key={t.id}
             type="button"
             aria-pressed={value === t.id}
             onClick={() => onChange(t.id)}
-            className={cn("btn btn-sm", value === t.id ? "btn-p2" : "btn-ghost")}
+            className={cn("btn btn-sm", value === t.id ? "btn-p1" : "btn-ghost")}
           >
             {t.name}
           </button>
@@ -210,8 +266,14 @@ export function TierPicker({
       </div>
     );
   }
+  const cols = Math.min(6, tiers.length <= 6 ? tiers.length : Math.ceil(tiers.length / 2));
   return (
-    <div className="grid grid-cols-5 gap-2 sm:gap-3 xl:grid-cols-10">
+    <div
+      className="grid gap-x-1 gap-y-2 pt-2 sm:gap-x-2"
+      style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+      role="group"
+      aria-labelledby={labelledBy}
+    >
       {tiers.map((t, i) => {
         const active = value === t.id;
         const disabled = isDisabled?.(t.id) ?? false;
@@ -224,20 +286,29 @@ export function TierPicker({
             aria-label={t.name}
             data-active={active}
             onClick={() => onChange(t.id)}
-            style={{ ["--cursor" as string]: cursor }}
             className={cn(
-              "cursor-frame group relative flex flex-col items-center gap-1 rounded-[12px] border px-0.5 pt-2 pb-1.5 transition-colors",
-              active ? "border-cab-5 bg-cab-3" : "border-transparent hover:bg-cab-3",
-              disabled && "pointer-events-none opacity-25",
+              "cursor-frame group relative flex flex-col items-center gap-1 rounded-[12px] px-0.5 pt-2.5 pb-2",
+              !active && "hover:bg-white/[0.03]",
+              disabled && "pointer-events-none opacity-30 grayscale-[0.6]",
             )}
           >
             {active ? (
-              <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-[5px] px-1.5 font-pixel text-[0.625rem] leading-4 text-white" style={{ background: cursor }}>
+              <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-p2 px-2 font-pixel text-[0.625rem] leading-[18px] text-white shadow-[0_0_12px_rgb(255_46_136/0.7)]">
                 {tag}
               </span>
             ) : null}
-            <RankCrest tier={t.id} index={i} className="h-10 w-10 transition-transform duration-200 group-hover:-translate-y-0.5 sm:h-11 sm:w-11" />
-            <span className={cn("hyphenate w-full text-center text-[0.625rem] leading-tight sm:text-[0.6875rem] xl:text-[0.625rem]", active ? "text-ink" : "text-ink-3")} lang="en">
+            {t.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={t.image}
+                alt=""
+                loading="lazy"
+                className="h-10 w-12 object-contain drop-shadow-[0_4px_8px_rgb(0_0_0/0.6)] transition-transform duration-200 group-hover:-translate-y-0.5 sm:h-12 sm:w-16"
+              />
+            ) : (
+              <RankCrest tier={t.id} index={i} className="h-10 w-10 transition-transform duration-200 group-hover:-translate-y-0.5 sm:h-12 sm:w-12" />
+            )}
+            <span className={cn("hyphenate w-full text-center text-[0.6875rem] leading-tight sm:text-[0.8125rem]", active ? "text-white" : "text-ink-2")} lang="en">
               {breakable(t.name)}
             </span>
           </button>
@@ -253,17 +324,20 @@ export function DivisionPicker({
   value,
   onChange,
   isDisabled,
+  label,
 }: {
   count: number;
   labels: string[];
   value: number;
   onChange: (d: number) => void;
   isDisabled?: (d: number) => boolean;
+  /** what the division belongs to, e.g. "Your rank" */
+  label?: string;
 }) {
   if (count === 0) return <p className="mt-3 text-sm text-ink-3">This tier has no divisions; it's ranked by LP.</p>;
   const shown = labels.slice(-count);
   return (
-    <div className="mt-3 flex gap-2" role="group" aria-label="Division">
+    <div className="mt-3.5 flex gap-2" role="group" aria-label={label ? `${label}: division` : "Division"}>
       {shown.map((label, d) => {
         const disabled = isDisabled?.(d) ?? false;
         return (
@@ -273,7 +347,7 @@ export function DivisionPicker({
             disabled={disabled}
             aria-pressed={value === d}
             onClick={() => onChange(d)}
-            className={cn("btn btn-sm min-w-12 font-display text-lg", value === d ? "btn-p2" : "btn-ghost", disabled && "opacity-30")}
+            className={cn("btn btn-sm h-8 min-w-[3.25rem] rounded-[8px] px-3 text-[0.8125rem]", value === d ? "btn-p1" : "btn-ghost", disabled && "opacity-30")}
           >
             {label}
           </button>
@@ -312,15 +386,17 @@ function RankControls({ cfg, sel, set }: { cfg: RankConfig; sel: Sel; set: (p: S
 
   const fromTierObj = cfg.tiers.find((t) => t.id === fromTier);
   const toTierObj = cfg.tiers.find((t) => t.id === toTier);
+  const fromId = useId();
+  const toId = useId();
 
   return (
     <>
-      <Panel title="Current rank" aside={<span className="text-sm text-ink-3">{rankLabel(cfg, fromTier, fromDivision)}</span>}>
+      <Panel title="Current rank" titleId={fromId} aside={<span className="text-sm text-ink-3">{rankLabel(cfg, fromTier, fromDivision)}</span>}>
         <TierPicker
           tiers={cfg.tiers}
           value={fromTier}
+          labelledBy={fromId}
           tag="P1"
-          cursor="#ff2e88"
           isDisabled={(id) => ladderIndex(cfg, id, 0) >= last}
           onChange={(id) => {
             const t = cfg.tiers.find((x) => x.id === id)!;
@@ -328,26 +404,30 @@ function RankControls({ cfg, sel, set }: { cfg: RankConfig; sel: Sel; set: (p: S
           }}
         />
         <DivisionPicker
+          label="Current rank"
           count={fromTierObj?.divisions ?? 0}
           labels={cfg.divisionLabels}
           value={fromDivision}
           onChange={(d) => setFrom(fromTier, d)}
           isDisabled={(d) => ladderIndex(cfg, fromTier, d) >= last}
         />
+        {fromTierObj?.lpInput ? <LpInput value={sel.currentLp} onChange={(n) => set({ currentLp: n })} /> : null}
         {(cfg.lpBrackets.length > 0 || cfg.lpGain.length > 0) && (
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            {cfg.lpBrackets.length > 0 && <Select label="Current LP" value={sel.lp as string} options={cfg.lpBrackets} onChange={(v) => set({ lp: v })} />}
+            {cfg.lpBrackets.length > 0 && !fromTierObj?.lpInput ? (
+              <Select label="Current LP" value={sel.lp as string} options={cfg.lpBrackets} onChange={(v) => set({ lp: v })} />
+            ) : null}
             {cfg.lpGain.length > 0 && <Select label="LP gained per win" value={sel.lpGain as string} options={cfg.lpGain} onChange={(v) => set({ lpGain: v })} />}
           </div>
         )}
       </Panel>
 
-      <Panel title="Desired rank" aside={<span className="text-sm text-ink-3">{rankLabel(cfg, toTier, toDivision)}</span>}>
+      <Panel title="Desired rank" titleId={toId} aside={<span className="text-sm text-ink-3">{rankLabel(cfg, toTier, toDivision)}</span>}>
         <TierPicker
           tiers={cfg.tiers}
           value={toTier}
+          labelledBy={toId}
           tag="GOAL"
-          cursor="#2f6bff"
           isDisabled={(id) => tierMaxIndex(id) <= fromIdx}
           onChange={(id) => {
             const t = cfg.tiers.find((x) => x.id === id)!;
@@ -357,6 +437,7 @@ function RankControls({ cfg, sel, set }: { cfg: RankConfig; sel: Sel; set: (p: S
           }}
         />
         <DivisionPicker
+          label="Desired rank"
           count={toTierObj?.divisions ?? 0}
           labels={cfg.divisionLabels}
           value={toDivision}
@@ -370,10 +451,26 @@ function RankControls({ cfg, sel, set }: { cfg: RankConfig; sel: Sel; set: (p: S
 
 function WinsControls({ cfg, sel, set }: { cfg: WinsConfig; sel: Sel; set: (p: Sel) => void }) {
   const count = Number(sel.count ?? cfg.defaultCount);
+  const tier = cfg.tiers.find((t) => t.id === sel.tier);
+  const division = Number(sel.division ?? 0);
+  const tierId = useId();
   return (
     <>
-      <Panel title={cfg.tierLabel}>
-        <TierPicker tiers={cfg.tiers} value={sel.tier as string} tag="P1" cursor="#ff2e88" onChange={(id) => set({ tier: id })} />
+      <Panel title={cfg.tierLabel} titleId={tierId} aside={tier ? <span className="text-sm text-ink-3">{winsTierLabel(cfg, tier.id, division)}</span> : null}>
+        <TierPicker
+          tiers={cfg.tiers}
+          value={sel.tier as string}
+          labelledBy={tierId}
+          tag="P1"
+          onChange={(id) => {
+            const t = cfg.tiers.find((x) => x.id === id);
+            set({ tier: id, division: Math.min(division, Math.max(0, (t?.divisions ?? 1) - 1)) });
+          }}
+        />
+        {tier && tier.divisions > 0 ? (
+          <DivisionPicker label={cfg.tierLabel} count={tier.divisions} labels={cfg.divisionLabels} value={division} onChange={(d) => set({ division: d })} />
+        ) : null}
+        {tier?.lpInput ? <LpInput value={sel.currentLp} onChange={(n) => set({ currentLp: n })} /> : null}
       </Panel>
       <Panel title={`Number of ${cfg.unitLabelPlural}`}>
         <Stepper label={`How many ${cfg.unitLabelPlural}?`} value={count} min={cfg.min} max={cfg.max} onChange={(n) => set({ count: n })} suffix={count === 1 ? cfg.unitLabel : cfg.unitLabelPlural} />
@@ -393,7 +490,17 @@ function LevelControls({ cfg, sel, set }: { cfg: LevelConfig; sel: Sel; set: (p:
           <label htmlFor="cfg-subject" className="label">
             {cfg.notesLabel ?? cfg.subjectLabel}
           </label>
-          <input id="cfg-subject" className="field" maxLength={60} value={String(sel.notes ?? "")} onChange={(e) => set({ notes: e.target.value })} placeholder={cfg.subjectLabel} />
+          {cfg.subjectOptions.length ? (
+            <select id="cfg-subject" className="field" value={String(sel.notes ?? "")} onChange={(e) => set({ notes: e.target.value })}>
+              {cfg.subjectOptions.map((o) => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <input id="cfg-subject" className="field" maxLength={60} value={String(sel.notes ?? "")} onChange={(e) => set({ notes: e.target.value })} placeholder={cfg.subjectLabel} />
+          )}
         </div>
       ) : null}
       <div className="grid gap-6 sm:grid-cols-2">
@@ -419,8 +526,8 @@ function HoursControls({ cfg, sel, set }: { cfg: HoursConfig; sel: Sel; set: (p:
                 data-active={active}
                 onClick={() => set({ rate: r.id })}
                 className={cn(
-                  "cursor-frame rounded-[12px] border p-4 text-left transition-colors [--cursor:var(--color-p2)]",
-                  active ? "border-cab-5 bg-cab-3" : "border-cab-4 hover:bg-cab-3",
+                  "cursor-frame rounded-[12px] border p-4 text-left transition-colors",
+                  active ? "border-transparent" : "border-cab-4 hover:bg-cab-3",
                 )}
               >
                 <p className="font-medium text-ink">{r.label}</p>
@@ -454,7 +561,7 @@ function FixedControls({ cfg, sel, set }: { cfg: FixedConfig; sel: Sel; set: (p:
               aria-pressed={active}
               data-active={active}
               onClick={() => set({ package: p.id })}
-              className={cn("cursor-frame rounded-[12px] border p-4 text-left [--cursor:var(--color-p2)]", active ? "border-cab-5 bg-cab-3" : "border-cab-4 hover:bg-cab-3")}
+              className={cn("cursor-frame rounded-[12px] border p-4 text-left", active ? "border-transparent" : "border-cab-4 hover:bg-cab-3")}
             >
               <p className="font-medium text-ink">{p.label}</p>
               {p.description ? <p className="mt-1 text-[0.8125rem] text-ink-3">{p.description}</p> : null}
@@ -473,7 +580,14 @@ function CommonControls({
   set,
   calculator,
 }: {
-  cfg: { servers: MultiplierOption[]; queues: MultiplierOption[]; modes: MultiplierOption[]; addons: Addon[]; notesLabel?: string };
+  cfg: {
+    servers: MultiplierOption[];
+    queues: MultiplierOption[];
+    modes: MultiplierOption[];
+    addons: Addon[];
+    notesLabel?: string;
+    optionGroups: { id: string; label: string; options: MultiplierOption[] }[];
+  };
   sel: Sel;
   set: (p: Sel) => void;
   calculator: CalculatorKind;
@@ -482,12 +596,22 @@ function CommonControls({
   const chosen = new Set((sel.addons as string[] | undefined) ?? []);
   const addons = cfg.addons.filter((a) => !a.modes.length || !mode || a.modes.includes(mode));
   const showNotes = cfg.notesLabel && !(calculator === "LEVEL");
+  // Tier that prices per-tier extras: the goal for rank boosts, the chosen rank otherwise.
+  const tierCtx = calculator === "RANK" ? String(sel.toTier ?? "") : String(sel.tier ?? "");
+  const opts = (sel.opts as Record<string, string> | undefined) ?? {};
   return (
     <>
-      <Panel title="Server & queue">
+      <Panel title={cfg.queues.length > 1 ? "Server & queue" : cfg.optionGroups.length ? "Server & options" : "Server"}>
         <div className="grid gap-4 sm:grid-cols-2">
           <Select label="Server" value={sel.server as string} options={cfg.servers} onChange={(v) => set({ server: v })} />
           {cfg.queues.length > 1 ? <Segmented label="Queue" value={(sel.queue as string) ?? cfg.queues[0].id} options={cfg.queues} onChange={(v) => set({ queue: v })} /> : null}
+          {cfg.optionGroups.map((g) =>
+            g.options.length <= 4 ? (
+              <Segmented key={g.id} label={g.label} value={opts[g.id] ?? g.options[0].id} options={g.options} onChange={(v) => set({ opts: { ...opts, [g.id]: v } })} />
+            ) : (
+              <Select key={g.id} label={g.label} value={opts[g.id] ?? g.options[0].id} options={g.options} onChange={(v) => set({ opts: { ...opts, [g.id]: v } })} />
+            ),
+          )}
         </div>
       </Panel>
       {(addons.length > 0 || showNotes) && (
@@ -495,20 +619,23 @@ function CommonControls({
           {addons.length > 0 && (
             <ul className="grid gap-2 sm:grid-cols-2">
               {addons.map((a) => {
-                const on = chosen.has(a.id);
-                const price = a.pct ? `+${a.pct}%` : a.flat ? `+${formatMoney(a.flat)}` : "Free";
+                const on = a.included || chosen.has(a.id);
+                const pct = addonPct(a, tierCtx);
+                const price = a.included ? "Included" : pct ? `+${pct}%` : a.flat ? `+${formatMoney(a.flat)}` : "Free";
                 return (
                   <li key={a.id}>
                     <label
                       className={cn(
-                        "flex h-full cursor-pointer items-start gap-3 rounded-[12px] border p-3.5 transition-colors",
-                        on ? "border-phosphor-dim/60 bg-[rgb(92_242_214/0.06)]" : "border-cab-4 hover:bg-cab-3",
+                        "flex h-full items-start gap-3 rounded-[12px] border p-3.5 transition-colors",
+                        a.included ? "cursor-default" : "cursor-pointer",
+                        on ? "border-phosphor-dim/60 bg-[rgb(255_46_136/0.06)]" : "border-cab-4 hover:bg-cab-3",
                       )}
                     >
                       <input
                         type="checkbox"
-                        className="mt-0.5 size-4 shrink-0 accent-[#5cf2d6]"
+                        className="mt-0.5 size-4 shrink-0 accent-[#ff2e88]"
                         checked={on}
+                        disabled={a.included}
                         onChange={(e) => {
                           const next = new Set(chosen);
                           if (e.target.checked) next.add(a.id);
@@ -519,7 +646,7 @@ function CommonControls({
                       <span className="min-w-0 flex-1">
                         <span className="flex items-baseline justify-between gap-2">
                           <span className="text-sm font-medium text-ink">{a.label}</span>
-                          <span className={cn("shrink-0 font-pixel text-[0.6875rem] uppercase", price === "Free" ? "text-ok" : "text-ink-2")}>{price}</span>
+                          <span className={cn("shrink-0 font-pixel text-[0.6875rem] uppercase", price === "Free" || price === "Included" ? "text-ok" : "text-ink-2")}>{price}</span>
                         </span>
                         {a.description ? <span className="mt-0.5 block text-[0.8125rem] leading-snug text-ink-3">{a.description}</span> : null}
                       </span>
@@ -552,41 +679,55 @@ function CommonControls({
 
 // ───────────────────────── readout (the CRT) ─────────────────────────
 
-export function ModeButtons({ modes, value, onChange }: { modes: MultiplierOption[]; value: string; onChange: (id: string) => void }) {
+export function ModeButtons({
+  modes,
+  value,
+  onChange,
+  blocked,
+}: {
+  modes: MultiplierOption[];
+  value: string;
+  onChange: (id: string) => void;
+  blocked?: Map<string, string>;
+}) {
   if (modes.length < 2) return null;
+  const reason = blocked ? [...blocked.values()][0] : undefined;
   return (
-    <div className="grid grid-cols-2 gap-3" role="group" aria-label="Play mode">
-      {modes.map((m, i) => {
-        const active = value === m.id;
-        const color = i === 0 ? "p1" : "p2";
-        return (
-          <button
-            key={m.id}
-            type="button"
-            aria-pressed={active}
-            onClick={() => onChange(m.id)}
-            className={cn(
-              "flex items-center gap-3 rounded-[12px] border p-2.5 text-left transition-colors",
-              active ? "border-cab-5 bg-black/30" : "border-white/5 hover:bg-black/20",
-            )}
-          >
-            <span aria-hidden className={cn("relative grid size-11 shrink-0 place-items-center transition-[transform,filter]", active ? "translate-y-px" : "opacity-55 saturate-50")}>
-              <PixelCap
-                className={cn("absolute inset-0 size-full", active && (color === "p1" ? "drop-shadow-[0_0_10px_rgb(255_46_136/0.75)]" : "drop-shadow-[0_0_10px_rgb(47_107_255/0.75)]"))}
-                base={color === "p1" ? "#ff2e88" : "#2f6bff"}
-                light={color === "p1" ? "#ff9cc8" : "#9dbaff"}
-                dark={color === "p1" ? "#a80d52" : "#173bab"}
-                pressed={active}
-              />
-              <span className="relative font-pixel text-[0.625rem] text-white">{i + 1}P</span>
-            </span>
-            <span className="min-w-0">
-              <span className="block font-pixel text-xs text-ink uppercase">{m.label}</span>
-              {m.description ? <span className="block text-[0.75rem] leading-snug text-ink-3">{m.description}</span> : null}
-            </span>
-          </button>
-        );
-      })}
+    <div>
+      <div className="grid grid-cols-2 gap-2.5" role="group" aria-label="Play mode">
+        {modes.map((m, i) => {
+          const active = value === m.id;
+          const locked = blocked?.has(m.id) ?? false;
+          const Icon = i === 0 ? UserRound : UsersRound;
+          return (
+            <button
+              key={m.id}
+              type="button"
+              aria-pressed={active}
+              disabled={locked}
+              data-active={active}
+              title={locked ? blocked?.get(m.id) : undefined}
+              onClick={() => onChange(m.id)}
+              className={cn(
+                "cursor-frame flex items-start gap-2.5 rounded-[12px] border p-3 text-left",
+                active ? "border-transparent" : "border-white/[0.07] hover:bg-white/[0.03]",
+                locked && "cursor-not-allowed opacity-35 hover:bg-transparent",
+              )}
+            >
+              <Icon className={cn("mt-0.5 size-4 shrink-0", active ? "text-p1" : "text-ink-3")} aria-hidden />
+              <span className="min-w-0">
+                <span className="block font-pixel text-xs text-ink uppercase">{m.label}</span>
+                {locked ? (
+                  <span className="mt-0.5 block text-[0.75rem] leading-snug text-warn">Not available at this rank</span>
+                ) : m.description ? (
+                  <span className="mt-0.5 block text-[0.75rem] leading-snug text-ink-3">{m.description}</span>
+                ) : null}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      {reason ? <p className="mt-2 text-[0.75rem] leading-snug text-[#b3adbd]">{reason}</p> : null}
     </div>
   );
 }
@@ -594,12 +735,12 @@ export function ModeButtons({ modes, value, onChange }: { modes: MultiplierOptio
 function ScoreLine({ line }: { line: QuoteLine }) {
   return (
     <li key={`${line.key}:${line.amount}`} className="anim-flash -mx-2 flex items-baseline justify-between gap-3 rounded-[6px] px-2 py-1">
-      <span className="min-w-0 text-[0.8125rem] text-[#a9d9d0]">
+      <span className="min-w-0 text-[0.8125rem] text-[#c8c3d0]">
         {line.label}
-        {line.detail ? <span className="text-phosphor-dim"> · {line.detail}</span> : null}
+        {line.detail && line.detail !== "Included" ? <span className="text-phosphor-dim"> · {line.detail}</span> : null}
       </span>
-      <span className={cn("shrink-0 text-sm tnum", line.amount === null ? "text-ok" : line.amount < 0 ? "text-phosphor" : "text-[#d8fff7]")}>
-        {line.amount === null ? "Free" : `${line.amount < 0 ? "−" : line.key === "base" ? "" : "+"}${formatMoney(Math.abs(line.amount))}`}
+      <span className={cn("shrink-0 text-sm tnum", line.amount === null ? "text-ok" : line.amount < 0 ? "text-phosphor" : "text-[#ffffff]")}>
+        {line.amount === null ? (line.detail === "Included" ? "Included" : "Free") : `${line.amount < 0 ? "−" : line.key === "base" ? "" : "+"}${formatMoney(Math.abs(line.amount))}`}
       </span>
     </li>
   );
@@ -632,19 +773,44 @@ export function Readout({
 
   const returnTo = `${service.path}?s=${encodeURIComponent(JSON.stringify(sel))}`;
   const rank = service.calculator === "RANK" ? (cfg as unknown as RankConfig) : null;
+  const wins = service.calculator === "WINS" ? (cfg as unknown as WinsConfig) : null;
+  const winsTier = wins?.tiers.find((t) => t.id === sel.tier);
+  const blocked = blockedModes(service.calculator, service.config, sel);
 
   return (
     <div className={bare ? "" : "crt p-5 sm:p-6"}>
       {rank ? (
         <div className="mb-5 flex items-center justify-between gap-2">
-          <CrestBadge tier={String(sel.fromTier)} label={rankLabel(rank, String(sel.fromTier), Number(sel.fromDivision ?? 0))} />
-          <svg viewBox="0 0 24 8" className="h-3 w-12 shrink-0 text-phosphor" shapeRendering="crispEdges" aria-hidden>
-            <path fill="currentColor" d="M0 3h4v2H0zM6 3h4v2H6zM12 3h4v2h-4zM18 1h2v2h2v2h-2v2h-2z" />
-          </svg>
-          <CrestBadge tier={String(sel.toTier)} label={rankLabel(rank, String(sel.toTier), Number(sel.toDivision ?? 0))} />
+          <CrestBadge
+            tier={String(sel.fromTier)}
+            image={rank.tiers.find((t) => t.id === sel.fromTier)?.image}
+            label={rankLabel(rank, String(sel.fromTier), Number(sel.fromDivision ?? 0))}
+          />
+          <span className="flex shrink-0 text-p1" aria-hidden>
+            <ChevronRight className="-mr-2.5 size-5 opacity-40" />
+            <ChevronRight className="-mr-2.5 size-5 opacity-70" />
+            <ChevronRight className="size-5" />
+          </span>
+          <CrestBadge tier={String(sel.toTier)} image={rank.tiers.find((t) => t.id === sel.toTier)?.image} label={rankLabel(rank, String(sel.toTier), Number(sel.toDivision ?? 0))} />
+        </div>
+      ) : wins && winsTier ? (
+        <div className="mb-5 flex items-center justify-between gap-2">
+          {winsTier.image || KNOWN_TIERS.has(winsTier.id) ? (
+            <CrestBadge tier={winsTier.id} image={winsTier.image} label={winsTierLabel(wins, winsTier.id, Number(sel.division ?? 0))} />
+          ) : (
+            <p className="t-display text-3xl text-[#ffffff] uppercase">{winsTier.name}</p>
+          )}
+          <span className="flex shrink-0 text-p1" aria-hidden>
+            <ChevronRight className="-mr-2.5 size-5 opacity-40" />
+            <ChevronRight className="-mr-2.5 size-5 opacity-70" />
+            <ChevronRight className="size-5" />
+          </span>
+          <p className="t-display t-phosphor text-right text-4xl leading-none uppercase">
+            {Number(sel.count ?? wins.defaultCount)} {Number(sel.count ?? wins.defaultCount) === 1 ? wins.unitLabel : wins.unitLabelPlural}
+          </p>
         </div>
       ) : (
-        <p className="t-display mb-4 text-3xl text-[#d8fff7] uppercase">{service.name}</p>
+        <p className="t-display mb-4 text-3xl text-[#ffffff] uppercase">{service.name}</p>
       )}
 
       {result.ok ? (
@@ -659,22 +825,22 @@ export function Readout({
 
       <div className="mt-4 flex items-end justify-between gap-3">
         <div>
-          <p className="font-pixel text-[0.6875rem] text-phosphor-dim uppercase">Total</p>
-          <p className="t-display t-phosphor text-[3.4rem] leading-none tnum" aria-live="polite">
+          <p className="font-pixel text-[0.6875rem] text-phosphor uppercase">Total</p>
+          <p className="t-display t-phosphor mt-1 text-[2.9rem] leading-none tnum" aria-live="polite">
             {formatMoney(shown)}
           </p>
         </div>
         {result.ok ? (
           <div className="text-right">
-            <p className="font-pixel text-[0.6875rem] text-phosphor-dim uppercase">Stage time</p>
-            <p className="t-display text-2xl text-[#d8fff7]">{formatEta(result.quote.etaHours)}</p>
+            <p className="font-pixel text-[0.6875rem] text-phosphor uppercase">Estimated time</p>
+            <p className="t-display mt-1 text-xl text-[#ffffff]">{formatEta(result.quote.etaHours)}</p>
           </div>
         ) : null}
       </div>
 
       {cfg.modes.length > 1 ? (
         <div className="mt-5">
-          <ModeButtons modes={cfg.modes} value={String(sel.mode ?? cfg.modes[0].id)} onChange={(id) => set({ mode: id })} />
+          <ModeButtons modes={cfg.modes} value={String(sel.mode ?? cfg.modes[0].id)} onChange={(id) => set({ mode: id })} blocked={blocked} />
         </div>
       ) : null}
 
@@ -685,8 +851,8 @@ export function Readout({
         <CoinSubmit disabled={!result.ok} />
       </form>
 
-      <p className="mt-4 flex items-start gap-2.5 text-[0.8125rem] leading-snug text-[#9fcfc6]">
-        <PixelShield className="mt-0.5 h-4 w-4 shrink-0" />
+      <p className="mt-4 flex items-start gap-2.5 text-[0.8125rem] leading-snug text-[#b3adbd]">
+        <ShieldCheck className="mt-px size-4 shrink-0 text-p1" aria-hidden />
         Paid into escrow. Your booster is paid only after you confirm the job is done.
       </p>
       {!compact ? <p className="mt-2 text-[0.75rem] text-phosphor-dim">Discount codes are applied at checkout.</p> : null}
@@ -697,9 +863,10 @@ export function Readout({
 function CoinSubmit({ disabled, compact = false }: { disabled: boolean; compact?: boolean }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={disabled || pending} className={cn("btn btn-coin", compact ? "h-12 px-4" : "btn-lg w-full")}>
-      <PixelCoinSlot className="h-5 w-5 shrink-0" />
-      {pending ? "Loading…" : compact ? "Insert coin" : "Insert coin · Buy boost"}
+    <button type="submit" disabled={disabled || pending} className={cn("btn btn-coin gap-3", compact ? "h-12 px-4" : "btn-lg w-full px-6")}>
+      <CoinSlotIcon className="size-5 shrink-0" />
+      <span>{pending ? "Loading…" : compact ? "Insert coin" : "Insert coin · Buy boost"}</span>
+      {compact ? null : <ChevronRight className="ml-auto size-5 shrink-0" aria-hidden />}
     </button>
   );
 }
@@ -717,27 +884,35 @@ export function CoinBar({ service, sel, result }: { service: ConfiguratorService
   return (
     <form
       action={formAction}
-      className="sticky bottom-3 z-30 mt-5 flex items-center justify-between gap-3 rounded-[14px] border border-black bg-[#071718] py-2 pr-2 pl-4 shadow-[0_0_0_1px_rgb(92_242_214/0.12),0_14px_30px_-10px_rgb(0_0_0/0.95)] lg:hidden"
+      className="total-bar sticky bottom-3 z-30 mt-5 flex items-center justify-between gap-3 rounded-[14px] py-2 pr-3 pl-3.5 lg:hidden"
     >
       <input type="hidden" name="serviceId" value={service.id} />
       <input type="hidden" name="selection" value={JSON.stringify(sel)} />
       <input type="hidden" name="returnTo" value={`${service.path}?s=${encodeURIComponent(JSON.stringify(sel))}`} />
-      <div className="min-w-0">
-        <p className="font-pixel text-[0.625rem] text-phosphor-dim uppercase">{result.ok ? `Total · ${formatEta(result.quote.etaHours)}` : "Check your options"}</p>
-        <p className="t-display t-phosphor text-[2rem] leading-none tnum" aria-live="polite">
-          {formatMoney(shown)}
-        </p>
+      <div className="flex min-w-0 items-center gap-2.5">
+        <CoinStack className="size-7 shrink-0 text-p1 max-[359px]:hidden" />
+        <div className="min-w-0">
+          <p className="truncate font-pixel text-[0.625rem] text-phosphor uppercase">{result.ok ? `Total · ${formatEta(result.quote.etaHours)}` : "Check your options"}</p>
+          <p className="t-display mt-0.5 text-[1.75rem] leading-none text-white tnum" aria-live="polite">
+            {formatMoney(shown)}
+          </p>
+        </div>
       </div>
       <CoinSubmit disabled={!result.ok} compact />
     </form>
   );
 }
 
-function CrestBadge({ tier, label }: { tier: string; label: string }) {
+function CrestBadge({ tier, label, image }: { tier: string; label: string; image?: string }) {
   const tint = tierTint(tier);
   return (
     <div className="flex min-w-0 flex-col items-center gap-1.5 text-center">
-      <RankCrest tier={tier} className="h-16 w-16 drop-shadow-[0_6px_14px_rgb(0_0_0/0.6)]" />
+      {image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={image} alt="" className="h-16 w-20 object-contain drop-shadow-[0_6px_14px_rgb(0_0_0/0.6)]" />
+      ) : (
+        <RankCrest tier={tier} className="h-16 w-16 drop-shadow-[0_6px_14px_rgb(0_0_0/0.6)]" />
+      )}
       <span className="max-w-[9rem] truncate font-pixel text-[0.6875rem] uppercase" style={{ color: tint.h }}>
         {label}
       </span>

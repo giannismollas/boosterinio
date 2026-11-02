@@ -112,6 +112,18 @@ export function ratingOf(sum: number, count: number) {
   return count > 0 ? Math.round((sum / count) * 10) / 10 : null;
 }
 
+/** Average stars as a share of five ("98.4"), or null without reviews. */
+export function ratingPercent(sum: number, count: number) {
+  if (count <= 0) return null;
+  const pct = (sum / count / 5) * 100;
+  return pct >= 99.95 ? "100" : pct.toFixed(1).replace(/\.0$/, "");
+}
+
+/** Seen within the last ten minutes. */
+export function isOnline(lastSeenAt: Date | string | null | undefined) {
+  return !!lastSeenAt && Date.now() - new Date(lastSeenAt).getTime() < 10 * 60_000;
+}
+
 /** Reads a positive integer page number from a search param. */
 export function pageParam(v: string | string[] | undefined) {
   const n = Number(Array.isArray(v) ? v[0] : v);

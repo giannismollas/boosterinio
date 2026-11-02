@@ -1,8 +1,45 @@
-import { PixelArt } from "./pixel";
+import type { SVGProps } from "react";
+
+/**
+ * Renders a pixel map (array of equal-length strings) as crisp SVG rects,
+ * merging horizontal runs. Characters missing from `palette` (and ".") are empty.
+ */
+function PixelArt({
+  map,
+  palette,
+  title,
+  ...props
+}: { map: readonly string[]; palette: Record<string, string>; title?: string } & SVGProps<SVGSVGElement>) {
+  const h = map.length;
+  const w = map[0]?.length ?? 0;
+  const rects: React.ReactNode[] = [];
+  map.forEach((row, y) => {
+    let x = 0;
+    while (x < w) {
+      const ch = row[x];
+      const fill = palette[ch];
+      if (!fill) {
+        x++;
+        continue;
+      }
+      let len = 1;
+      while (x + len < w && row[x + len] === ch) len++;
+      rects.push(<rect key={`${x}.${y}`} x={x} y={y} width={len} height={1} fill={fill} />);
+      x += len;
+    }
+  });
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} shapeRendering="crispEdges" role={title ? "img" : undefined} aria-hidden={title ? undefined : true} {...props}>
+      {title ? <title>{title}</title> : null}
+      {rects}
+    </svg>
+  );
+}
 
 /*
-  Boosterinio's own pixel rank crests (not publisher artwork). One shield
-  silhouette, re-colored per tier; Platinum+ grow wings, Master+ wear a crown.
+  Fallback rank crests for tiers that have no emblem image yet (not publisher
+  artwork). One shield silhouette, re-colored per tier; Platinum+ grow wings,
+  Master+ wear a crown.
 */
 
 const CREST = [
@@ -26,7 +63,7 @@ const CREST = [
 type Tint = { f: string; h: string; s: string; g: string; G: string; wings?: boolean; crown?: boolean };
 
 const TIERS: Record<string, Tint> = {
-  unranked: { f: "#403d39", h: "#5e5a55", s: "#2f2d2a", g: "#918c85", G: "#5e5a55" },
+  unranked: { f: "#393753", h: "#55526f", s: "#28273f", g: "#8e889a", G: "#55526f" },
   iron: { f: "#6b6670", h: "#8f8a94", s: "#4a4650", g: "#c9c3cd", G: "#7d7882" },
   bronze: { f: "#a0663e", h: "#c58a5c", s: "#6f4426", g: "#f0c49b", G: "#b07a52" },
   silver: { f: "#9aa7b4", h: "#c9d3dc", s: "#6b7785", g: "#ffffff", G: "#b0bcc8" },
@@ -59,7 +96,7 @@ export function RankCrest({
 }) {
   const t = tierTint(tier, index);
   const palette: Record<string, string> = {
-    o: "#0b0a09",
+    o: "#0b0b16",
     f: t.f,
     h: t.h,
     s: t.s,

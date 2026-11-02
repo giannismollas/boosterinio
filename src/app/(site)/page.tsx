@@ -1,10 +1,11 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Headset, ReceiptText, ShieldCheck, Swords, Zap } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { HeroConsole } from "@/components/boost/hero-console";
+import { RankBoard } from "@/components/boost/rank-board";
 import { GameTile } from "@/components/game-tile";
 import { JsonLd } from "@/components/json-ld";
 import { ListingCard, listingCardSelect } from "@/components/listing-card";
-import { PixelCursor } from "@/components/pixel";
+import { Slash } from "@/components/marks";
 import { Container, Faq, HouseRules, SectionHead } from "@/components/storefront";
 import { Avatar, Stars } from "@/components/ui";
 import { defaultSelection } from "@/lib/boosting/engine";
@@ -27,6 +28,14 @@ export async function generateMetadata() {
     absoluteTitle: true,
   });
 }
+
+// Truthful labels only: support is staffed during set hours, so no "24/7".
+const TRUST = [
+  { icon: ShieldCheck, label: "Secure Escrow" },
+  { icon: Zap, label: "Verified Boosters" },
+  { icon: ReceiptText, label: "Transparent Pricing" },
+  { icon: Headset, label: "Human Support" },
+];
 
 const FAQ = [
   {
@@ -86,26 +95,60 @@ export default async function HomePage() {
     <>
       <JsonLd data={[organizationLd(), websiteLd(), faqLd(FAQ)]} />
 
-      {/* Attract screen: the working configurator is the hero. */}
-      <section className="relative pt-4 pb-5 sm:pt-5">
-        <Container>
+      {/* Hero: the rank board is the first thing to touch. */}
+      <section className="relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+          <span className="streak top-[6%] left-[58%] w-[46%] -rotate-[28deg]" />
+          <span className="streak top-[30%] left-[66%] w-[40%] -rotate-[28deg] opacity-60" />
+          <span className="streak top-[2%] left-[30%] w-[30%] -rotate-[28deg] opacity-40" />
+          <Image
+            src="/images/brand/b-plate-v2.webp"
+            alt=""
+            width={1100}
+            height={1000}
+            priority
+            sizes="360px"
+            className="absolute top-0 right-[max(0.5rem,calc((100vw-1320px)/2+0.5rem))] h-[clamp(250px,24vw,340px)] w-auto max-lg:hidden"
+          />
+        </div>
+        <Container className="pt-6 pb-6 sm:pt-8">
           {service && initial ? (
-            <div className="grid lg:grid-cols-[52px_minmax(0,1fr)_52px] xl:grid-cols-[72px_minmax(0,1fr)_72px]">
-              <div className="side-art h-5 rounded-t-[16px] lg:h-auto lg:rounded-t-none lg:rounded-l-[22px]" aria-hidden />
-              <HeroConsole
-              service={{ id: service.id, name: service.name, calculator: "RANK", config: service.config, path: "/league-of-legends/boosting/rank-boost" }}
-              initial={initial}
-              title="LoL boosting, priced to the coin"
-              intro="Pick your rank and your goal, and see every part of the price before you pay. An approved high-elo booster plays; your money waits in escrow until you confirm the climb."
-              />
-              <div className="side-art h-5 rounded-b-[16px] lg:h-auto lg:rounded-b-none lg:rounded-r-[22px]" aria-hidden />
-            </div>
+            <>
+              <div className="max-w-[1000px]">
+                <p className="inline-flex items-center gap-2.5 rounded-[10px] border border-p1/60 bg-[#13122a]/85 py-1.5 pr-3.5 pl-2 shadow-[0_0_20px_-8px_rgb(255_46_136/0.8)]">
+                  <span className="grid size-6 place-items-center rounded-full border border-[#f2c45a]/70 bg-[#2a2010] text-[#f2c45a]" aria-hidden>
+                    <Swords className="size-3.5" />
+                  </span>
+                  <span className="t-display text-[0.9375rem] leading-none text-white">LoL Boosting</span>
+                </p>
+                <h1 className="t-display t-extrude mt-4 text-[clamp(2.1rem,10.4vw,3.4rem)] text-white sm:text-[clamp(2.6rem,6.4vw,4.6rem)]">
+                  LoL boosting,
+                  <br />
+                  priced <span className="whitespace-nowrap text-p1 [text-shadow:0_0_28px_rgb(255_46_136/0.45)]">to the coin</span>
+                </h1>
+                <p className="mt-4 max-w-[78ch] text-[1.0625rem] leading-relaxed text-ink-2">
+                  Pick your rank and your goal, and see every part of the price before you pay. An approved high-elo booster plays; your money waits in escrow until
+                  you confirm the climb.
+                </p>
+              </div>
+              <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-3.5 md:grid-cols-4 md:gap-0">
+                {TRUST.map((t) => (
+                  <li key={t.label} className="flex items-center gap-2.5 text-[0.9375rem] font-medium text-white md:justify-center md:first:justify-start md:[&+li]:border-l md:[&+li]:border-white/10">
+                    <t.icon className="size-5 shrink-0 text-p1 drop-shadow-[0_0_8px_rgb(255_46_136/0.6)]" aria-hidden />
+                    {t.label}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <RankBoard service={{ id: service.id, name: service.name, calculator: "RANK", config: service.config, path: "/league-of-legends/boosting/rank-boost" }} initial={initial} />
+              </div>
+            </>
           ) : (
             <div className="crt p-8">
-              <h1 className="t-display t-extrude text-6xl text-ink uppercase">{site.name}</h1>
-              <p className="mt-3 text-[#b9dcd5]">Boosting and game goods from approved players.</p>
+              <h1 className="t-display t-extrude text-6xl text-white">{site.name}</h1>
+              <p className="mt-3 text-ink-2">Boosting and game goods from approved players.</p>
               <Link href="/games" className="btn btn-coin btn-lg mt-6">
-                Browse games
+                <span>Browse games</span>
               </Link>
             </div>
           )}
@@ -113,7 +156,7 @@ export default async function HomePage() {
       </section>
 
       {/* Game select */}
-      <section aria-labelledby="games-h" className="pt-3 pb-12">
+      <section aria-labelledby="games-h" className="pt-10 pb-12">
         <Container>
           <SectionHead
             id="games-h"
@@ -150,7 +193,7 @@ export default async function HomePage() {
                 className="group panel-flat flex items-center justify-between gap-3 px-4 py-4 transition-colors hover:border-cab-5"
               >
                 <span className="flex items-center gap-2.5">
-                  <PixelCursor className="h-2.5 w-2.5 text-p1 opacity-40 transition-opacity group-hover:opacity-100" />
+                  <Slash className="h-3.5 w-1.5 text-p1 opacity-50 transition-opacity group-hover:opacity-100" />
                   <span className="font-medium text-ink">{CATEGORIES[key].label}</span>
                 </span>
                 <span className="t-display text-2xl text-ink-3 tnum">{countBy.get(key) ?? 0}</span>
@@ -196,7 +239,7 @@ export default async function HomePage() {
               { t: "Confirm and rate", b: "Reached your goal? Confirm the order to release payment, then leave a review." },
             ].map((s, i) => (
               <li key={s.t} className="bg-cab-2 p-6">
-                <p className="t-display text-4xl text-p1 uppercase">Stage {i + 1}</p>
+                <p className="t-display text-[2.6rem] text-p1 tnum">0{i + 1}</p>
                 <h3 className="mt-3 text-lg font-semibold text-ink">{s.t}</h3>
                 <p className="mt-1.5 leading-relaxed text-ink-2">{s.b}</p>
               </li>
@@ -232,7 +275,7 @@ export default async function HomePage() {
         <Container>
           <div className="panel grid items-center gap-8 overflow-hidden p-6 sm:p-10 lg:grid-cols-[1.3fr_1fr]">
             <div>
-              <h2 id="work-h" className="t-display text-[2.4rem] text-ink uppercase sm:text-5xl">
+              <h2 id="work-h" className="t-display text-[clamp(2rem,9vw,2.4rem)] text-ink uppercase sm:text-5xl">
                 Sell or boost on {site.name}
               </h2>
               <p className="mt-3 max-w-[56ch] leading-relaxed text-ink-2">
@@ -255,10 +298,9 @@ export default async function HomePage() {
                 { k: "Booster earns", v: `${settings.boosterPayoutPct}%` },
                 { k: "Escrow window", v: `${settings.autoCompleteHours} h` },
                 { k: "Minimum payout", v: formatMoney(settings.minPayoutCents).replace(/[.,]00$/, "") },
-                { k: "Payout methods", v: "PayPal · Bank · Crypto" },
               ].map((x) => (
                 <div key={x.k} className="flex items-baseline gap-3 border-b border-phosphor/10 py-2.5 last:border-b-0">
-                  <dt className="shrink-0 font-pixel text-[0.75rem] text-[#9fcfc6] uppercase">{x.k}</dt>
+                  <dt className="shrink-0 font-pixel text-[0.75rem] text-[#b3adbd] uppercase">{x.k}</dt>
                   <span className="min-w-4 flex-1 translate-y-[-3px] border-b-2 border-dotted border-phosphor/25" aria-hidden />
                   <dd className="t-display t-phosphor text-right text-[1.6rem] leading-none tnum">{x.v}</dd>
                 </div>

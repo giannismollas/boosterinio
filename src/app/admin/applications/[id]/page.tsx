@@ -157,11 +157,11 @@ export default async function AdminApplicationPage({ params }: { params: Promise
               <ActionForm action={approveApplicationAction} className="space-y-4">
                 <input type="hidden" name="id" value={profile.id} />
                 <label className="flex items-center gap-3 text-sm text-ink">
-                  <input type="checkbox" name="canSell" defaultChecked={defaultSell} className="size-4 accent-[#5cf2d6]" />
+                  <input type="checkbox" name="canSell" defaultChecked={defaultSell} className="size-4 accent-[#ff2e88]" />
                   Can list items for sale
                 </label>
                 <label className="flex items-center gap-3 text-sm text-ink">
-                  <input type="checkbox" name="canBoost" defaultChecked={defaultBoost} className="size-4 accent-[#5cf2d6]" />
+                  <input type="checkbox" name="canBoost" defaultChecked={defaultBoost} className="size-4 accent-[#ff2e88]" />
                   Can claim boosting orders
                 </label>
                 <div>

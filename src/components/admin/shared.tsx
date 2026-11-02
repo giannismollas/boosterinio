@@ -115,7 +115,7 @@ export function Thread({ messages, empty = "No messages yet." }: { messages: Thr
             >
               <p className="mb-1 flex flex-wrap items-center gap-x-2 text-[0.75rem] text-ink-3">
                 <span className="font-medium text-ink-2">{m.author ?? "Deleted user"}</span>
-                {m.internal ? <span className="text-warn">Internal note</span> : m.kind === "STAFF" ? <span className="text-[#86a8ff]">Staff</span> : null}
+                {m.internal ? <span className="text-warn">Internal note</span> : m.kind === "STAFF" ? <span className="text-[#ff7ab8]">Staff</span> : null}
                 <span>{formatDateTime(m.createdAt)}</span>
               </p>
               <p className="text-sm whitespace-pre-line text-ink">{m.body}</p>

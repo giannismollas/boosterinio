@@ -51,6 +51,7 @@ export default async function EditGamePage({ params }: { params: Promise<{ id: s
             imageUrl: game.imageUrl,
             categories: game.categories,
             currencyName: game.currencyName,
+            topupName: game.topupName,
             platforms: game.platforms,
             servers: game.servers,
             isActive: game.isActive,

@@ -11,6 +11,8 @@ import { formatMoney, parseMoney, randomCode, slugify } from "@/lib/utils";
 import { getGames } from "@/server/catalog";
 import { encrypt } from "@/server/crypto";
 import { db, Prisma } from "@/server/db";
+import { announceListing } from "@/server/follow";
+import { allowedImage } from "@/server/images";
 import { invalidate } from "@/server/memo";
 import { audit, notify } from "@/server/notify";
 import { claimBoostOrder, OrderError, type BoostOrderConfig } from "@/server/orders";
@@ -24,13 +26,6 @@ const text = (fd: FormData, key: string) => {
   const v = fd.get(key);
   return typeof v === "string" ? v : "";
 };
-
-/** Only images we stored ourselves (local uploads or the configured bucket). */
-function allowedImage(url: string) {
-  if (url.startsWith("/uploads/")) return /^\/uploads\/[a-z0-9/._-]+$/i.test(url) && !url.includes("..");
-  const pub = process.env.S3_PUBLIC_URL?.replace(/\/$/, "");
-  return !!pub && url.startsWith(`${pub}/`) && !/\s/.test(url);
-}
 
 async function uniqueSellerSlug(name: string) {
   const base = slugify(name) || `seller-${randomCode(4).toLowerCase()}`;
@@ -282,6 +277,7 @@ export async function saveListingAction(_: ActionState, fd: FormData): Promise<A
         },
       });
       await audit(profile.userId, "listing.create", "Listing", listing.id, { status: listing.status });
+      if (listing.status === "ACTIVE") await announceListing(listing.id);
       revalidateListing(game.slug, d.category, listing.slug, profile.slug);
       created.url = `/seller/listings?saved=${settings.requireListingApproval ? "review" : "live"}`;
       return ok("Listing saved.");
@@ -323,6 +319,7 @@ export async function saveListingAction(_: ActionState, fd: FormData): Promise<A
     });
 
     await audit(profile.userId, "listing.update", "Listing", existing.id, { status: updated.status, material });
+    if (updated.status === "ACTIVE") await announceListing(existing.id);
     revalidateListing(game.slug, d.category, existing.slug, profile.slug);
     revalidatePath(`/seller/listings/${existing.id}/edit`);
     if (updated.status === "PENDING" && existing.status !== "PENDING") return ok("Saved. Your changes go live after staff review.");
@@ -466,18 +463,20 @@ export async function saveStoreProfileAction(_: ActionState, fd: FormData): Prom
       return fail("Choose a payout method from the list.", { payoutMethod: "Choose a payout method from the list." });
     }
     const avatar = fd.getAll("avatar").map(String).find(allowedImage) ?? null;
+    const banner = fd.getAll("banner").map(String).find(allowedImage) ?? null;
     await db.sellerProfile.update({
       where: { id: profile.id },
       data: {
         displayName: d.displayName,
         bio: d.bio || null,
         avatarUrl: avatar,
+        bannerUrl: banner,
         payoutMethod: d.payoutMethod || null,
         payoutDetails: d.payoutDetails || null,
       },
     });
     revalidatePath("/seller/profile");
-    revalidatePath(sellerUrl(profile.slug));
+    revalidatePath(sellerUrl(profile.slug), "layout");
     invalidate("listings");
     return ok("Store profile saved.");
   });

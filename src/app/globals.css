@@ -1,38 +1,42 @@
 @import "tailwindcss";
 
 /*
-  Boosterinio — "Attract Mode" world.
-  Black cabinet laminate ground, CRT glass screens, lit push-button plates.
-  Marquee yellow is the one hot color: it marks the single live action on a screen.
+  Boosterinio: hot-pink esports.
+  Near-black ground with pink light streaks, white heavy italic display type,
+  dark hairline cards, one accent (hot pink) for actions, selection and highlights.
+  Class names are shared across storefront, dashboards and admin.
 */
 
 @theme {
-  --color-cab: #100f0e;
-  --color-cab-2: #181716;
-  --color-cab-3: #201f1d;
-  --color-cab-4: #2f2d2a;
-  --color-cab-5: #403d39;
-  --color-bezel: #050505;
+  --color-cab: #0b0b16;
+  --color-cab-2: #121222;
+  --color-cab-3: #19192c;
+  --color-cab-4: #28273f;
+  --color-cab-5: #393753;
 
-  --color-crt: #051315;
-  --color-crt-2: #0a2125;
-  --color-phosphor: #5cf2d6;
-  --color-phosphor-dim: #3cae9a;
+  /* card surfaces (formerly CRT glass) */
+  --color-crt: #10101e;
+  --color-crt-2: #17162a;
+  /* soft pink for small labels, links and readout accents */
+  --color-phosphor: #ff7ab8;
+  --color-phosphor-dim: #d46a9e;
 
-  --color-marquee: #ffd93b;
+  /* the accent: actions, selection, highlighted words. p1 is the bright pink for glows,
+     outlines, icons and pink text on dark; p2 is the deep pink for fills under white text
+     (white on p2 is 4.6:1, white on p1 only 3.5:1). */
   --color-p1: #ff2e88;
-  --color-p2: #2f6bff;
+  --color-p2: #e3126f;
 
-  --color-ink: #f5f3ef;
-  --color-ink-2: #b9b5ae;
-  --color-ink-3: #918c85;
+  --color-ink: #ffffff;
+  --color-ink-2: #c8c3d0;
+  --color-ink-3: #8e889a;
 
   --color-ok: #3be37a;
   --color-warn: #ffb547;
   --color-bad: #ff5a5a;
 
-  --font-display: var(--font-jersey), ui-monospace, monospace;
-  --font-pixel: var(--font-silkscreen), ui-monospace, monospace;
+  --font-display: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: var(--font-saira), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-rubik), ui-sans-serif, system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -52,27 +56,30 @@
     background-color: var(--color-cab);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01";
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    /* black cabinet laminate: a fleck grain you can actually see */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .96 0 0 0 0 .9 0 0 0 .085 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+    /* pink glow behind the top of the page */
+    background-image:
+      radial-gradient(60% 50% at 85% -10%, rgb(255 46 136 / 0.16), transparent 70%),
+      radial-gradient(40% 40% at 0% 0%, rgb(255 46 136 / 0.06), transparent 70%);
+    background-repeat: no-repeat;
+    background-size: 100% 900px;
   }
 
   ::selection {
-    background: var(--color-p1);
+    background: var(--color-p2);
     color: #fff;
   }
 
   input,
   textarea {
-    caret-color: var(--color-phosphor);
+    caret-color: var(--color-p1);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-phosphor);
+    outline: 2px solid var(--color-p1);
     outline-offset: 2px;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 
   a {
@@ -96,6 +103,13 @@
     background: var(--color-cab-5);
   }
 
+  /* A grid with no columns set (most layouts below their breakpoint) is one column that
+     never grows past its container, so a wide table or long word can't push the page sideways.
+     Any grid-cols-* utility overrides this (utilities sit in a later layer). */
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   h1,
   h2,
   h3 {
@@ -107,98 +121,114 @@
 }
 
 @layer components {
-  /* Display type: the marquee voice. */
+  /* Display type: wide, heavy italic uppercase (Saira at wdth 118). */
   .t-display {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    line-height: 0.92;
-  }
-
-  /* Arcade title extrusion (P1 then P2), used only on display headlines. */
-  .t-extrude {
-    text-shadow:
-      1px 1px 0 var(--color-p1),
-      2px 2px 0 var(--color-p1),
-      3px 3px 0 var(--color-p2),
-      4px 4px 0 var(--color-p2),
-      6px 8px 14px rgb(0 0 0 / 0.55);
-  }
-
-  .t-pixel {
-    font-family: var(--font-pixel);
+    font-weight: 800;
+    font-style: italic;
+    font-stretch: 118%;
+    letter-spacing: 0;
+    line-height: 0.95;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    overflow-wrap: break-word;
+  }
+
+  /* The wordmark: white heavy italic beside the pink B. */
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-style: italic;
+    font-stretch: 114%;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  /* Card-level label with a slanted pink bar in front: "/ YOUR RANK". */
+  .slash-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-style: italic;
+    font-stretch: 112%;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+  .slash-label::before {
+    content: "";
+    flex: none;
+    width: 0.24em;
+    height: 0.95em;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #ff74b6, var(--color-p1));
+    transform: skewX(-18deg);
+    box-shadow: 0 0 10px rgb(255 46 136 / 0.55);
+  }
+
+  /* Hero headline: a faint pink glow, nothing else. */
+  .t-extrude {
+    text-shadow: 0 0 32px rgb(255 46 136 / 0.18);
   }
 
   .tnum {
     font-variant-numeric: tabular-nums;
   }
 
-  /* Phosphor readout on CRT glass. */
+  /* Big readout numbers (prices, totals). */
   .t-phosphor {
-    color: var(--color-phosphor);
-    text-shadow: 0 0 10px rgb(92 242 214 / 0.45), 0 0 1px rgb(92 242 214 / 0.9);
+    color: #fff;
+    text-shadow: 0 0 22px rgb(255 46 136 / 0.35);
   }
 
-  /* The cabinet top: dark, so the marquee plate is the light source in it. */
+  /* Header bar with the light streak at its right edge. */
   .marquee {
     position: relative;
-    background:
-      radial-gradient(34% 190% at 15% 50%, rgb(255 46 136 / 0.26), transparent 70%),
-      linear-gradient(180deg, #1a1816 0%, #100f0e 100%);
-    border-bottom: 1px solid #000;
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.07);
+    background: linear-gradient(180deg, rgb(14 14 28 / 0.97) 0%, rgb(11 11 22 / 0.97) 100%);
+    border-bottom: 1px solid rgb(255 46 136 / 0.16);
   }
-  /* The plate's light spilling down onto the page. */
+  /* A soft pink glow rising behind the logo (no lines: they would cross the nav). */
   .marquee::after {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: 220px;
+    inset: 0;
     pointer-events: none;
-    background:
-      radial-gradient(30% 85% at 15% 0%, rgb(255 46 136 / 0.24), transparent 78%),
-      radial-gradient(55% 100% at 15% 0%, rgb(255 226 236 / 0.07), transparent 80%);
+    background: radial-gradient(28% 130% at 14% 100%, rgb(255 46 136 / 0.14), transparent 70%);
   }
-  /*
-    The marquee plate: translucent printed art (magenta to blue) lit from
-    behind by a tube, so the plate itself emits light. Saturated, but darker
-    than the yellow coin button, which stays the brightest thing on screen.
-  */
+  /* The lit plate behind the logo: a skewed panel from the left edge whose right
+     edge is a pink light line. Its width (--plate-w) is set per breakpoint in the header. */
   .marquee-plate {
-    position: relative;
-    padding: 6px 18px 7px 12px;
-    border-radius: 12px;
-    background:
-      radial-gradient(70% 140% at 45% 40%, rgb(255 214 233 / 0.55), transparent 62%),
-      linear-gradient(100deg, #ff2e88 0%, #d6227e 42%, #7a3df0 78%, #2f6bff 100%);
-    box-shadow:
-      0 0 0 2px #050505,
-      0 0 0 3px rgb(255 255 255 / 0.08),
-      0 0 26px 3px rgb(255 46 136 / 0.6),
-      0 0 70px 16px rgb(255 46 136 / 0.22),
-      inset 0 1px 0 rgb(255 255 255 / 0.55),
-      inset 0 -6px 14px rgb(40 0 30 / 0.35);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -48px;
+    width: var(--plate-w, 380px);
+    transform: skewX(-28deg);
+    transform-origin: bottom left;
+    background: linear-gradient(90deg, transparent 0%, rgb(255 46 136 / 0.04) 55%, rgb(255 46 136 / 0.13) 100%);
   }
-  .marquee-lit {
-    text-shadow:
-      2px 2px 0 #5c0a35,
-      3px 3px 0 #1a0410,
-      0 0 14px rgb(255 240 248 / 0.75);
+  .marquee-plate::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #ffc6e0, #ff2e88 60%, rgb(255 46 136 / 0.4));
+    box-shadow: 0 0 22px 2px rgb(255 46 136 / 0.65);
   }
 
-  /* Raised laminate panel. */
+  /* Dark hairline card. */
   .panel {
     position: relative;
-    background: linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 40%), var(--color-cab-2);
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 45%), var(--color-cab-2);
     border: 1px solid var(--color-cab-4);
     border-radius: 16px;
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.05),
-      0 24px 48px -28px rgb(0 0 0 / 0.85);
+    box-shadow: 0 24px 48px -30px rgb(0 0 0 / 0.9);
   }
 
   .panel-flat {
@@ -207,77 +237,59 @@
     border-radius: 14px;
   }
 
-  /* CRT screen inside its bezel. Content must sit above ::before/::after (z-10). */
+  /* Feature card: the rank board, readouts and totals. Pink-tinted edge. */
   .crt {
     position: relative;
     isolation: isolate;
     background:
-      radial-gradient(130% 120% at 50% 40%, var(--color-crt-2) 0%, var(--color-crt) 55%, #020a0b 100%);
-    border-radius: 26px;
-    border: 10px solid var(--color-bezel);
+      radial-gradient(90% 60% at 100% 0%, rgb(255 46 136 / 0.1), transparent 60%),
+      linear-gradient(160deg, var(--color-crt-2) 0%, var(--color-crt) 100%);
+    border: 1px solid rgb(255 46 136 / 0.22);
+    border-radius: 18px;
     box-shadow:
-      0 0 0 1px var(--color-cab-4),
-      inset 0 0 60px rgb(0 0 0 / 0.75),
-      inset 0 0 18px rgb(92 242 214 / 0.06),
-      0 40px 80px -40px rgb(0 0 0 / 0.9);
-    /* clip (not hidden): no scroll container, so sticky children pin to the viewport */
+      0 0 0 1px rgb(0 0 0 / 0.5),
+      inset 0 1px 0 rgb(255 255 255 / 0.04),
+      0 30px 60px -30px rgb(0 0 0 / 0.9);
+    /* clip (not hidden): sticky children still pin to the viewport */
     overflow: clip;
-  }
-  .crt::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      180deg,
-      rgb(92 242 214 / 0.035) 0px,
-      rgb(92 242 214 / 0.035) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-  }
-  .crt::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(155deg, rgb(255 255 255 / 0.055) 0%, transparent 32%);
-    border-radius: inherit;
   }
   .crt > * {
     position: relative;
     z-index: 1;
   }
 
-  /* Side-art: the cabinet's diagonal graphic bands. Magenta / blue / phosphor, never yellow. */
-  .side-art {
-    background-color: #0b0a09;
-    background-image: repeating-linear-gradient(
-      -58deg,
-      var(--color-p1) 0 18px,
-      transparent 18px 26px,
-      var(--color-p2) 26px 44px,
-      transparent 44px 52px,
-      var(--color-phosphor) 52px 58px,
-      transparent 58px 74px
-    );
-  }
-  .side-art-soft {
-    background: repeating-linear-gradient(
-      -62deg,
-      rgb(255 46 136 / 0.55) 0 10px,
-      transparent 10px 16px,
-      rgb(47 107 255 / 0.55) 16px 26px,
-      transparent 26px 32px,
-      rgb(92 242 214 / 0.45) 32px 36px,
-      transparent 36px 46px
-    );
+  /* The total bar under the rank board: dark plate, pink lit edge along the bottom. */
+  .total-bar {
+    background:
+      linear-gradient(118deg, transparent 0 47%, rgb(255 46 136 / 0.07) 47% 47.4%, transparent 47.4% 61%, rgb(255 46 136 / 0.05) 61% 61.3%, transparent 61.3%),
+      linear-gradient(180deg, #17162a 0%, #10101e 100%);
+    border: 1px solid rgb(255 46 136 / 0.24);
+    box-shadow:
+      inset 0 -1px 0 rgb(255 46 136 / 0.55),
+      -10px 10px 30px -18px rgb(255 46 136 / 0.65),
+      0 24px 40px -24px rgb(0 0 0 / 0.9);
   }
 
-  /* ── Buttons: illuminated arcade push-buttons ── */
+  /* A diagonal pink light streak (hero backdrop). Position and angle come from utilities. */
+  .streak {
+    position: absolute;
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    transform-origin: left center;
+    background: linear-gradient(90deg, transparent, rgb(255 46 136 / 0.8) 60%, #ffc6e0 88%, transparent);
+    box-shadow: 0 0 16px 1px rgb(255 46 136 / 0.45);
+  }
+
+  /* Pink light band (footer edge, dividers). */
+  .side-art {
+    background: linear-gradient(90deg, transparent, rgb(255 46 136 / 0.9) 30%, #ff4fa0 50%, rgb(255 46 136 / 0.9) 70%, transparent);
+  }
+  .side-art-soft {
+    background: linear-gradient(90deg, transparent, rgb(255 46 136 / 0.45), transparent);
+  }
+
+  /* ── Buttons ── */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -285,23 +297,25 @@
     gap: 0.5rem;
     height: 2.75rem;
     padding: 0 1.25rem;
-    border-radius: 11px;
-    font-family: var(--font-pixel);
-    font-size: 0.8125rem;
+    border-radius: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 105%;
+    font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     white-space: nowrap;
     user-select: none;
     transition:
       transform 120ms var(--ease-out-expo),
-      box-shadow 160ms var(--ease-out-expo),
+      box-shadow 180ms var(--ease-out-expo),
       background-color 160ms ease,
       border-color 160ms ease,
-      color 160ms ease;
+      color 160ms ease,
+      filter 160ms ease;
   }
   .btn:active:not(:disabled) {
     transform: translateY(1px);
-    filter: brightness(1.12);
   }
   .btn:disabled,
   .btn[aria-disabled="true"] {
@@ -311,83 +325,90 @@
   .btn-sm {
     height: 2.25rem;
     padding: 0 0.875rem;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     border-radius: 9px;
   }
   .btn-lg {
     height: 3.5rem;
     padding: 0 1.75rem;
-    font-size: 0.9375rem;
-    border-radius: 13px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+  /* Very narrow phones: long labels like "Create account to apply" must still fit. */
+  @media (max-width: 380px) {
+    .btn-lg {
+      padding: 0 1.125rem;
+      font-size: 0.9375rem;
+    }
   }
 
-  /*
-    Lit plates: a translucent plastic face lit from behind (gradient face and
-    emitted glow) sitting in a dark bezel with a soft offset shadow.
-  */
-  /* The live action: INSERT COIN. One per screen. */
+  /* The main action: slanted pink plate ("Insert coin", "Pay", "Save"). */
+  /* The slant lives on the plate (::before), so the label stays plain italic whatever it contains. */
   .btn-coin {
-    background: radial-gradient(120% 140% at 50% 0%, #fff1a6 0%, var(--color-marquee) 48%, #e9b900 100%);
-    color: #1d1600;
-    box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.6),
-      inset 0 1px 0 rgb(255 255 255 / 0.7),
-      0 0 22px -2px rgb(255 217 59 / 0.55),
-      0 10px 22px -10px rgb(0 0 0 / 0.8);
+    position: relative;
+    isolation: isolate;
+    color: #fff;
+    font-style: italic;
+    font-weight: 800;
   }
-  .btn-coin:hover:not(:disabled) {
+  .btn-coin::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transform: skewX(-10deg);
+    background: linear-gradient(90deg, var(--color-p2) 0%, #d40e69 55%, #c00b5e 100%);
     box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.6),
-      inset 0 1px 0 rgb(255 255 255 / 0.8),
-      0 0 34px 2px rgb(255 217 59 / 0.7),
-      0 10px 22px -10px rgb(0 0 0 / 0.8);
+      inset 0 1px 0 rgb(255 255 255 / 0.22),
+      0 0 0 1px rgb(255 46 136 / 0.55),
+      0 0 28px -4px rgb(255 46 136 / 0.7),
+      0 12px 24px -12px rgb(0 0 0 / 0.9);
+    transition: box-shadow 180ms var(--ease-out-expo);
+  }
+  .btn-coin:hover:not(:disabled)::before {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.28),
+      0 0 0 1px rgb(255 46 136 / 0.8),
+      0 0 40px 0 rgb(255 46 136 / 0.75),
+      0 12px 24px -12px rgb(0 0 0 / 0.9);
   }
 
+  /* Filled pink (secondary calls to action such as Create account). */
   .btn-p1 {
-    background: radial-gradient(120% 140% at 50% 0%, #ff8cc0 0%, var(--color-p1) 50%, #d81770 100%);
+    background: linear-gradient(180deg, var(--color-p2) 0%, #cf0d65 100%);
     color: #fff;
     box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.6),
-      inset 0 1px 0 rgb(255 255 255 / 0.45),
-      0 0 20px -4px rgb(255 46 136 / 0.6),
-      0 10px 22px -10px rgb(0 0 0 / 0.8);
-  }
-  .btn-p2 {
-    background: radial-gradient(120% 140% at 50% 0%, #8fb1ff 0%, var(--color-p2) 50%, #1f55e0 100%);
-    color: #fff;
-    box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.6),
-      inset 0 1px 0 rgb(255 255 255 / 0.4),
-      0 0 20px -4px rgb(47 107 255 / 0.6),
-      0 10px 22px -10px rgb(0 0 0 / 0.8);
+      inset 0 1px 0 rgb(255 255 255 / 0.2),
+      0 0 0 1px rgb(255 46 136 / 0.5),
+      0 0 20px -6px rgb(255 46 136 / 0.7);
   }
   .btn-p1:hover:not(:disabled) {
     box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.6),
-      inset 0 1px 0 rgb(255 255 255 / 0.5),
-      0 0 28px 0 rgb(255 46 136 / 0.7),
-      0 10px 22px -10px rgb(0 0 0 / 0.8);
-  }
-  .btn-p2:hover:not(:disabled) {
-    box-shadow:
-      0 0 0 1px rgb(0 0 0 / 0.6),
-      inset 0 1px 0 rgb(255 255 255 / 0.45),
-      0 0 28px 0 rgb(47 107 255 / 0.7),
-      0 10px 22px -10px rgb(0 0 0 / 0.8);
+      inset 0 1px 0 rgb(255 255 255 / 0.26),
+      0 0 0 1px rgb(255 46 136 / 0.8),
+      0 0 28px -4px rgb(255 46 136 / 0.8);
   }
 
-  /* Unlit plate. */
+  /* Pink-tinted selected state (tabs, segments, pagination). */
+  .btn-p2 {
+    background: rgb(255 46 136 / 0.16);
+    color: #fff;
+    border: 1px solid rgb(255 46 136 / 0.75);
+    box-shadow: 0 0 18px -6px rgb(255 46 136 / 0.6);
+  }
+  .btn-p2:hover:not(:disabled) {
+    background: rgb(255 46 136 / 0.24);
+  }
+
   .btn-ghost {
-    background: linear-gradient(180deg, #262422 0%, var(--color-cab-3) 100%);
+    background: var(--color-cab-3);
     color: var(--color-ink);
     border: 1px solid var(--color-cab-4);
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.06),
-      0 8px 16px -10px rgb(0 0 0 / 0.8);
   }
   .btn-ghost:hover:not(:disabled) {
-    border-color: var(--color-cab-5);
-    background: linear-gradient(180deg, #2c2a27 0%, #23211f 100%);
+    border-color: rgb(255 46 136 / 0.45);
+    background: #1f1e33;
   }
 
   .btn-danger {
@@ -399,21 +420,12 @@
     background: rgb(255 90 90 / 0.1);
   }
 
-  .btn-link {
-    height: auto;
-    padding: 0;
-    color: var(--color-phosphor);
-  }
-  .btn-link:hover {
-    text-decoration: underline;
-  }
-
   /* ── Form controls ── */
   .field {
     width: 100%;
     min-height: 2.75rem;
     padding: 0.625rem 0.875rem;
-    background: var(--color-cab-3);
+    background: #131324;
     color: var(--color-ink);
     border: 1px solid var(--color-cab-4);
     border-radius: 10px;
@@ -421,16 +433,15 @@
     transition: border-color 140ms ease, box-shadow 140ms ease;
   }
   .field::placeholder {
-    color: var(--color-ink-2);
-    opacity: 0.85;
+    color: var(--color-ink-3);
   }
   .field:hover {
     border-color: var(--color-cab-5);
   }
   .field:focus {
     outline: none;
-    border-color: var(--color-phosphor-dim);
-    box-shadow: 0 0 0 3px rgb(92 242 214 / 0.16);
+    border-color: rgb(255 46 136 / 0.7);
+    box-shadow: 0 0 0 3px rgb(255 46 136 / 0.16);
   }
   .field[aria-invalid="true"] {
     border-color: rgb(255 90 90 / 0.7);
@@ -438,7 +449,7 @@
   select.field {
     appearance: none;
     padding-right: 2.25rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' shape-rendering='crispEdges'%3E%3Cpath fill='%235cf2d6' d='M0 0h12v2H10v2H8v2H6v2H6V6H4V4H2V2H0z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23ff2e88' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.875rem center;
   }
@@ -456,18 +467,19 @@
     color: var(--color-ink-2);
   }
 
-  /* Status chip: small pixel label with a lamp. */
+  /* Status pill with a dot. */
   .chip {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
     height: 1.5rem;
-    padding: 0 0.5rem;
-    border-radius: 7px;
+    padding: 0 0.625rem;
+    border-radius: 999px;
     font-family: var(--font-pixel);
+    font-weight: 700;
     font-size: 0.6875rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     white-space: nowrap;
     background: var(--color-cab-3);
     border: 1px solid var(--color-cab-4);
@@ -477,6 +489,7 @@
     content: "";
     width: 6px;
     height: 6px;
+    border-radius: 999px;
     background: currentColor;
     box-shadow: 0 0 6px currentColor;
   }
@@ -484,43 +497,22 @@
     display: none;
   }
 
-  /* Pixel corner brackets: the select-screen cursor. */
+  /* Selectable tile: pink outline and glow when hovered or chosen. */
   .cursor-frame {
     position: relative;
+    transition:
+      box-shadow 160ms ease,
+      background-color 160ms ease;
   }
-  .cursor-frame::before,
-  .cursor-frame::after {
-    content: "";
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 3px solid var(--cursor, var(--color-p1));
-    opacity: 0;
-    transition: opacity 120ms ease, transform 160ms var(--ease-out-expo);
-    pointer-events: none;
+  .cursor-frame:hover,
+  .cursor-frame:focus-visible {
+    box-shadow: 0 0 0 1px rgb(255 46 136 / 0.45);
   }
-  .cursor-frame::before {
-    top: -5px;
-    left: -5px;
-    border-right: 0;
-    border-bottom: 0;
-    transform: translate(3px, 3px);
-  }
-  .cursor-frame::after {
-    bottom: -5px;
-    right: -5px;
-    border-left: 0;
-    border-top: 0;
-    transform: translate(-3px, -3px);
-  }
-  .cursor-frame:hover::before,
-  .cursor-frame:hover::after,
-  .cursor-frame:focus-visible::before,
-  .cursor-frame:focus-visible::after,
-  .cursor-frame[data-active="true"]::before,
-  .cursor-frame[data-active="true"]::after {
-    opacity: 1;
-    transform: translate(0, 0);
+  .cursor-frame[data-active="true"] {
+    box-shadow:
+      0 0 0 1.5px var(--cursor, var(--color-p1)),
+      0 0 22px -4px rgb(255 46 136 / 0.7);
+    background-color: rgb(255 46 136 / 0.07);
   }
 
   /* Data tables for dashboards. */
@@ -533,10 +525,10 @@
   .table th {
     text-align: left;
     font-family: var(--font-pixel);
+    font-weight: 700;
     font-size: 0.6875rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 400;
+    letter-spacing: 0.06em;
     color: var(--color-ink-3);
     padding: 0.625rem 0.875rem;
     border-bottom: 1px solid var(--color-cab-4);
@@ -544,11 +536,11 @@
   }
   .table td {
     padding: 0.75rem 0.875rem;
-    border-bottom: 1px solid rgb(47 45 42 / 0.6);
+    border-bottom: 1px solid rgb(40 39 63 / 0.6);
     vertical-align: middle;
   }
   .table tbody tr:hover td {
-    background: rgb(255 255 255 / 0.018);
+    background: rgb(255 46 136 / 0.03);
   }
   .table tbody tr:last-child td {
     border-bottom: 0;
@@ -562,11 +554,13 @@
   }
   .prose-cab h2 {
     font-family: var(--font-display);
-    font-size: 2rem;
-    line-height: 1;
+    font-weight: 800;
+    font-style: italic;
+    font-stretch: 112%;
+    font-size: 1.6rem;
+    line-height: 1.05;
     color: var(--color-ink);
     margin: 2.5rem 0 0.75rem;
-    letter-spacing: 0.02em;
     text-transform: uppercase;
   }
   .prose-cab > h2:first-child {
@@ -603,27 +597,32 @@
 }
 
 @layer utilities {
-  .pixelated {
-    image-rendering: pixelated;
-    shape-rendering: crispEdges;
+  /* Counters and codes set in the display face stay upright, but bold and a little wide. */
+  .font-display {
+    font-weight: 700;
+    font-stretch: 108%;
+  }
+  /* Small uppercase labels: Saira bold, tracked out. */
+  .font-pixel {
+    font-weight: 700;
+    letter-spacing: 0.07em;
   }
   .no-scrollbar {
     scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
   .hyphenate {
     hyphens: auto;
     -webkit-hyphens: auto;
     overflow-wrap: break-word;
   }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
 }
-
 
 @keyframes flash {
   from {
-    background-color: rgb(92 242 214 / 0.2);
+    background-color: rgb(255 46 136 / 0.2);
   }
   to {
     background-color: transparent;

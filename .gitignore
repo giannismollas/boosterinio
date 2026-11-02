@@ -15,7 +15,8 @@ next-env.d.ts
 .env*.local
 .env.production
 
-# uploads written in local-disk storage mode
+# uploads written in local-disk storage mode (UPLOAD_DIR, default ./uploads)
+/uploads/
 /public/uploads/
 
 # logs & os

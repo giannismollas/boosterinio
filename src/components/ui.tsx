@@ -11,7 +11,7 @@ const TONE_CLASS: Record<Tone, string> = {
   live: "text-phosphor",
   muted: "text-ink-3",
   p1: "text-p1",
-  p2: "text-[#86a8ff]",
+  p2: "text-phosphor",
 };
 
 export function StatusChip({ tone, children, className }: { tone: Tone; children: ReactNode; className?: string }) {
@@ -97,16 +97,16 @@ export function Pagination({ page, pageCount, href }: { page: number; pageCount:
   );
 }
 
-/** Pixel stars for ratings (0–5, halves rounded). */
+/** Rating stars (0–5, halves rounded). */
 export function Stars({ value, className }: { value: number; className?: string }) {
   const full = Math.round(value);
   return (
-    <span className={cn("inline-flex items-center gap-[3px]", className)} role="img" aria-label={`${value} out of 5`}>
+    <span className={cn("inline-flex items-center gap-0.5", className)} role="img" aria-label={`${value} out of 5`}>
       {Array.from({ length: 5 }, (_, i) => (
-        <svg key={i} viewBox="0 0 7 7" shapeRendering="crispEdges" className="h-3 w-3" aria-hidden>
+        <svg key={i} viewBox="0 0 24 24" className="size-3.5" aria-hidden>
           <path
-            d="M3 0h1v2h3v1H6v1H5v1h1v2H5V6H2v1H1V5h1V4H1V3H0V2h3z"
-            fill={i < full ? "#5cf2d6" : "#403d39"}
+            d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z"
+            fill={i < full ? "#ff2e88" : "#393753"}
           />
         </svg>
       ))}

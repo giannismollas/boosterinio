@@ -21,7 +21,7 @@ export function CheckoutForm({ number, total, providers }: { number: string; tot
               key={p.id}
               className={cn(
                 "flex cursor-pointer items-center gap-3.5 rounded-[12px] border p-4 transition-colors",
-                provider === p.id ? "border-phosphor-dim/70 bg-[rgb(92_242_214/0.06)]" : "border-cab-4 hover:bg-cab-3",
+                provider === p.id ? "border-phosphor-dim/70 bg-[rgb(255_46_136/0.06)]" : "border-cab-4 hover:bg-cab-3",
               )}
             >
               <input
@@ -30,7 +30,7 @@ export function CheckoutForm({ number, total, providers }: { number: string; tot
                 value={p.id}
                 checked={provider === p.id}
                 onChange={() => setProvider(p.id)}
-                className="size-4 accent-[#5cf2d6]"
+                className="size-4 accent-[#ff2e88]"
               />
               <span>
                 <span className="block font-medium text-ink">{p.label}</span>
@@ -41,7 +41,7 @@ export function CheckoutForm({ number, total, providers }: { number: string; tot
         </div>
       </fieldset>
       <label className="flex items-start gap-3 text-sm text-ink-2">
-        <input type="checkbox" name="terms" className="mt-0.5 size-4 shrink-0 accent-[#5cf2d6]" required />
+        <input type="checkbox" name="terms" className="mt-0.5 size-4 shrink-0 accent-[#ff2e88]" required />
         <span>
           I agree to the{" "}
           <Link href="/terms" className="text-phosphor underline-offset-4 hover:underline" target="_blank">

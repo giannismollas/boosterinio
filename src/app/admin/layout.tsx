@@ -65,7 +65,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   return (
     <div className="min-h-dvh lg:grid lg:grid-cols-[252px_minmax(0,1fr)]">
-      <aside className="border-b border-cab-4 bg-[#121110] lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:border-r lg:border-b-0">
+      <aside className="border-b border-cab-4 bg-[#0f0f1d] lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:border-r lg:border-b-0">
         <div className="flex h-16 items-center gap-2.5 px-5">
           <Link href="/admin" className="flex items-center gap-2.5" aria-label="Admin overview">
             <LogoMark className="h-7" />

@@ -49,6 +49,7 @@ const gameSchema = z.object({
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/, "Pick a color."),
   imageUrl: z.string().trim().max(500).optional(),
   currencyName: z.string().trim().max(30).optional(),
+  topupName: z.string().trim().max(30).optional(),
   sortOrder: z.coerce.number().int().min(0).max(100000),
   seoTitle: z.string().trim().max(80).optional(),
   seoDescription: z.string().trim().max(200).optional(),
@@ -69,6 +70,7 @@ export async function saveGameAction(_: ActionState, fd: FormData): Promise<Acti
       color: fd.get("color"),
       imageUrl: (fd.get("imageUrl") as string) || undefined,
       currencyName: (fd.get("currencyName") as string) || undefined,
+      topupName: (fd.get("topupName") as string) || undefined,
       sortOrder: fd.get("sortOrder") || 100,
       seoTitle: (fd.get("seoTitle") as string) || undefined,
       seoDescription: (fd.get("seoDescription") as string) || undefined,
@@ -93,6 +95,7 @@ export async function saveGameAction(_: ActionState, fd: FormData): Promise<Acti
       imageUrl: g.imageUrl ?? null,
       categories,
       currencyName: g.currencyName ?? null,
+      topupName: g.topupName ?? null,
       platforms: list(fd.get("platforms")),
       servers: list(fd.get("servers")),
       isActive: fd.get("isActive") === "on",
@@ -132,6 +135,12 @@ const serviceSchema = z.object({
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers and dashes."),
   tagline: z.string().trim().max(140).optional(),
   description: z.string().max(20000).optional(),
+  imageUrl: z
+    .string()
+    .trim()
+    .max(500)
+    .regex(/^(\/|https:\/\/)\S+$/, "Upload the image or use an https:// address.")
+    .optional(),
   calculator: z.enum(["RANK", "WINS", "LEVEL", "HOURS", "FIXED"]),
   sortOrder: z.coerce.number().int().min(0).max(100000),
   seoTitle: z.string().trim().max(80).optional(),
@@ -157,6 +166,7 @@ export async function saveServiceAction(_: ActionState, fd: FormData): Promise<A
       slug: String(fd.get("slug") ?? "").trim() || slugify(name),
       tagline: (fd.get("tagline") as string) || undefined,
       description: (fd.get("description") as string) || undefined,
+      imageUrl: (fd.get("imageUrl") as string) || undefined,
       calculator: fd.get("calculator"),
       sortOrder: fd.get("sortOrder") || 100,
       seoTitle: (fd.get("seoTitle") as string) || undefined,
@@ -203,6 +213,7 @@ export async function saveServiceAction(_: ActionState, fd: FormData): Promise<A
       slug: s.slug,
       tagline: s.tagline ?? null,
       description: s.description ?? null,
+      imageUrl: s.imageUrl ?? null,
       calculator: s.calculator,
       config: config.data as never,
       faq: faq.data as never,

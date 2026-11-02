@@ -70,7 +70,7 @@ export function SignUpForm({ next }: { next: string }) {
             {!state?.fieldErrors?.password ? <p className="mt-1.5 text-[0.8125rem] text-ink-3">At least 8 characters.</p> : null}
           </div>
           <label className="flex items-start gap-3 text-sm text-ink-2">
-            <input type="checkbox" name="terms" required className="mt-0.5 size-4 shrink-0 accent-[#5cf2d6]" />
+            <input type="checkbox" name="terms" required className="mt-0.5 size-4 shrink-0 accent-[#ff2e88]" />
             <span>
               I&apos;m 18 or older (or have permission from a parent) and agree to the{" "}
               <Link href="/terms" className="text-phosphor hover:underline" target="_blank">

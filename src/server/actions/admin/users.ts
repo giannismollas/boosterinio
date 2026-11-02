@@ -3,10 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { fail, guard, ok, type ActionState } from "@/lib/action";
+import { sellerUrl } from "@/lib/urls";
 import { formatMoney, parseMoney } from "@/lib/utils";
 import { db } from "@/server/db";
 import { invalidate } from "@/server/memo";
-import { audit } from "@/server/notify";
+import { audit, notify } from "@/server/notify";
 import { requireAdmin } from "@/server/session";
 import { adjustBalance, WalletError } from "@/server/wallet";
 
@@ -62,6 +63,31 @@ export async function banUserAction(_: ActionState, fd: FormData): Promise<Actio
     await audit(admin.id, "user.unban", "User", id);
     refresh(id);
     return ok("Ban lifted.");
+  });
+}
+
+/** The verified badge: granted by staff after checking identity and track record, separate from approval. */
+export async function setSellerVerifiedAction(_: ActionState, fd: FormData): Promise<ActionState> {
+  return guard(async () => {
+    const admin = await requireAdmin();
+    const { id, op } = z.object({ id: z.string().min(1), op: z.enum(["verify", "unverify"]) }).parse({ id: fd.get("id"), op: fd.get("op") });
+    const user = await db.user.findUnique({ where: { id }, select: { sellerProfile: { select: { id: true, slug: true, status: true, verified: true } } } });
+    const profile = user?.sellerProfile;
+    if (!profile) return fail("This user has no store.");
+    if (op === "verify") {
+      if (profile.status !== "APPROVED") return fail("Approve the seller before verifying them.");
+      if (profile.verified) return fail("This store is already verified.");
+      await db.sellerProfile.update({ where: { id: profile.id }, data: { verified: true, verifiedAt: new Date() } });
+      await notify(id, { title: "Your store is verified", body: "Buyers now see the verified badge next to your store name.", href: sellerUrl(profile.slug) });
+    } else {
+      if (!profile.verified) return fail("This store isn't verified.");
+      await db.sellerProfile.update({ where: { id: profile.id }, data: { verified: false, verifiedAt: null } });
+    }
+    await audit(admin.id, op === "verify" ? "seller.verify" : "seller.unverify", "SellerProfile", profile.id);
+    invalidate("listings");
+    revalidatePath(sellerUrl(profile.slug), "layout");
+    refresh(id);
+    return ok(op === "verify" ? "Store verified. The badge shows on its storefront and listings." : "Verified badge removed.");
   });
 }
 

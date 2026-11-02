@@ -103,7 +103,7 @@ export default async function SellerWalletPage({ searchParams }: { searchParams:
                 />
               </div>
               <label className="flex cursor-pointer items-center gap-2.5 text-sm text-ink-2">
-                <input type="checkbox" name="saveDefault" defaultChecked className="size-4 accent-[#2f6bff]" />
+                <input type="checkbox" name="saveDefault" defaultChecked className="size-4 accent-[#ff2e88]" />
                 Save as my default payout details
               </label>
               <SubmitButton className="btn-coin" pendingText="Requesting…" disabled={!canWithdraw}>

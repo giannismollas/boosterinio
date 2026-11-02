@@ -104,3 +104,18 @@ export const PAYOUT_METHODS = [
 ] as const;
 
 export type { Tone };
+
+/** Tab label for a category on a game page: "Riot Points" instead of "Top-Ups", "Gold" instead of "Currency". */
+export function categoryLabel(category: ListingCategoryKey, game: { currencyName?: string | null; topupName?: string | null }) {
+  if (category === "CURRENCY" && game.currencyName) return game.currencyName;
+  if (category === "TOPUP" && game.topupName) return game.topupName;
+  return CATEGORIES[category].label;
+}
+
+/** Abbreviations players actually use; anything else reads better spelled out. */
+const KNOWN_SHORT = new Set(["LoL", "TFT", "CS2", "WoW", "OW2", "GTA", "PoE", "PoE2", "OSRS", "RS3", "FFXIV", "GW2", "DBD", "MLBB", "EFT", "HSR", "ZZZ", "BDO", "R6", "COD"]);
+
+/** Name for headings: "LoL" for League of Legends, "Fortnite" rather than "FN". */
+export function gameHeadingName(game: { name: string; shortName: string | null }) {
+  return game.shortName && KNOWN_SHORT.has(game.shortName) ? game.shortName : game.name;
+}

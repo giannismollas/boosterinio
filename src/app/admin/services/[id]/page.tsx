@@ -80,6 +80,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ id
             name: service.name,
             slug: service.slug,
             tagline: service.tagline,
+            imageUrl: service.imageUrl,
             description: service.description,
             calculator: service.calculator,
             config: JSON.stringify(ordered(service.config), null, 2),
@@ -109,7 +110,7 @@ export default async function EditServicePage({ params }: { params: Promise<{ id
                 </ul>
                 <div className="mt-3 flex items-baseline justify-between border-t border-cab-4 pt-3">
                   <span className="text-sm text-ink-3">Total · {formatEta(quote.quote.etaHours)}</span>
-                  <Numeral className="text-[2.2rem] text-phosphor">{formatMoney(quote.quote.total)}</Numeral>
+                  <Numeral className="text-[2.4rem] text-phosphor">{formatMoney(quote.quote.total)}</Numeral>
                 </div>
               </>
             ) : (

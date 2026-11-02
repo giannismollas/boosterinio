@@ -17,14 +17,16 @@ Unresolved: real game artwork (owner may add licensed images per game); payment-
 
 ## Direction contract
 
-THESIS: Boosterinio is an arcade cabinet you play to rank up — lit marquee as header, CRT screen running the climb, control panel as checkout. It refuses the category default: dark page + one neon accent + champion splash art + icon-card grids.
+THESIS: Boosterinio is a hot-pink esports storefront: the climb is picked on a dark rank board and paid with one slanted pink "Insert coin" button. Pinned by the owner's reference image (replaces the arcade "Attract Mode" world).
 
-OWN-WORLD: Cabinet-black laminate ground with bold diagonal side-art stripes (P1 magenta, P2 blue, phosphor cyan) framing regions; content sits on CRT glass (teal-black, faint scanlines, phosphor-cyan readouts); convex push-buttons with colored caps; chunky pixel display face for marquee, scores and stage labels, a rounded humanist sans for reading. Marquee yellow is reserved for the single live action per screen.
+OWN-WORLD: near-black ground with diagonal pink light streaks and a large faint "B" watermark; one accent, hot pink (#ff2e88 → #e3126f gradient), for CTAs, selected states, tags and highlighted words; white heavy italic uppercase display type (Saira at width 118, matching the reference's wide letterforms), quiet grotesk body (Rubik); dark rounded cards with hairline borders; pills for badges; pink-outlined selection with P1 / GOAL tags; pink outline icons.
 
-STORY: The visitor watches the climb priced live, reads the house rules (approved boosters, escrow, human support), picks a game on the select screen, and inserts a coin.
+STORY: The visitor reads the promise (priced to the coin), the four trust signals, picks rank and goal on the board, sees the estimate and presses Insert coin.
 
-FIRST VIEWPORT: Marquee header (logo, category nav, sign-in). The CRT screen dominates: left, start → goal rank select tiles with P1 and GOAL cursors, server and queue switches; right, a score readout with itemized lines, 1P SOLO / 2P DUO buttons and the yellow INSERT COIN = Buy boost. Side-art stripes frame the screen; the game select strip begins at the fold.
+FIRST VIEWPORT: Header (pink B mark + white italic wordmark, Sign in, pink Create account). Hero: pill badge, two-line italic headline with "TO THE COIN" in pink, one-line subcopy, trust row of four icon labels with dividers, then the rank board card (YOUR RANK and GOAL grids of emblems with division pills) and a total bar: coin icon, TOTAL (EST.), price, slanted pink INSERT COIN.
 
-FORM: arcade cabinet attract mode — candidate 4 of 7 on the resonance list; seed key 73815c16. Raises: total coverage; one hot color; every number pinned at its source; calm instruments; change displaces visibly.
+FORM: owner-pinned reference image (no roll); code-led.
+
+PINNED EXCEPTION: the "LoL Boosting" pill above the hero headline is in the owner's reference image (2026-11-02, "make the brand and the whole design project like this"). It stays as the one sanctioned label-above-heading; don't repeat the pattern elsewhere.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

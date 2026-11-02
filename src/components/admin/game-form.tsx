@@ -16,6 +16,7 @@ export type GameFormValue = {
   imageUrl: string | null;
   categories: string[];
   currencyName: string | null;
+  topupName: string | null;
   platforms: string[];
   servers: string[];
   isActive: boolean;
@@ -79,7 +80,7 @@ export function GameForm({
                 Tile color
               </label>
               <div className="flex items-center gap-3">
-                <input id="g-color" type="color" name="color" defaultValue={game?.color ?? "#2f6bff"} className="h-11 w-16 cursor-pointer rounded-[10px] border border-cab-4 bg-cab-3 p-1" />
+                <input id="g-color" type="color" name="color" defaultValue={game?.color ?? "#ff2e88"} className="h-11 w-16 cursor-pointer rounded-[10px] border border-cab-4 bg-cab-3 p-1" />
                 <span className="text-[0.8125rem] text-ink-3">Tints the game&apos;s tile on the select screen.</span>
               </div>
               <FieldError state={state} name="color" />
@@ -105,7 +106,7 @@ export function GameForm({
               <div className="flex flex-wrap gap-2">
                 {CATEGORY_ORDER.map((c) => (
                   <label key={c} className="flex cursor-pointer items-center gap-2 rounded-[10px] border border-cab-4 bg-cab-3 px-3 py-2 text-sm text-ink has-[:checked]:border-phosphor-dim">
-                    <input type="checkbox" name="categories" value={c} defaultChecked={game ? game.categories.includes(c) : c === "ACCOUNT"} className="accent-[#5cf2d6]" />
+                    <input type="checkbox" name="categories" value={c} defaultChecked={game ? game.categories.includes(c) : c === "ACCOUNT"} className="accent-[#ff2e88]" />
                     {CATEGORIES[c].label}
                   </label>
                 ))}
@@ -113,9 +114,15 @@ export function GameForm({
             </fieldset>
             <div>
               <label htmlFor="g-currency" className="label">
-                In-game currency name
+                In-game currency name (Currency tab)
               </label>
-              <input id="g-currency" name="currencyName" defaultValue={game?.currencyName ?? ""} maxLength={30} placeholder="e.g. Gold, V-Bucks" className="field" />
+              <input id="g-currency" name="currencyName" defaultValue={game?.currencyName ?? ""} maxLength={30} placeholder="e.g. Gold, Robux" className="field" />
+            </div>
+            <div>
+              <label htmlFor="g-topup" className="label">
+                Premium currency name (Top-Ups tab)
+              </label>
+              <input id="g-topup" name="topupName" defaultValue={game?.topupName ?? ""} maxLength={30} placeholder="e.g. Riot Points, V-Bucks" className="field" />
             </div>
             <div>
               <label htmlFor="g-platforms" className="label">
@@ -136,15 +143,15 @@ export function GameForm({
             <h2 className="text-[0.9375rem] font-semibold text-ink md:col-span-2">Visibility &amp; SEO</h2>
             <div className="flex flex-col gap-3 md:col-span-2">
               <label className="flex items-center gap-3 text-sm text-ink">
-                <input type="checkbox" name="isActive" defaultChecked={game?.isActive ?? true} className="size-4 accent-[#5cf2d6]" />
+                <input type="checkbox" name="isActive" defaultChecked={game?.isActive ?? true} className="size-4 accent-[#ff2e88]" />
                 Visible on the site
               </label>
               <label className="flex items-center gap-3 text-sm text-ink">
-                <input type="checkbox" name="isFeatured" defaultChecked={game?.isFeatured ?? false} className="size-4 accent-[#5cf2d6]" />
+                <input type="checkbox" name="isFeatured" defaultChecked={game?.isFeatured ?? false} className="size-4 accent-[#ff2e88]" />
                 Featured on the home page
               </label>
               <label className="flex items-center gap-3 text-sm text-ink">
-                <input type="checkbox" name="boostingEnabled" defaultChecked={game?.boostingEnabled ?? false} className="size-4 accent-[#5cf2d6]" />
+                <input type="checkbox" name="boostingEnabled" defaultChecked={game?.boostingEnabled ?? false} className="size-4 accent-[#ff2e88]" />
                 Boosting is live (needs at least one active service)
               </label>
             </div>

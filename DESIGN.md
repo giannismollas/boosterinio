@@ -1,117 +1,259 @@
 ---
 name: Boosterinio
-description: Rank boosting and game goods sold from an arcade cabinet in attract mode.
+description: Rank boosting and game goods on a hot-pink esports storefront, priced to the coin.
 colors:
-  marquee: "#ffd93b"
   p1: "#ff2e88"
-  p2: "#2f6bff"
-  phosphor: "#5cf2d6"
-  phosphor-dim: "#3cae9a"
-  crt: "#051315"
-  crt-2: "#0a2125"
-  bezel: "#050505"
-  cab: "#100f0e"
-  cab-2: "#181716"
-  cab-3: "#201f1d"
-  cab-4: "#2f2d2a"
-  cab-5: "#403d39"
-  ink: "#f5f3ef"
-  ink-2: "#b9b5ae"
-  ink-3: "#918c85"
+  p2: "#e3126f"
+  p1-light: "#ff74b6"
+  p2-deep: "#c00b5e"
+  streak-core: "#ffc6e0"
+  phosphor: "#ff7ab8"
+  phosphor-dim: "#d46a9e"
+  cab: "#0b0b16"
+  crt: "#10101e"
+  cab-2: "#121222"
+  crt-2: "#17162a"
+  cab-3: "#19192c"
+  cab-hover: "#1f1e33"
+  cab-4: "#28273f"
+  cab-5: "#393753"
+  ink: "#ffffff"
+  ink-2: "#c8c3d0"
+  ink-note: "#b3adbd"
+  ink-3: "#8e889a"
   ok: "#3be37a"
   warn: "#ffb547"
   bad: "#ff5a5a"
 typography:
   display:
-    fontFamily: "'Jersey 10', ui-monospace, monospace"
-    fontSize: "3.7rem"
-    fontWeight: 400
-    lineHeight: 0.92
-    letterSpacing: "0.02em"
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.6rem, 6.4vw, 4.6rem)"
+    fontWeight: 800
+    lineHeight: 0.95
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  headline-lg:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "3.75rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
   headline:
-    fontFamily: "'Jersey 10', ui-monospace, monospace"
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
     fontSize: "3rem"
-    fontWeight: 400
+    fontWeight: 800
     lineHeight: 1
-    letterSpacing: "0.02em"
-  title:
-    fontFamily: "'Jersey 10', ui-monospace, monospace"
-    fontSize: "1.75rem"
-    fontWeight: 400
-    lineHeight: 0.92
-    letterSpacing: "0.02em"
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
   readout:
-    fontFamily: "'Jersey 10', ui-monospace, monospace"
-    fontSize: "3.4rem"
-    fontWeight: 400
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2.9rem"
+    fontWeight: 800
     lineHeight: 1
-    letterSpacing: "0.02em"
+    letterSpacing: "0"
     fontFeature: '"tnum"'
+    fontVariation: "'wdth' 118"
+  headline-sm:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2.6rem"
+    fontWeight: 800
+    lineHeight: 0.95
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  section-sm:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2.4rem"
+    fontWeight: 800
+    lineHeight: 0.95
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  stat:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2.25rem"
+    fontWeight: 800
+    lineHeight: 1.11
+    letterSpacing: "0"
+    fontFeature: '"tnum"'
+    fontVariation: "'wdth' 118"
+  headline-xs:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2.1rem"
+    fontWeight: 800
+    lineHeight: 1.05
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  title-xl:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "2rem"
+    fontWeight: 800
+    lineHeight: 0.95
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  title-lg:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.875rem"
+    fontWeight: 800
+    lineHeight: 1.2
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  title:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.75rem"
+    fontWeight: 800
+    lineHeight: 0.95
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  subhead:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.6rem"
+    fontWeight: 800
+    lineHeight: 1.05
+    letterSpacing: "0"
+    fontVariation: "'wdth' 112"
+  title-sm:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 800
+    lineHeight: 1.33
+    letterSpacing: "0"
+    fontVariation: "'wdth' 118"
+  card-label-lg:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.375rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.01em"
+    fontVariation: "'wdth' 112"
+  wordmark:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.6rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.01em"
+    fontVariation: "'wdth' 114"
+  wordmark-sm:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.3rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.01em"
+    fontVariation: "'wdth' 114"
+  card-label:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.01em"
+    fontVariation: "'wdth' 112"
+  button:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "0.05em"
+    fontVariation: "'wdth' 105"
+  legend:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: "0.07em"
+  label:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 700
+    lineHeight: 1.33
+    letterSpacing: "0.07em"
+  label-sm:
+    fontFamily: "Saira, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.625rem"
+    fontWeight: 700
+    lineHeight: 1.6
+    letterSpacing: "0.07em"
+  title-sans:
+    fontFamily: "Rubik, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+    lineHeight: 1.55
+  body-lg:
+    fontFamily: "Rubik, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 400
+    lineHeight: 1.625
   body:
     fontFamily: "Rubik, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.625
+  body-ui:
+    fontFamily: "Rubik, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 500
+    lineHeight: 1.5
   body-sm:
+    fontFamily: "Rubik, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.43
+  small:
     fontFamily: "Rubik, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.8125rem"
     fontWeight: 400
     lineHeight: 1.5
-  label:
-    fontFamily: "Silkscreen, ui-monospace, monospace"
-    fontSize: "0.6875rem"
+  caption:
+    fontFamily: "Rubik, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.75rem"
     fontWeight: 400
-    letterSpacing: "0.04em"
-  button:
-    fontFamily: "Silkscreen, ui-monospace, monospace"
-    fontSize: "0.8125rem"
-    fontWeight: 400
-    letterSpacing: "0.04em"
+    lineHeight: 1.375
 rounded:
+  bar: "2px"
   badge: "6px"
-  chip: "7px"
+  tag: "7px"
+  segment: "8px"
   control-sm: "9px"
-  field: "10px"
-  control: "11px"
+  control: "10px"
+  track: "11px"
   tile: "12px"
-  control-lg: "13px"
   card: "14px"
   panel: "16px"
-  screen: "26px"
+  feature: "18px"
+  avatar-lg: "24px"
+  pill: "999px"
 spacing:
   control-gap: "8px"
   tile-gap: "12px"
   gutter: "16px"
-  gutter-wide: "24px"
   panel: "20px"
-  panel-wide: "24px"
+  gutter-wide: "24px"
   heading: "28px"
   section: "48px"
+  footer: "96px"
 components:
   button-coin:
-    backgroundColor: "{colors.marquee}"
-    textColor: "#1d1600"
+    backgroundColor: "{colors.p2}"
+    textColor: "{colors.ink}"
     typography: "{typography.button}"
     rounded: "{rounded.control}"
     padding: "0 20px"
     height: "44px"
   button-coin-lg:
-    backgroundColor: "{colors.marquee}"
-    textColor: "#1d1600"
+    backgroundColor: "{colors.p2}"
+    textColor: "{colors.ink}"
     typography: "{typography.button}"
-    rounded: "{rounded.control-lg}"
+    rounded: "{rounded.tile}"
     padding: "0 28px"
     height: "56px"
-  button-p2:
+  button-fill:
     backgroundColor: "{colors.p2}"
-    textColor: "#ffffff"
+    textColor: "{colors.ink}"
     typography: "{typography.button}"
     rounded: "{rounded.control}"
     padding: "0 20px"
     height: "44px"
-  button-p1:
-    backgroundColor: "{colors.p1}"
-    textColor: "#ffffff"
+  button-selected:
+    backgroundColor: "rgb(255 46 136 / 0.16)"
+    textColor: "{colors.ink}"
     typography: "{typography.button}"
     rounded: "{rounded.control}"
     padding: "0 20px"
@@ -123,10 +265,9 @@ components:
     rounded: "{rounded.control}"
     padding: "0 20px"
     height: "44px"
-  button-sm:
-    rounded: "{rounded.control-sm}"
-    padding: "0 14px"
-    height: "36px"
+  button-ghost-hover:
+    backgroundColor: "{colors.cab-hover}"
+    textColor: "{colors.ink}"
   button-danger:
     backgroundColor: "transparent"
     textColor: "{colors.bad}"
@@ -134,18 +275,54 @@ components:
     rounded: "{rounded.control}"
     padding: "0 20px"
     height: "44px"
-  field:
+  button-sm:
+    rounded: "{rounded.control-sm}"
+    padding: "0 14px"
+    height: "36px"
+  division-pill:
     backgroundColor: "{colors.cab-3}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.field}"
+    rounded: "{rounded.segment}"
+    padding: "0 12px"
+    height: "32px"
+  division-pill-active:
+    backgroundColor: "{colors.p2}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.segment}"
+    padding: "0 12px"
+    height: "32px"
+  segment-active:
+    backgroundColor: "{colors.p2}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.segment}"
+    height: "36px"
+  select-tag:
+    backgroundColor: "{colors.p2}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label-sm}"
+    rounded: "{rounded.pill}"
+    padding: "0 8px"
+    height: "18px"
+  tier-tile-active:
+    backgroundColor: "rgb(255 46 136 / 0.07)"
+    textColor: "{colors.ink}"
+    typography: "{typography.small}"
+    rounded: "{rounded.tile}"
+    padding: "10px 2px 8px"
+  field:
+    backgroundColor: "#131324"
+    textColor: "{colors.ink}"
+    typography: "{typography.body-ui}"
+    rounded: "{rounded.control}"
     padding: "10px 14px"
     height: "44px"
   chip:
     backgroundColor: "{colors.cab-3}"
     textColor: "{colors.ink-2}"
     typography: "{typography.label}"
-    rounded: "{rounded.chip}"
-    padding: "0 8px"
+    rounded: "{rounded.pill}"
+    padding: "0 10px"
     height: "24px"
   panel:
     backgroundColor: "{colors.cab-2}"
@@ -157,217 +334,266 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
     padding: "16px"
-  crt-screen:
+  feature-card:
     backgroundColor: "{colors.crt}"
-    textColor: "{colors.phosphor}"
-    rounded: "{rounded.screen}"
-    padding: "{spacing.panel-wide}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.feature}"
+    padding: "{spacing.panel}"
+  total-bar:
+    backgroundColor: "{colors.crt}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.feature}"
+    padding: "16px 24px"
+  coin-bar:
+    backgroundColor: "{colors.crt}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: "8px 12px 8px 14px"
   rail-item-active:
     backgroundColor: "{colors.cab-3}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.field}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.control}"
     padding: "0 12px"
     height: "40px"
-  select-tile-active:
-    backgroundColor: "{colors.cab-3}"
+  rail-count:
+    backgroundColor: "rgb(255 46 136 / 0.15)"
+    textColor: "{colors.p1}"
+    rounded: "{rounded.badge}"
+    padding: "0 6px"
+    height: "20px"
+  store-avatar:
+    backgroundColor: "{colors.cab-4}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.tile}"
-    padding: "8px 2px 6px"
+    rounded: "{rounded.avatar-lg}"
+    size: "112px"
+  verified-badge:
+    backgroundColor: "{colors.p2}"
+    textColor: "{colors.ink}"
+    size: "16px"
 ---
 
 # Design System: Boosterinio
 
 ## Overview
 
-**Creative North Star: "Attract Mode"**
+**Creative North Star: "The Pink Ladder"**
 
-Boosterinio is an arcade cabinet running its attract screen. The page is the cabinet's black laminate with a visible fleck grain; the header is the backlit marquee; the price is worked out live on a CRT screen; the purchase is a coin dropped into a lit push-button. Every surface is a part of that one machine, so nothing floats on a generic dark page and nothing is decorated for its own sake.
+Boosterinio is a ranked ladder lit in hot pink at night. The page is near-black with an indigo cast, diagonal pink light streaks and a large brushed-metal B plate behind the hero; type is white, heavy, italic, uppercase and wide; one accent, hot pink, marks everything you can act on or have chosen. The climb is picked on a dark rank board (your rank and your goal, as the publisher's own emblems) and paid with one slanted pink plate. The world was pinned by the owner's reference image on 2 Nov 2026 and replaces the arcade "Attract Mode" world. Class names from that world survive for stability and now describe new things: `crt` is the dark feature card, `phosphor` is soft pink text, `marquee` is the header, `coin` is the main action, `font-pixel` is the small Saira label.
 
-Light ranks the screen. The cabinet stays dark so its light sources can carry the hierarchy: the yellow coin plate is the brightest object in view and there is only one; the magenta-to-blue marquee plate glows at the top; phosphor readouts glow on the glass; status lamps glow at chip size; everything else is unlit laminate and warm ink. Color is either emitted (plates, phosphor, lamps) or printed (side-art bands, cartridge labels, tier crests), and type follows the same split: pixel faces for what the machine says, Rubik for what a person reads.
+Pink ranks the screen. The ground stays dark and the cards stay quiet (cool grey ink, hairline borders, long soft black drops), so pink light carries the hierarchy: the Insert coin plate is the brightest object in view, then the chosen tile with its tag, then pink icons, highlighted words and the streaks. Type has two voices: Saira, at width 118 and 800 italic, says what the storefront shouts (titles, numbers, buttons, labels); Rubik carries every sentence a person has to read, including all trust copy.
 
-The full cabinet (marquee, side-art, CRT glass, instruction card) belongs to the storefront: home, game hubs, the boosting configurator, the marketplace, checkout and the order receipt. Dashboards, seller tools, the booster board and admin are Operate surfaces. They keep the world's type, palette, density and status lamps; the build also gives them the select-screen cursor on the active rail row and lit plates for their actions, but never glass, side-art or title extrusion.
+The full world (streaks, the metal B plate, feature cards, the total bar) belongs to the storefront: home, game hubs, the boosting configurator, the marketplace and seller storefronts, checkout, order pages and the sign-in cards. Dashboards, seller tools, the booster board and admin are Operate surfaces: they keep the type, palette, cards, chips, the rail slash and the coin plate for their one main action, but never the streaks or the metal B plate.
 
 **Key Characteristics:**
-- One hot color: marquee yellow marks the single live action on a screen.
-- Neutral cabinet-black ground with a visible laminate grain.
-- CRT glass (teal-black, scanlines, glare, phosphor glow) holds totals and live readouts.
-- Lit push-button plates with emitted glow and a soft drop; no inset lip.
-- Three type voices: Jersey 10 display, Silkscreen labels, Rubik reading text.
-- Authored pixel art for world signatures: select cursor, coin slot, mode caps, escrow shield, tier crests, the B mark.
-- Diagonal side-art in P1 magenta, P2 blue and phosphor cyan frames the attract screen and caps the footer.
+- One accent: hot pink. #ff2e88 glows, outlines and colors pink text; #e3126f fills anything that carries white text.
+- Near-black indigo ground (#0b0b16) with a pink radial glow at the top of the page and diagonal light streaks on the home hero.
+- White heavy italic uppercase display type in Saira at width 118; Rubik for reading.
+- Dark hairline cards with long soft drops; pink-edged feature cards for the rank board, readouts and totals.
+- One slanted pink Insert coin plate per screen.
+- Selection as a pink frame with a glow and, on rank tiles, a P1 or GOAL tag.
+- The pink italic B (speed flag, cut, chamfers) beside a solid white wordmark; the B returns as the brushed-metal plate behind the hero and as faint flat plates.
 
 ## Colors
 
-A neutral cabinet black lit by one yellow coin, two player colors and a phosphor screen.
+A near-black world with the reference's indigo cast and a single hot pink, used as light and as fill.
 
 ### Primary
-- **Coin-Door Yellow** (#ffd93b): the live action, and only the live action. On the coin plate it is the middle stop of a radial face (#fff1a6 at the top, through #ffd93b, to #e9b900) with near-black coin ink (#1d1600) and a yellow glow. The same yellow marks the keyboard skip link while it holds focus and the button in transactional email; both are the live action of their moment.
-
-### Secondary
-- **Player-One Magenta** (#ff2e88): P1 and the select cursor. The pixel triangle and corner brackets on the current pick, the P1 tag, queue counts in rails (on a 15% magenta badge), sequence numerals, list markers, the instruction card's header band, text selection, the first side-art band and the start of the marquee plate.
-- **Player-Two Blue** (#2f6bff): P2 and the choice already made. The secondary lit plate, selected divisions, segments, pages and filter pills, the GOAL cursor and tag, the staff-message tint, range inputs. Small blue text on laminate is lifted to a lighter tint (#86a8ff), because the base blue reads near 4.2:1 on cabinet black.
-
-### Tertiary
-- **Phosphor Cyan** (#5cf2d6): the screen's light. Totals and readout numerals (with a glow halo), links, the focus ring, the text caret, checkbox accents, the select chevron, the active rail icon, the info lamp and the third side-art band.
-- **Dim Phosphor** (#3cae9a): legends on the glass (TOTAL, STAGE TIME, YOUR RANK, GOAL), detail text inside score lines, the border of a focused field.
-- **CRT Glass** (#051315, centre #0a2125, edge #020a0b): the screen's teal-black, laid as a radial gradient inside a 10px **Bezel Black** (#050505) frame.
-
-Text on glass uses phosphor-tinted inks that are literal values in the build, not theme tokens: values and titles #d8fff7, score-line labels #a9d9d0, intro copy #b9dcd5, captions and readout legends #9fcfc6.
+- **Hot Pink** (p1): light and line. Glows, outlines, focus rings, icons, the text caret, list markers, checkbox and range accents, filled rating stars, the select chevron, and pink text on dark: the highlighted "to the coin", stage numerals, rail and queue counts. Pink text on near-black reads 5.6:1.
+- **Deep Pink** (p2): fill. Every pink surface that carries white text: the start of the Insert coin plate, filled buttons, the chosen division pill and segment, the P1 / GOAL tag, the notification badge, the verified seal, text selection. White on it reads 4.6:1.
+- **Highlight Pink** (p1-light): the top stop of the B mark's gradient (#ff74b6, then hot pink, then #d80d68) and of the slash bar.
+- **Plate Shadow Pink** (p2-deep): the far end of the coin plate (deep pink, #d40e69 at 55%, then this). Filled buttons end at #cf0d65.
+- **Streak Core** (streak-core): the white-hot point near the end of each light streak, here and in the social image.
+- **Soft Pink** (phosphor): small pink text on dark: links, readout and total legends (TOTAL, ESTIMATED TIME), the info and in-progress chip tone, active rail icons, discounts. 7.8:1 on a feature card.
+- **Dim Pink** (phosphor-dim): quiet notes, score-line details and small legends, mostly inside feature cards (5.7:1 there, 5.6:1 on a card), and the border of a chosen extra at 60%.
 
 ### Neutral
-- **Cabinet Black** (#100f0e): the page ground and browser theme color, under a laminate grain (a 180px fractal-noise tile of warm-white flecks at 8.5% alpha) that stays visible.
-- **Laminate** (#181716): panel and card faces, toasts.
-- **Raised Laminate** (#201f1d): fields, chips, segmented tracks, hovered rows, the active rail row, selected tiles.
-- **Seam** (#2f2d2a): every 1px border and divider, table header rules, the CRT's outer ring.
-- **Lit Seam** (#403d39): hover borders, the unranked crest, scrollbar hover.
-- **Warm Ink** (#f5f3ef): headings and primary text.
-- **Faded Ink** (#b9b5ae): body copy, form labels, secondary text.
-- **Ghost Ink** (#918c85): meta, captions, breadcrumbs, table heads, inactive icons, zero counts.
+- **Night** (cab): the page ground, browser theme color and scrollbar track, under a pink radial glow (16% at the top right, 6% at the top left) that fades within 900px.
+- **Feature Card** (crt, with crt-2 at the top): the 160° gradient of feature cards; the total bar runs the same two stops from top to bottom.
+- **Card** (cab-2): panel and card faces, toasts, stage cells, menus. Fields sit one step off it (#131324).
+- **Raised** (cab-3): ghost buttons, chips, the segmented track, menu-row hover, the active rail row.
+- **Lifted** (cab-hover): a ghost button's face on hover.
+- **Hairline** (cab-4): every 1px border and divider, table rules (60% inside rows), the current tab's face.
+- **Lit Hairline** (cab-5): hover borders, scrollbar thumb hover, empty rating stars.
+- **White** (ink): headings, display type, primary text, values, and all text on pink fills.
+- **Mist** (ink-2): body copy, form labels, secondary text. 10.7:1 on a card.
+- **Note Ink** (ink-note): notes and keys on feature cards: the escrow note, score-table keys, buy-box labels, mode explanations.
+- **Dusk** (ink-3): meta, captions, breadcrumbs, table heads, inactive icons, placeholders. 5.4:1 on a card.
 
-### Status Lamps
-- **Lamp Green** (#3be37a): completed, approved, live, free extras, all clear.
-- **Lamp Amber** (#ffb547): waiting on a person (delivered, in review, open ticket, work waiting), warnings, internal staff notes.
-- **Lamp Red** (#ff5a5a): disputed, rejected, suspended, errors, danger plates, alarming queue counts.
+Two grounds are literals rather than tokens: the footer (#08080f), a step below Night, and the admin rail (#0f0f1d), a step above it.
 
-Info lamps use phosphor, muted lamps use ghost ink, and role lamps use P1 and P2.
+### Status
+- **Green** (ok): completed, approved, active, free and included extras, the online dot, the thumbs-up rating.
+- **Amber** (warn): waiting on a person, warnings, a play mode that is unavailable at this rank.
+- **Red** (bad): disputed, rejected, suspended, errors, danger buttons.
+
+Info, live and in-progress chips use Soft Pink; muted chips use Dusk.
 
 ### Named Rules
-**The One Coin Rule.** Marquee yellow is the coin door's light, and a screen has one coin: the single live action (Insert coin · Buy boost, Pay, Confirm order, Save). Repeated or per-row actions (Claim order, Post update, Apply) take a P2 plate or a ghost plate. UI chrome never turns yellow: no yellow chip, lamp, border, link, band or highlight. Content keeps its own color (a Gold or Challenger crest, a game's label color) because it is printed content, not chrome.
+**The One Pink Rule.** Hot pink is the only accent. Actions, selection, tags, icons, highlighted words and light are pink; green, amber and red appear only when they report a state. No second hue for chrome and nothing orange near the brand. Publisher art (game covers, rank emblems) keeps its own colors because it is content.
 
-**The Printed-Not-Lit Rule.** Side-art is printed in P1 magenta, P2 blue and phosphor cyan, in that order, on near-black. It is never yellow and never carries content.
-
-**The Glass Holds The Total Rule.** A total, fee schedule or live figure the visitor has to trust is set on CRT glass as a phosphor display numeral with tabular figures: the configurator readout, the checkout and order receipts, the seller fee table. Catalog prices on cards and dashboard figures stay on laminate as display numerals in warm ink, or in a lamp color when the figure is a status (P1 for work waiting, red for alarms, phosphor for earnings).
+**The White-On-Deep Rule.** p1 (#ff2e88) is for glows, outlines, icons and pink text on dark. Any filled surface that carries white text uses p2 (#e3126f) or a deeper stop, because white on p1 is only 3.5:1 and white on p2 is 4.6:1. The class `.btn-p1` is filled with p2, and the P1 tag is a p2 pill.
 
 ## Typography
 
-**Display Font:** Jersey 10 (with ui-monospace, monospace)
+**Display Font:** Saira, variable in weight and width (with ui-sans-serif, system-ui, sans-serif)
 **Body Font:** Rubik (with ui-sans-serif, system-ui, sans-serif)
-**Label/Mono Font:** Silkscreen (with ui-monospace, monospace)
+**Label Font:** Saira bold, upright, tracked caps
 
-**Character:** Jersey 10 is the marquee and the scoreboard: tall, condensed pixel capitals that make a price look like a score. Silkscreen is the legend printed on the cabinet's plates and lamps. Rubik's soft humanist forms carry every sentence, so the trust copy (escrow, approvals, support) never has to be deciphered.
+**Character:** Saira run wide (width 118) at 800 italic gives the reference's fast, broad esports capitals; the same family set upright and bold makes the small labels, so the storefront speaks in one voice. Rubik's soft, open forms carry every sentence, so escrow, approval and support copy is never hard to read.
+
+Fonts load through next/font (Saira with the wdth axis, normal and italic; Rubik). The social image cannot use variable fonts, so it pins static TTFs (Saira ExtraBold Italic at width 118, Rubik Regular) in `src/app/fonts/`.
 
 ### Hierarchy
-- **Display** (400; 2.6rem, 3.3rem from 640px, 3.7rem from 1280px; line-height 0.92; 0.02em; uppercase): the page's h1, carrying the title extrusion. The sell page runs the same role from 3.4rem to 4.5rem.
-- **Headline** (400; 2.4rem, 3rem from 640px; line-height 1; uppercase): section heads, dashboard and admin page titles (2.6rem to 3rem), the instruction card title (2.2rem to 2.6rem).
-- **Title** (400; 1.75rem; line-height 0.92; uppercase): configurator panel titles. Empty-state titles run 1.875rem in faded ink; long-form h2 runs 2rem.
-- **Readout** (400; 3.4rem; line-height 1; tabular figures): the configurator total in phosphor with its halo. The receipt total is 2.8rem, the coin bar 2rem, fee rows 1.6rem to 3rem. On laminate the same face sets listing prices (1.9rem), stat values (2.25rem) and counts.
-- **Body** (Rubik 400; 1rem; line-height 1.625, long-form 1.7): all reading text, in faded ink at 62 to 70ch. Rubik 500 for nav links, card titles, FAQ questions and form labels; 600 for h3 and strong.
-- **Small** (Rubik 400; 0.8125rem): hints, captions, breadcrumbs, meta and score-line labels.
-- **Label** (Silkscreen 400; 0.6875rem; 0.04em; uppercase): chips, readout legends, table heads (0.05em), rail and footer group titles, order numbers. Plates set Silkscreen at 0.8125rem (0.75rem small, 0.9375rem large). The floor is 0.625rem: 1P/2P cap legends, admin group titles, badge counts.
+All display roles are Saira 800 italic uppercase at width 118, no tracking, unless noted.
+- **Display** (clamp 2.6rem to 4.6rem from 640px, 2.1rem to 3.4rem below; line-height 0.95): the home h1, two lines, with a faint 18% pink glow and its key words in hot pink with a stronger glow. The sell page runs the same role from 2.1rem to 4.5rem.
+- **Headline** (3rem; 3.75rem for storefront page titles from 640px; line-height 1): storefront page titles (3rem below 640px), section heads and Operate page titles from 640px.
+- **Headline small** (2.6rem / 2.4rem / 2.1rem, line-height 0.95 to 1.05): below 640px, Operate page titles, sign-in titles and stage numerals take 2.6rem; section heads take 2.4rem (also admin detail titles and the house-rules title from 640px); a seller's storefront name starts at 2.1rem and grows to 2.6rem.
+- **Readout** (2.9rem, line-height 1, tabular): the configurator total, white with a pink halo. The rank-board total is 2.4rem, the coin bar 1.75rem, stat tiles and stepper values 2.25rem.
+- **Title** (2rem / 1.875rem / 1.75rem / 1.5rem): the house-rules title below 640px; empty-state titles and readout headings; card titles on order, checkout and settings pages and the admin bar title; small display headings and counts.
+- **Subhead** (1.6rem, width 112, line-height 1.05): long-form h2s and score-table values.
+- **Card label** (1.0625rem; 1.375rem on seller storefronts; width 112, 0.01em): the slash label that names a card.
+- **Wordmark** (1.3rem below 640px, 1.6rem, 1.75rem from 1024px; width 114, 0.01em): solid white, beside the B.
+- **Body** (Rubik 400, 1rem, line-height 1.625): all reading text in Mist, 56 to 78ch. Hero subcopy and FAQ questions run 1.0625rem (questions at 500); h3s run 1.125rem at 600.
+- **UI text** (Rubik, 0.9375rem / 0.875rem / 0.8125rem / 0.75rem): nav links, the trust row, field values and listing titles (0.9375rem, 500); menus, rail rows and table cells (0.875rem); hints, captions, breadcrumbs and meta (0.8125rem); notes and the legal line (0.75rem).
+- **Button** (Saira 700 upright, width 105, 0.875rem, 0.05em, uppercase): 0.8125rem small, 1rem large. The coin plate alone goes 800 italic.
+- **Label** (Saira 700 upright, 0.07em, uppercase): 0.75rem for total legends and score-table keys; 0.6875rem for chips, table heads, rail and footer group titles, readout legends; 0.625rem is the floor (P1 / GOAL tags, badge counts, the coin-bar legend, admin group titles). Counters and codes set in the display face stay upright at 700, width 108.
 
 ### Named Rules
-**The Machine Speaks In Pixels Rule.** Jersey 10 and Silkscreen are the cabinet talking: titles, numbers, plates, lamps, column heads, readout legends. Anything read as a sentence, any form value and any table body text is Rubik.
+**The Wide Italic Rule.** Saira is the storefront's voice: titles, numbers, buttons and labels. Anything read as a sentence, any form value and any table cell is Rubik. No label goes below 0.625rem.
 
-**The One Extrusion Rule.** The stepped P1-then-P2 extrusion belongs to the page's display h1 (and the unlit wordmark), once per screen. Section heads, panel titles and numerals stay flat.
-
-**The No Kicker Rule.** Headings stand alone. No small uppercase label sits above a heading to introduce it; pixel labels name data (TOTAL, YOUR RANK, GOAL, column heads). Ordinals on a real sequence (Stage 1 to 4, approval steps 1 to 3) are content, set as P1 display numerals.
+**The Slash Label Rule.** A card names itself with a slash label: Saira 800 italic, 1.0625rem, with a slanted pink bar in front (0.24em by 0.95em, skewed -18°, Highlight Pink into Hot Pink, glowing 10px at 55%). It reads "/ YOUR RANK", "/ GOAL", "/ SERVER & QUEUE". The slash label is the card's heading; it never sits above another heading.
 
 ## Layout
 
-The storefront sits in a centred 1320px container with 16px gutters (24px from 640px); admin content runs to 1400px with 32px gutters from 1024px. Sections stack on a 48px rhythm, section heads sit 28px above their content, and the footer opens 96px below the last section.
+The storefront sits in a centred 1320px container with 16px gutters (24px from 640px); admin content runs to 1400px with 32px gutters from 1024px. Sections stack on a 48px rhythm, section heads sit 28px above their content, and the footer opens 96px below the last section. Panels pad 20px (24px from 640px); the rank board's halves pad 16px (20px from 640px).
 
-The attract screen is the home fold: one CRT spanning the container, framed by side-art columns (52px from 1024px, 72px from 1280px) that collapse into 20px bands above and below the screen on smaller viewports. Inside the glass, rank selection runs left and a 380px readout column runs right from 1024px; below that the readout stacks under the controls and a sticky coin bar carries the total. The full configurator page pairs a controls column with a 400px readout that sticks 96px from the top. The game select grid sits inside its own CRT at 2, 3, 4 and 6 columns; listing cards run 1, 2 and 4 across; category counters 2, 3 and 5.
+The home hero is one column: the headline (max 1000px), one paragraph, a trust row (two columns, four from 768px with hairline dividers at 10% white), then the rank board: one feature card whose YOUR RANK and GOAL halves stack, sitting side by side from 1024px with a hairline between, and under it the total bar, which wraps with a full-width coin plate on phones and runs in one row from 640px. The configurator pairs a controls column with a 400px readout that sticks 96px from the top from 1024px; below that, a coin bar sticks 12px above the bottom of the controls column.
 
-The marquee header is 70px and sticky; its nav folds into a menu below 1280px and the wordmark drops below 460px, leaving the B on its plate. Operate surfaces use a 220px rail (dashboard, seller tools) or a full-height 252px rail under a 56px sticky top bar (admin); below 1024px the rails become a scrolling tab strip or a toggled sheet. Controls are 44px tall by default (36px small, 56px large); rail rows are 40px (36px in admin).
+Grids: the game select runs 2, 3, 4 and 6 across inside a feature card; listing cards 1, 2 and 4, or in card rails that scroll sideways with snap points and let the next card peek; category counters 2, 3 and 5. House rules follow their own card's width with container queries: one column, two from 36rem, four from 56rem. Any grid with no columns set is a single `minmax(0, 1fr)` column, so a wide table or long word cannot push the page sideways.
+
+The header is 70px and sticky; its nav shows from 1280px, and below that a menu button opens a panel of 44px rows. The wordmark appears from 350px. Operate surfaces use a 220px rail (dashboards, seller tools, booster board) or a full-height 252px rail under a 56px top bar (admin); below 1024px the first becomes a scrolling tab strip and the second a toggled sheet. Controls are 44px tall (36px small, 56px large); rail rows are 40px (36px in admin).
 
 ## Elevation & Depth
 
-Depth is built the way a cabinet is built: light sources on top, glass recessed into a bezel, laminate panels raised on long soft drops. Every shadow is blurred and negatively spread; glow is kept for things that emit light.
+Depth is tonal layering plus light. The ground is darkest, cards rise one step and controls another; cards cast long, soft, negatively spread black drops, and the only light is pink, coming from what you can act on or have chosen.
 
 ### Shadow Vocabulary
-- **Raised laminate** (`box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 48px -28px rgb(0 0 0 / 0.85)`): panels, menus and forms, over a face with a 2.5% white top sheen.
-- **Recessed glass** (`box-shadow: 0 0 0 1px #2f2d2a, inset 0 0 60px rgb(0 0 0 / 0.75), inset 0 0 18px rgb(92 242 214 / 0.06), 0 40px 80px -40px rgb(0 0 0 / 0.9)`): the CRT, with 1px phosphor scanlines at 3.5% every 3px and a 155° glare (white at 5.5%, gone by 32%).
-- **Lit plate** (`box-shadow: 0 0 0 1px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.7), 0 0 22px -2px rgb(255 217 59 / 0.55), 0 10px 22px -10px rgb(0 0 0 / 0.8)`): the coin; hover widens the glow to `0 0 34px 2px` at 70%. P1 and P2 plates share the structure with their own glow (`0 0 20px -4px` at 60%, hover `0 0 28px 0` at 70%).
-- **Unlit plate** (`box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 8px 16px -10px rgb(0 0 0 / 0.8)`): ghost plates.
-- **Marquee bloom** (`box-shadow: 0 0 0 2px #050505, 0 0 0 3px rgb(255 255 255 / 0.08), 0 0 26px 3px rgb(255 46 136 / 0.6), 0 0 70px 16px rgb(255 46 136 / 0.22), inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -6px 14px rgb(40 0 30 / 0.35)`): the logo plate only; its magenta light spills 220px down the page.
-- **Phosphor halo** (`text-shadow: 0 0 10px rgb(92 242 214 / 0.45), 0 0 1px rgb(92 242 214 / 0.9)`): numerals on glass.
-- **Focus** (`outline: 2px solid #5cf2d6; outline-offset: 2px`): every focusable element. Fields instead shift to a dim-phosphor border with a `0 0 0 3px rgb(92 242 214 / 0.16)` ring.
+- **Card drop** (`box-shadow: 0 24px 48px -30px rgb(0 0 0 / 0.9)`): panels and menus, over a 2.5% white sheen that fades by 45%. Flat cards have no shadow.
+- **Feature card** (`box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.04), 0 30px 60px -30px rgb(0 0 0 / 0.9)`): with a pink border at 22% and a 10% pink wash in the top-right corner.
+- **Total bar** (`box-shadow: inset 0 -1px 0 rgb(255 46 136 / 0.55), -10px 10px 30px -18px rgb(255 46 136 / 0.65), 0 24px 40px -24px rgb(0 0 0 / 0.9)`): a lit pink lower edge, a pink border at 24%, two faint diagonal light lines at 118°.
+- **Coin plate** (`box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 0 0 1px rgb(255 46 136 / 0.55), 0 0 28px -4px rgb(255 46 136 / 0.7), 0 12px 24px -12px rgb(0 0 0 / 0.9)`): hover lifts the ring to 80% and opens the glow to `0 0 40px 0` at 75%.
+- **Filled button** (`box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 0 0 1px rgb(255 46 136 / 0.5), 0 0 20px -6px rgb(255 46 136 / 0.7)`): hover goes to `0 0 28px -4px` at 80%.
+- **Selected** (`box-shadow: 0 0 0 1.5px #ff2e88, 0 0 22px -4px rgb(255 46 136 / 0.7)`): the chosen tile, mode or thumbnail, over a 7% pink wash; hover shows `0 0 0 1px rgb(255 46 136 / 0.45)`. Tags glow `0 0 12px` at 70%; chosen segments `0 0 16px -4px` at 80%.
+- **Icon and text glow**: trust-row icons `drop-shadow(0 0 8px rgb(255 46 136 / 0.6))`, the B mark 14px at 35%, the coin stack 10px at 55%; headline glow `0 0 32px` at 18%, pink highlighted words `0 0 28px` at 45%, total numerals `0 0 22px` at 35%.
+- **Header plate edge** (`box-shadow: 0 0 22px 2px rgb(255 46 136 / 0.65)`): the 2px lit edge of the slanted plate behind the logo.
+- **Focus** (`outline: 2px solid #ff2e88; outline-offset: 2px`, 8px corners): every focusable element. Fields instead turn their border pink at 70% with a `0 0 0 3px rgb(255 46 136 / 0.16)` ring.
 
 ### Named Rules
-**The Emitted Light Rule.** Glow means a light source: the coin and the other lit plates, the marquee plate, phosphor on glass, a status lamp, a pressed mode cap. Cards, borders and headings never glow.
+**The Pink Light Rule.** Glow is pink, and it comes from what you can act on or have chosen: the coin plate, filled buttons, the chosen tile and its tag, icons, streaks and highlighted words. Plain cards, headings and borders do not glow.
 
-**The Soft Drop Rule.** Objects cast long, blurred, negatively spread shadows (0 24px 48px -28px on panels). No panel, card or button takes a hard offset box-shadow; hard offsets live only inside type (the title extrusion, cartridge monograms).
+**The Soft Drop Rule.** Every drop is blurred and negatively spread. No card, button or tile takes a hard offset shadow.
 
 ## Shapes
 
-Corners are softened rectangles whose radius grows with the object, so a chip and a screen read as parts of one machine. Borders are 1px seams in #2f2d2a; frames are heavier and black: a 10px bezel around the CRT, a 6px frame around the instruction card with an inset 1px rule at 15% white. Pixel art is the exception to rounding: it is drawn on an integer grid, rendered with crisp edges and scaled by whole pixels.
+Corners are softened rectangles whose radius grows with the object; pills are reserved for chips, tags and round icon buttons. Borders are 1px hairlines in #28273f; feature cards and the total bar take pink-tinted hairlines instead.
 
-Side-art runs at -58° in a repeating 74px cycle (18px magenta, 8px gap, 18px blue, 8px gap, 6px phosphor, 16px gap) on #0b0a09. A softer 46px cycle at -62° and 45 to 55% alpha tops profile headers as a 6px strip.
+Slants carry speed, and only the brand and the main action lean: the B mark is drawn on a 40-unit grid with chamfered corners, a speed flag (the middle bar runs out past the stem) and a cut into the lower bowl, then skewed -14°; the slash bar leans -18°; light streaks and the header's lit plate run at -28°; the coin plate's ::before plate skews -10° while the button and its label stay upright (the label is italic, never double-slanted).
 
 ### Named Rules
-**The Radius Tracks Size Rule.** The bigger the object, the rounder the corner: 6px badge, 7px chip, 9px small plate, 10px field, 11px plate, 12px tile, 13px large plate, 14px card, 16px panel, 26px screen. Nested parts step down by their inset (an 11px track holds 8px segments).
+**The Radius Tracks Size Rule.** 2px for the slash bar and streak ends, 6px badges and score lines, 7px count chips and photo badges, 8px segments and division pills, 9px small controls and menu rows, 10px buttons, fields, rail rows and avatars, 11px the segmented track, 12px tiles and large buttons, 14px cards and game tiles, 16px panels and galleries, 18px feature cards and the total bar, 24px the storefront avatar, 999px chips and tags.
+
+**The Upright Grid Rule.** Cards, fields, pills, tiles and tags stay square to the grid; the coin plate is the only control that leans.
 
 ## Components
 
 ### Buttons
-Illuminated arcade plates: a translucent face lit from behind, sitting in a dark bezel.
-- **Shape:** gently rounded plates (11px; 9px small; 13px large), 44px tall (36px small, 56px large), 20px side padding, Silkscreen caps at 0.8125rem with 0.04em tracking, an 8px icon gap.
-- **Coin (primary):** radial yellow face, coin ink (#1d1600), lit-plate glow. The Insert coin plate carries the pixel coin-slot sprite at its left. One per screen.
-- **P2 and P1:** radial faces (#8fb1ff to #2f6bff to #1f55e0; #ff8cc0 to #ff2e88 to #d81770), white legends, glow in their own color. P2 is the secondary lit action and the selected state; P1 appears only as P2's partner in a two-way choice.
-- **Ghost (unlit):** a #262422 to #201f1d face with a 1px seam; hover lifts the seam to #403d39 and the face to #2c2a27 to #23211f. Navigation, filters, steppers, unselected choices, the menu button.
-- **Danger:** transparent face, red legend, 1px red seam at 45%; hover adds a 10% red wash.
-- **Link:** phosphor text with no plate, underlined on hover.
-- **Hover / Press / Disabled:** hover widens the glow (lit) or the seam (ghost) over 160ms; press drops the plate 1px and lifts brightness 12% over 120ms on the expo ease-out; disabled plates fall to 45% opacity. Toggles (division, page, filter, segment) switch from ghost to P2 when chosen.
+Glossy pink plates and quiet dark ones, set in wide Saira caps.
+- **Shape:** 10px corners (9px small, 12px large); 44px tall (36px small, 56px large); 20px side padding (14px small, 28px large); an 8px icon gap.
+- **Insert coin (`.btn-coin`):** the main action. Skewed -10°, a deep-pink face running #e3126f to #d40e69 to #c00b5e, white 800 italic caps, the coin plate glow. On the rank board and in the readout it carries the coin-slot icon (a rounded square with a T slot) at its left and a chevron at its right: "Insert coin", "Insert coin · Buy boost".
+- **Filled (`.btn-p1`):** a #e3126f to #cf0d65 face, white caps, a pink ring and glow. Create account, Buy now on listing cards, Follow, the chosen division pill.
+- **Selected (`.btn-p2`):** a 16% pink wash, a pink border at 75%, white caps and a soft glow; the current page, tab or filter. Hover deepens the wash to 24%.
+- **Ghost (`.btn-ghost`):** a raised face with a hairline; hover turns the border pink at 45% and lifts the face to #1f1e33. Navigation, steppers, unchosen pills, Following, Share.
+- **Danger:** transparent, red caps, a red hairline at 45%; hover adds a 10% red wash.
+- **Press and disabled:** pressing drops a button 1px over 120ms on the expo ease-out; glows and borders change over 160 to 180ms; disabled buttons fall to 45% opacity.
 
-**The Lit Plate Rule.** A button is a translucent plate lit from behind: gradient face, a 1px dark bezel ring, a 1px top sheen, glow in its own color, a soft drop. No inset bottom lip and no hard offset shadow, on buttons or on selected segments and pills. Press is a 1px drop with a 12% brightness lift.
+**The One Coin Rule.** The slanted `.btn-coin` plate is reserved for the one main action of a screen: Insert coin, Pay, Confirm and release payment, Mark boost finished, Save on a settings or admin form, Create account on the register card. Repeated and secondary actions take the filled, selected or ghost button. Below 1024px the configurator's coin bar scrolls away with the controls before the readout's plate arrives, so one coin is in view.
 
-### Chips (status lamps)
-- **Style:** 24px rectangles (7px), raised-laminate face, 1px seam, Silkscreen 0.6875rem caps in faded ink. A 6px square lamp leads the legend in the tone color, with a 6px glow of the same color.
-- **Tones:** ok green, warn amber, bad red, info phosphor, muted ghost ink, P1 magenta, P2 light blue (#86a8ff). The plain variant drops the lamp for tags (payment methods, server and category). Over imagery the face turns black at 70 to 75%.
+### Chips and Tags
+- **Status chip:** a 24px pill on a raised face with a hairline, Saira 700 caps at 0.6875rem in Mist, led by a 6px dot in the tone color with a 6px glow of the same color. Tones: green, amber, red, Soft Pink (info, live, in progress), Dusk (muted), Hot Pink. The plain variant drops the dot for payment methods and tags; over images the face turns black at 70 to 75%.
+- **P1 / GOAL tag:** an 18px #e3126f pill with white Saira caps at 0.625rem and a 12px pink glow, centred on the top edge of the chosen rank tile.
+- **Counts:** rail and queue counts are Hot Pink upright display numerals on a 15% pink badge (6px); the notification count is white on a #e3126f badge; tab and section counts sit in 7px raised chips.
+- **Verified badge:** a 16px sixteen-point seal in #e3126f with a Hot Pink edge and a white check, beside a seller's name. Staff grant it; it is never self-applied.
 
 ### Cards / Containers
-- **Panel (raised laminate):** 16px corners, laminate face with a 2.5% top sheen, 1px seam, the raised-laminate shadow, 20px padding (24px from 640px). Configurator sections, header menus, offer cards.
-- **Card (flat laminate):** 14px corners, laminate face, 1px seam, no shadow, 16 to 20px padding. Listing cards, stat tiles, tables, admin sections, empty states. Linked cards lift 2px and light their seam on hover. Listing cards show a 16:10 cover (or a 68px band in the game's color), lamp chips over it, Rubik title and attributes, the seller's avatar with 12px pixel stars (phosphor earned, #403d39 not), and the price as a display numeral.
-- **CRT screen:** 26px corners, a 10px bezel, radial glass, scanlines and glare between the glass and its content; 20 to 24px padding (32px for standalone messages such as 404 and errors). Fee tables on glass run Silkscreen legends into dotted phosphor leaders and phosphor numerals.
-- **Instruction card:** a printed card under plexiglass. 10px corners in the 6px black frame, an inset 1px rule, a P1 header band carrying the headline in white, P1 pixel-cursor bullets before Silkscreen rule titles, four pixel screws, a 118° plexi glare.
-- **Accordion:** native disclosure rows between 1px seams; questions in Rubik 1.0625rem 500, a stroke chevron that turns 180° over 200ms, answers in faded ink at 70ch.
+- **Panel:** 16px corners, the card face with a 2.5% top sheen, a hairline, the card drop, 20px padding (24px from 640px). Configurator sections, menus, the house rules, forms.
+- **Flat card:** 14px corners, the card face, a hairline, no shadow, 16 to 20px padding. Stat tiles, counters, tables, empty states, the stages grid (16px, cells split by 1px hairlines). Linked cards light their border to #393753 on hover.
+- **Feature card (`.crt`):** 18px corners, the #17162a to #10101e gradient with a pink corner wash, a pink hairline at 22%, the feature-card shadow, clipped (not hidden) so sticky children still pin. It holds the rank board, the readout, the buy box, the order receipt, the game select, score tables and the sign-in card.
+- **Total bar:** under the rank board. The coin stack in Hot Pink with a glow, a TOTAL (EST.) legend in Soft Pink Saira caps, the price as a 2.4rem white display numeral that rolls to each new value, and the Insert coin plate (at least 250px wide from 640px). A flat B at 7% sits in its centre.
+- **Listing card:** a game icon and a one-line title (with a lightning icon when delivery is instant), a two-line description excerpt, a 16:10 photo with a category chip and a photo-count badge, or a placeholder of dimmed game art with "No photos yet" and the game's short name; a scrolling row of detail chips; the price as a display numeral beside a Buy now filled button; a seller row with avatar, name, verified badge, completed orders and a green thumbs-up rating percentage.
+- **Card rail:** a category row with its title, Show all and round 36px previous and next buttons; cards scroll sideways with mandatory snap points and the next card peeks in.
+- **Accordion:** native disclosure rows between hairlines; questions in Rubik 1.0625rem 500 with a chevron that turns 180° over 200ms; answers in Mist at 70ch.
 
 ### Inputs / Fields
-- **Style:** 44px minimum height, raised-laminate face, 1px seam, 10px corners, Rubik 0.9375rem, faded-ink placeholder, phosphor caret. Labels sit 6px above in Rubik 0.8125rem 500 faded ink; hints and errors sit 6px below at 0.8125rem.
-- **Focus:** the seam turns dim phosphor and a 3px phosphor ring at 16% appears over 140ms; no outline.
-- **Error / Disabled:** an invalid field takes a red seam at 70% with a red message below.
-- **Select:** the native arrow is replaced by a 12×8 pixel chevron in phosphor.
-- **Segmented:** a raised-laminate track (11px, 4px inset) of 36px segments (8px); the chosen segment fills P2 with a white legend.
-- **Checks and ranges:** checkboxes take phosphor and ranges take P2; a chosen add-on row tints phosphor at 6% behind a dim-phosphor seam.
+- **Style:** 44px minimum height, a #131324 face, a hairline, 10px corners, Rubik 0.9375rem, Dusk placeholders, a Hot Pink caret. Labels sit 6px above in Rubik 0.8125rem 500 Mist; hints and errors sit 6px below at 0.8125rem.
+- **Focus:** the border turns pink at 70% and a 3px ring at 16% appears over 140ms; hover lifts the border to #393753.
+- **Error:** an invalid field takes a red border at 70% with a red message below.
+- **Select:** the native arrow is replaced by a 12 by 8 stroke chevron in Hot Pink.
+- **Segmented:** a raised track (11px, 4px inset) of 36px segments (8px); the chosen segment fills #e3126f with white text, a pink ring and glow.
+- **Checks and ranges:** Hot Pink accent; a chosen extra row tints pink at 6% behind a Dim Pink border at 60%, with its price or FREE / INCLUDED in Saira caps.
+- **Image uploader:** a dashed drop zone, photo tiles with Cover / Make cover badges (7px, black at 75%), spinner tiles while uploading and a count. Aspect presets: 4:3 listings, 4:1 banners, square avatars, 16:7 service cards.
 
 ### Navigation
-- **Marquee header:** a 70px sticky cabinet top (#1a1816 fading to #100f0e, with a magenta wash at the left) where the lit marquee plate holds the B mark and the wordmark. Nav links in Rubik 0.9375rem 500 move from faded to warm ink on hover while the P1 pixel cursor slides in from the left. Sign in is a text link; Create account is a small ghost plate. Below 1280px a ghost menu plate opens a raised panel of 44px rows.
-- **Rails:** 40px rows (36px in admin), 10px corners (9px in admin), faded ink with ghost-ink stroke icons. The active row takes the raised-laminate face, warm ink, a phosphor icon and the P1 pixel cursor in its left gutter. Queue counts sit in P1 display numerals on a 15% magenta badge; group titles in Silkscreen 0.625 to 0.6875rem ghost ink.
-- **Tabs:** 36px link tabs with 9px corners; the current tab is a #2f2d2a face with warm ink, the rest faded ink with a raised-laminate hover.
-- **Breadcrumbs:** Rubik 0.8125rem ghost ink with slash separators; the current page in faded ink.
-- **Footer:** a 28px side-art band caps a #0b0a09 ground; Silkscreen column titles over Rubik 0.875rem links; payment methods as plain chips.
+- **Header:** a 70px sticky bar (an indigo near-black gradient at 97%, a pink hairline at 16% along the bottom, a soft pink glow rising behind the logo, and a slanted lit plate behind the logo: a panel leaning -28° that brightens to pink at 13% toward its right edge, where a 2px line runs from Streak Core into Hot Pink with a 22px glow). The B mark (with a 14px pink glow, lifting 2px on hover) and the white wordmark; nav links in Rubik 0.9375rem 500 move from Mist to White while a small pink slash slides in from the left. Sign in is a text link; Create account is a small filled button (an icon-only pink square on phones). Signed-in visitors get a ghost bell with a deep-pink count and an account menu panel.
+- **Rails:** 40px rows (36px in admin) with 10px corners (9px in admin), Mist text and Dusk stroke icons. The active row takes the raised face, White text, a Soft Pink icon and a Hot Pink slash at its left edge; hover takes the card face. Group titles are Saira caps at 0.6875rem (0.625rem in admin) in Dusk.
+- **Tabs:** link tabs are 36px with 9px corners, the current one on a #28273f face. Seller storefront tabs carry icons, count chips and a pink underline on the current tab.
+- **Breadcrumbs:** Rubik 0.8125rem in Dusk with slash separators; the current page in Mist.
+- **Footer:** on #08080f under a 1px pink light band; a large flat B at 4.5% at the bottom right; the logo, a short escrow line and plain payment chips, then Saira column titles over Rubik 0.875rem links, and the publisher disclaimer.
 
-### Select-Screen Cursor
-The world's pointer. Corner brackets (14px, 3px stroke, set 5px outside the item) slide 3px into place and fade in over 120 to 160ms on hover, focus and the chosen state. Their color comes from the player: P1 magenta for the current pick, game cartridges and listing cards; P2 blue for the goal, coaches and packages. The 5×5 pixel triangle marks hovered nav links, the active rail row, house-rule titles and market counters. In the tier picker, Boosterinio's own pixel crests sit on 12px tiles (5 across, 10 from 1280px) with the P1 or GOAL tag above the chosen tile; unreachable tiers drop to 25%.
+### Rank Board
+The home's first object. Each half is headed by a slash label and holds the tier picker and the division pills. Tier tiles (12px corners) show the publisher's emblem over the tier name; tiers that cannot be picked fall to 30% and partly grey. Division pills (32px, 8px corners, at least 52px wide) are ghost buttons, the chosen one filled. Changing either side re-prices the board, and the total bar's number rolls to the new estimate.
 
-### Score Readout
-The configurator's CRT readout: start and goal crests (64px) joined by a pixel dashed arrow; itemized score lines in #a9d9d0 with values in #d8fff7 that flash phosphor at 20% for 900ms when they change; the TOTAL numeral rolling to its new value over 520ms on an exponential ease-out; a stage-time estimate; the 1P SOLO and 2P DUO mode caps; the coin plate; the escrow note beside the pixel shield. Below 1024px a sticky coin bar (14px, #071718 face, phosphor ring at 12%) pins the total and a compact coin to the bottom of the controls column. It scrolls away with that column before the full readout arrives, so one coin is lit in view.
+**The Cursor Frame Rule.** Selection is the cursor frame: a 1.5px Hot Pink ring, a soft pink glow and a 7% pink wash, with a 1px ring at 45% on hover. A chosen rank tile also carries its tag: P1 for your rank, GOAL for the target. Play modes, packages, gallery thumbnails and game tiles use the same frame without a tag.
 
-### Mode Caps
-Round arcade buttons drawn on a 12×12 pixel grid: dark rim, colored dome, highlight up-left, shade down-right, 44px across with a Silkscreen 1P or 2P legend. The chosen cap drops 1px, loses its highlight and lights with a 10px glow in its player color; the other sits at 55% opacity and half saturation.
+### Readout
+The configurator's feature card: start and goal emblems (64px) joined by three Hot Pink chevrons, itemized lines in Rubik 0.8125rem (labels in Mist, values in White, free and included in green) that flash pink at 20% for 900ms when they change, TOTAL in Soft Pink Saira caps over the 2.9rem white numeral with its pink halo (rolling over 520ms), the estimated time, SOLO and DUO mode cards, the coin plate, and the escrow note beside a Hot Pink shield in Note Ink.
 
-### Game Cartridge
-A 14px card whose 4:3 label is the game's own color fading into cabinet black at 160°, under a scanline overlay at 25%, with the short name in white display type (2.6rem to 3rem) on a hard 2px black drop. Games with boosting carry a phosphor lamp chip. Hover lifts the cartridge 4px and lights its seam. A licensed cover image may fill the label.
+### Seller Storefront
+A full-bleed banner (the seller's upload, or a brand gradient with streaks and the metal B plate), a 112px avatar with 24px corners and a 4px Night border overlapping it, with a green dot when the seller was seen in the last 10 minutes; the name in display type with the verified badge; a stats row (sold, rating, reviews, followers, online or last active); an expandable bio; Share (ghost) and Follow (filled) or Following (ghost); the tabs. The reviews tab opens with a rating summary and distribution bars.
+
+### Gallery
+A 16:9 stage (16px corners) with a counter and previous and next arrows, a row of thumbnails that take the cursor frame, and a full-screen viewer.
+
+### Trust Row and House Rules
+The trust row sets four Rubik 0.9375rem 500 labels in White, each after a 20px Hot Pink stroke icon with an 8px glow, split by hairlines from 768px. House rules is a panel whose four promises each lead with a 40px pink icon tile (10px corners, pink border at 40%, 10% pink face, glow), a Saira caps title and a Mist sentence.
+
+**The Truthful Label Rule.** Trust labels, counts and reviews say only what is true today: Secure Escrow, Verified Boosters, Transparent Pricing, Human Support. Support is staffed during set hours, so never "24/7". No invented stats, ratings, review counts or testimonials: review sections render real reviews or nothing, and counters show real counts, including zero.
+
+### Brand Mark and Imagery
+The B mark fills with a Highlight Pink, Hot Pink, #d80d68 gradient beside the solid white wordmark; the favicon sets it on an 11px near-black plate. The B behind the hero is a raster plate, `public/images/brand/b-plate-v2.webp` (1100×1000, transparent; source `docs/brand/b-plate.html`): brushed magenta metal (#f7348d → #bd1665 → #5c0a33 → #2a0416) with a two-step dark extrusion, specular bevel light from the top right, a rim light fading from #ffd7ea, angular shard planes and a dot matrix that fade out before the edge. The social image uses the 440×400 PNG; flat Bs sit at 7% in the total bar and 4.5% in the footer. Light streaks are 2px lines (pink into Streak Core) with a 16px pink glow.
+
+**The Publisher Art Rule.** Game covers and rank emblems are the publishers' own artwork, used only to identify the game or rank, and every shipped raster is listed with its source in `docs/image-sources.md`. A new raster ships with its line there. Brand assets (the B, the wordmark, the favicon, the social image) are drawn in code.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** light exactly one coin plate per screen (marquee yellow, #1d1600 legend, the coin-slot sprite on Insert coin) and keep it the brightest object in view.
-- **Do** set totals, fees and live figures on CRT glass as phosphor display numerals with tabular figures, labelled in dim-phosphor Silkscreen.
-- **Do** use the P2 plate for selected states and repeated actions; pair P1 and P2 plates only for a two-way choice (Apply to sell / Apply to boost, Solo / Duo).
-- **Do** mark the hovered or chosen item with the select-screen cursor: corner brackets or the pixel triangle, P1 magenta for the current pick and P2 blue for the goal.
-- **Do** draw world signatures as integer-grid pixel art with crisp edges (cursor, coin slot, mode caps, shield, tier crests, the B mark) and keep 16 to 20px stroke icons for utility controls.
-- **Do** keep reading copy in Rubik at 62 to 70ch in faded ink on laminate.
-- **Do** let a changed number move visibly (score lines flash for 900ms, totals roll for 520ms) and still every animation and transition under reduced motion.
-- **Do** give Operate surfaces (dashboard, seller tools, booster board, admin) the world's type, palette, density, status lamps, rail cursor and plates, with dense tables under Silkscreen column heads.
+- **Do** keep hot pink the only accent: #ff2e88 for glows, outlines, icons and pink text on dark; #e3126f under any white text.
+- **Do** give each screen one slanted Insert coin plate (#e3126f to #c00b5e at -10°, white 800 italic caps) and keep it the brightest object in view.
+- **Do** name cards with a slash label (Saira 800 italic, 1.0625rem, slanted pink bar).
+- **Do** mark a choice with the cursor frame, and put a P1 or GOAL tag (#e3126f pill, white 0.625rem caps) on a chosen rank tile.
+- **Do** set prices and totals as Saira display numerals with tabular figures, in white with a faint pink halo, under a Soft Pink caps legend.
+- **Do** use feature cards (#17162a to #10101e, pink hairline at 22%, 18px) for the rank board, readouts, receipts and score tables, and plain cards (#121222, #28273f hairline) for everything else.
+- **Do** use 16 to 20px stroke icons, Hot Pink when they carry meaning and Dusk when inactive.
+- **Do** keep reading copy in Rubik, in Mist, at 56 to 78ch.
+- **Do** list every shipped game cover and rank emblem with its publisher source in `docs/image-sources.md`.
+- **Do** still every animation and transition under reduced motion; totals jump instead of rolling.
 
 ### Don't:
-- **Don't** put marquee yellow on chrome other than the live action: no yellow chip or lamp, border, link, side-art band, badge or highlight.
-- **Don't** light two coin plates on one screen; the second action is a P2 or ghost plate.
-- **Don't** set a kicker or eyebrow label above a heading.
-- **Don't** give plates, segments or pills an inset bottom lip, and don't give any panel, card or button a hard offset box-shadow.
-- **Don't** bring CRT glass, scanlines, side-art or title extrusion into dashboards, seller tools, the booster board or admin.
-- **Don't** set sentences, form values or table body text in a pixel face, or set any pixel label below 10px (0.625rem).
-- **Don't** use typed glyphs as icons (text arrows, stars, check marks); use a stroke icon or authored pixel art.
-- **Don't** lead with orange or add a second hot accent; warn amber is a status lamp, not a brand color.
-- **Don't** fall back to the category default: champion splash art as atmosphere, a flat untextured dark page, or icon-card feature grids. A game is its cartridge: label color, pixel monogram, or a licensed cover on the label.
+- **Don't** put white text on a #ff2e88 fill; it is 3.5:1. Fill with #e3126f or deeper.
+- **Don't** light two coin plates in one view, and don't slant any other control.
+- **Don't** add a second accent hue or lead with orange; amber only reports a state.
+- **Don't** claim "24/7", invent stats, ratings or testimonials, or show a review section without real reviews.
+- **Don't** stack a small label or pill above a heading to introduce it; pills name a state, a tag or a choice. The one exception is the "LoL Boosting" pill above the home headline, which the owner's reference image pins.
+- **Don't** give a card, button or tile a hard offset shadow.
+- **Don't** set sentences, form values or table cells in Saira, or any label below 0.625rem.
+- **Don't** bring the streaks or the metal B plate into dashboards, seller tools, the booster board or admin.

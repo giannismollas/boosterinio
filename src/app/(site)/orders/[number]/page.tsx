@@ -312,7 +312,7 @@ export default async function OrderPage({ params, searchParams }: Props) {
             <ChatScroller count={order.messages.length}>
               {order.messages.map((m) =>
                 m.kind === "SYSTEM" ? (
-                  <p key={m.id} className="rounded-[8px] bg-crt px-3 py-2 font-mono text-[0.75rem] leading-relaxed text-[#9fcfc6]">
+                  <p key={m.id} className="rounded-[8px] bg-crt px-3 py-2 font-mono text-[0.75rem] leading-relaxed text-[#b3adbd]">
                     <span className="text-phosphor-dim">{formatDateTime(m.createdAt)} ›</span> {m.body}
                   </p>
                 ) : (
@@ -320,7 +320,7 @@ export default async function OrderPage({ params, searchParams }: Props) {
                     <div
                       className={cn(
                         "max-w-[85%] rounded-[12px] px-3.5 py-2.5",
-                        m.kind === "STAFF" ? "border border-phosphor/30 bg-[rgb(92_242_214/0.07)]" : m.senderId === user.id ? "bg-p2/25" : "bg-cab-3",
+                        m.kind === "STAFF" ? "border border-phosphor/30 bg-[rgb(255_46_136/0.07)]" : m.senderId === user.id ? "bg-p2/25" : "bg-cab-3",
                       )}
                     >
                       <p className="mb-0.5 text-[0.6875rem] text-ink-3">

@@ -22,7 +22,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { PixelCursor } from "@/components/pixel";
+import { Slash } from "@/components/marks";
 import { cn } from "@/lib/utils";
 
 const ICONS = {
@@ -71,7 +71,7 @@ function NavList({ groups, pathname }: { groups: AdminNavGroup[]; pathname: stri
                       active ? "bg-cab-3 text-ink" : "text-ink-2 hover:bg-cab-2 hover:text-ink",
                     )}
                   >
-                    <PixelCursor className={cn("absolute left-1 h-2 w-2 text-p1 transition-opacity", active ? "opacity-100" : "opacity-0")} />
+                    <Slash className={cn("absolute left-1 h-3.5 w-1.5 text-p1 transition-opacity", active ? "opacity-100" : "opacity-0")} />
                     <Icon className={cn("ml-1.5 size-4 shrink-0", active ? "text-phosphor" : "text-ink-3")} />
                     <span className="truncate">{item.label}</span>
                     {item.count ? (

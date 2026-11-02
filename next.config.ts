@@ -32,6 +32,12 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  async redirects() {
+    return [
+      // The tab was renamed to match the market's naming.
+      { source: "/league-of-legends/boosting/placement-matches", destination: "/league-of-legends/boosting/placements-boost", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

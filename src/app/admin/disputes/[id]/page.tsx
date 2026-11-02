@@ -121,7 +121,7 @@ export default async function AdminDisputePage({ params }: { params: Promise<{ i
                     { v: "reopen", t: "Close dispute, resume order", d: `Returns the order to "${ORDER_STATUS[dispute.previousStatus].label}".` },
                   ].map((o) => (
                     <label key={o.v} className="flex cursor-pointer gap-3 rounded-[10px] border border-cab-4 bg-cab-3 p-3 has-[:checked]:border-phosphor-dim">
-                      <input type="radio" name="outcome" value={o.v} required className="mt-1 accent-[#5cf2d6]" />
+                      <input type="radio" name="outcome" value={o.v} required className="mt-1 accent-[#ff2e88]" />
                       <span>
                         <span className="block text-sm font-medium text-ink">{o.t}</span>
                         <span className="block text-[0.8125rem] text-ink-3">{o.d}</span>

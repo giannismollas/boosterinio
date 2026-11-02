@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 import { GameTile } from "@/components/game-tile";
 import { JsonLd } from "@/components/json-ld";
 import { ListingCard, listingCardSelect } from "@/components/listing-card";
-import { PixelCursor } from "@/components/pixel";
+import { Slash } from "@/components/marks";
 import { Container, Crumbs, SectionHead } from "@/components/storefront";
-import { CATEGORIES, CATEGORY_ORDER } from "@/lib/catalog";
+import { CATEGORIES, CATEGORY_ORDER, categoryLabel, gameHeadingName } from "@/lib/catalog";
 import { breadcrumbLd, pageMeta } from "@/lib/seo";
 import { categoryUrl, serviceUrl } from "@/lib/urls";
 import { formatMoney } from "@/lib/utils";
@@ -63,15 +63,19 @@ export default async function GamePage({ params }: Props) {
 
       <section aria-labelledby="boost-h" className="py-8">
         <Container>
-          <SectionHead id="boost-h" title={`${game.shortName ?? game.name} boosting`} />
+          <SectionHead id="boost-h" title={`${gameHeadingName(game)} boosting`} />
           {services.length ? (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s) => (
                 <Link
                   key={s.id}
                   href={serviceUrl(game.slug, s.slug)}
-                  className="cursor-frame group panel-flat flex flex-col p-5 transition-colors [--cursor:var(--color-p1)] hover:border-cab-5"
+                  className="cursor-frame group panel-flat flex flex-col overflow-hidden p-5 transition-colors hover:border-cab-5"
                 >
+                  {s.imageUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={s.imageUrl} alt="" loading="lazy" className="-mx-5 -mt-5 mb-4 aspect-[16/7] w-[calc(100%+2.5rem)] max-w-none object-cover" />
+                  ) : null}
                   <h3 className="t-display text-3xl text-ink uppercase">{s.name}</h3>
                   {s.tagline ? <p className="mt-1.5 text-ink-2">{s.tagline}</p> : null}
                   <p className="mt-auto flex items-end justify-between pt-5">
@@ -104,7 +108,7 @@ export default async function GamePage({ params }: Props) {
 
       <section aria-labelledby="market-h" className="py-8">
         <Container>
-          <SectionHead id="market-h" title={`${game.shortName ?? game.name} marketplace`} />
+          <SectionHead id="market-h" title={`${gameHeadingName(game)} marketplace`} />
           <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {CATEGORY_ORDER.filter((c) => game.categories.includes(c)).map((c) => (
               <Link
@@ -113,9 +117,9 @@ export default async function GamePage({ params }: Props) {
                 className="group panel-flat flex items-center justify-between gap-3 px-4 py-4 transition-colors hover:border-cab-5"
               >
                 <span className="flex items-center gap-2.5">
-                  <PixelCursor className="h-2.5 w-2.5 text-p1 opacity-40 transition-opacity group-hover:opacity-100" />
+                  <Slash className="h-3.5 w-1.5 text-p1 opacity-50 transition-opacity group-hover:opacity-100" />
                   <span className="font-medium text-ink">
-                    {c === "CURRENCY" && game.currencyName ? game.currencyName : CATEGORIES[c].label}
+                    {categoryLabel(c, game)}
                   </span>
                 </span>
                 <span className="t-display text-2xl text-ink-3 tnum">{counts.get(`${game.id}:${c}`) ?? 0}</span>
