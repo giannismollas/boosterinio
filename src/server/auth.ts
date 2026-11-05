@@ -21,7 +21,8 @@ export const auth = betterAuth({
   baseURL: process.env.BETTER_AUTH_URL || site.url,
   secret: process.env.BETTER_AUTH_SECRET,
   database: prismaAdapter(db, { provider: "postgresql" }),
-  trustedOrigins: [site.url],
+  // In development Next moves to 3001+ when another app holds port 3000; trust any local port then.
+  trustedOrigins: process.env.NODE_ENV === "production" ? [site.url] : [site.url, "http://localhost:*", "http://127.0.0.1:*"],
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 8,
