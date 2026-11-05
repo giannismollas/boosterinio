@@ -7,12 +7,14 @@
     "node": "24.x"
   },
   "scripts": {
+    "predev": "node scripts/dev-db.mjs",
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "postinstall": "prisma generate",
     "db:dev": "prisma dev",
+    "db:start": "node scripts/dev-db.mjs",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",

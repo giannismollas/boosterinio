@@ -46,6 +46,8 @@ Start a local Postgres. The easiest option needs no Docker; it prints a `postgre
 npx prisma dev --name boosterinio --detach
 ```
 
+That database is a background process and doesn't survive a reboot. `npm run dev` checks it first and starts it again on the same ports when it isn't answering (`npm run db:start` does the same on its own); it skips the check when `DATABASE_URL` points at another machine.
+
 Copy `.env.example` to `.env` and fill in at least `DATABASE_URL` (with `DATABASE_POOL_MAX=1` for `prisma dev`), `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY`, `CRON_SECRET` and set `PAYMENTS_TEST_MODE="true"`. Generate secrets with:
 
 ```bash
